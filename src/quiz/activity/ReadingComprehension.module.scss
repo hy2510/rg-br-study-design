@@ -1,0 +1,247 @@
+.wordPlayButton {
+  cursor: pointer;
+  width: fit-content;
+  height: 40px;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform: scale(1);
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  &:active {
+    transform: scale(0.9);
+  }
+  .txtL {
+    font-family: "Rg-B", sans-serif;
+    font-size: 1.6em;
+    font-weight: 600;
+  }
+}
+
+.wordPlayButton2 {
+  cursor: pointer;
+  width: fit-content;
+  height: 40px;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform: scale(1);
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  &:active {
+    transform: scale(0.9);
+  }
+  .txtL {
+    font-family: "Rg-B", sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+}
+
+.cardNumber {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: rgba($color: #000, $alpha: 0.8);
+  font-family: "Rg-B", sans-serif;
+  font-size: 0.7em;
+}
+
+.readingComprehension1 {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    gap: 20px;
+  }
+  .imageCard {
+    cursor: pointer;
+    min-width: 200px;
+    max-width: 300px;
+    min-height: 200px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: all 1s;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    .txtL {
+      font-family: "Rg-B", sans-serif;
+      font-size: 2.5em;
+    }
+    .cardNumberPosition {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+  }
+}
+
+.readingComprehension2 {
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+  }
+  .questionBox {
+    width: calc(100% - 40px);
+    padding: 20px;
+    background-color: rgba($color: #fff, $alpha: 0.6);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .wordImage {
+      display: flex;
+      max-width: 280px;
+      overflow: hidden;
+      border-radius: 38px;
+      img {
+        border-radius: 20px;
+      }
+    }
+    .wordText {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0;
+    }
+  }
+  .textCard {
+    cursor: pointer;
+    min-width: 200px;
+    width: calc(100% - 20px);
+    min-height: 60px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: all 1s;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    .awnserText {
+      font-family: "Rg-B", sans-serif;
+      font-size: 1.5em;
+    }
+  }
+  .answers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    gap: 20px;
+  }
+}
+
+.readingComprehension3 {
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    align-items: start;
+    gap: 20px;
+  }
+  .questionImage {
+    background-color: rgba($color: #fff, $alpha: 0.6);
+    border-radius: 15px;
+    display: flex;
+    max-width: 280px;
+    overflow: hidden;
+    margin-top: 20px;
+    img {
+      border-radius: 35px;
+    }
+  }
+  .questionText {
+    font-family: "Rg-b", sans-serif;
+    font-size: 1.6em;
+  }
+  .textCard {
+    cursor: pointer;
+    min-width: 200px;
+    width: calc(100% - 20px);
+    min-height: 60px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    padding: 0 10px;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: all 1s;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    .awnserText {
+      font-family: "Rg-B", sans-serif;
+      font-size: 1.5em;
+    }
+  }
+  .answers {
+    display: grid;
+    gap: 10px;
+  }
+}
+
+.readingComprehension4 {
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    display: grid;
+    gap: 20px;
+  }
+  .questionText {
+    font-family: "Rg-b", sans-serif;
+    font-size: 1.6em;
+    margin: 15px 0;
+  }
+  .textCard {
+    cursor: pointer;
+    min-width: 200px;
+    width: calc(100% - 20px);
+    min-height: 60px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    padding: 0 10px;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: all 1s;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    .awnserText {
+      font-family: "Rg-B", sans-serif;
+      font-size: 1.2em;
+    }
+  }
+  .answers {
+    display: grid;
+    gap: 10px;
+  }
+}

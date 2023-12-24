@@ -1,0 +1,361 @@
+.cardNumber {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: rgba($color: #000, $alpha: 0.8);
+  font-family: "Rg-B", sans-serif;
+  font-size: 0.7em;
+}
+
+.hintButton {
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  color: #d95355;
+  font-family: "Rg-B", sans-serif;
+  font-size: 0.95em;
+  padding: 12px 20px;
+  background-color: rgba($color: #ddd, $alpha: 0.3);
+  border-radius: 100px;
+  transition: all 0.2s;
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.vocabularyTest1 {
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+  }
+  .questionBox {
+    width: calc(100% - 40px);
+    padding: 20px;
+    background-color: rgba($color: #fff, $alpha: 0.6);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .wordImage {
+      display: flex;
+      max-width: 350px;
+      overflow: hidden;
+      border-radius: 15px;
+      img {
+        border-radius: 20px;
+      }
+    }
+    .wordText {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0;
+    }
+  }
+  .textCard {
+    cursor: pointer;
+    min-width: 200px;
+    width: calc(100% - 20px);
+    min-height: 60px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: all 1s;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    .txtL {
+      font-family: "Rg-B", sans-serif;
+      font-size: 2.5em;
+    }
+    .awnserText {
+      font-family: "Rg-B", sans-serif;
+      font-size: 1.5em;
+    }
+  }
+  .answers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    gap: 20px;
+  }
+}
+
+.vocabularyTest2 {
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+  }
+  .questionBox {
+    width: calc(100% - 40px);
+    padding: 20px;
+    background-color: rgba($color: #fff, $alpha: 0.6);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    .wordImage {
+      display: flex;
+      min-width: 250px;
+      max-width: 350px;
+      overflow: hidden;
+      border-radius: 15px;
+      img {
+        border-radius: 20px;
+      }
+    }
+    .wordText {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 15px 0;
+      font-size: 1.6em;
+      font-family: "Rg-b", sans-serif;
+      div,
+      span {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Rg-b", sans-serif;
+        .blank {
+          position: relative;
+          width: 80px;
+          height: 30px;
+          background-color: #38b4fe;
+          border-radius: 10px;
+
+          &::before {
+            content: "?";
+            font-size: 18px;
+            width: 80px;
+            height: 30px;
+            color: #fff;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+      }
+    }
+  }
+  .textCard {
+    cursor: pointer;
+    min-width: 200px;
+    width: calc(100% - 20px);
+    min-height: 60px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: all 1s;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    .txtL {
+      font-family: "Rg-B", sans-serif;
+      font-size: 2.5em;
+    }
+    .awnserText {
+      font-family: "Rg-B", sans-serif;
+      font-size: 1.5em;
+    }
+  }
+  .answers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    gap: 20px;
+  }
+}
+
+.vocabularyTest3 {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+  }
+  .wordCard {
+    .wordTyping {
+      display: flex;
+      align-items: center;
+      .textField {
+        width: 440px;
+        height: 60px;
+        position: relative;
+        .inputField {
+          display: flex;
+          align-items: center;
+          justify-content: start;
+          width: 400px;
+          height: 40px;
+          background-color: transparent;
+          border: 2px solid transparent;
+          font-family: "Rg-B", sans-serif;
+          font-size: 2.5em;
+          margin: 0 !important;
+          padding: 10px 20px !important;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 2;
+        }
+        .wordText {
+          display: flex;
+          align-items: center;
+          justify-content: start;
+          width: 400px;
+          height: 40px;
+          font-family: "Rg-B", sans-serif;
+          font-size: 2.5em;
+          color: #ccc;
+          background-color: #fff;
+          border-radius: 15px;
+          border: 2px solid #ddd;
+          padding: 10px 20px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+        }
+        .count {
+          position: absolute;
+          top: calc(50% - 7px);
+          right: 20px;
+          z-index: 3;
+          font-family: "Rg-R", sans-serif;
+          font-size: 0.9em;
+        }
+      }
+      .enterButton {
+        width: 70px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transform: scale(1);
+        transition: all 0.2s;
+        &:active {
+          transform: scale(0.9);
+        }
+        .enterIcon {
+          width: 22px;
+          height: 22px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: #000;
+          padding: 5px;
+          border-radius: 100px;
+        }
+      }
+    }
+    .meaning {
+      padding-left: 90px;
+      .txtL {
+        max-width: 480px;
+        font-size: 1.5em;
+        font-weight: 600;
+      }
+      .txtP {
+        max-width: 400px;
+        font-size: 1.2em;
+        color: #888;
+      }
+    }
+  }
+}
+
+.vocabularyTest4 {
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+  }
+  .questionBox {
+    width: calc(100% - 40px);
+    min-height: 240px;
+    padding: 20px;
+    background-color: rgba($color: #fff, $alpha: 0.6);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    .meaning {
+      max-width: 480px;
+      font-size: 1.8em;
+      font-weight: 600;
+    }
+    .sentence {
+      max-width: 480px;
+      font-size: 1.2em;
+      color: #888;
+    }
+  }
+  .textCard {
+    cursor: pointer;
+    min-width: 200px;
+    width: calc(100% - 20px);
+    min-height: 60px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: all 1s;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    .txtL {
+      font-family: "Rg-B", sans-serif;
+      font-size: 2.5em;
+    }
+    .awnserText {
+      font-family: "Rg-B", sans-serif;
+      font-size: 1.5em;
+    }
+  }
+  .answers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
+    gap: 20px;
+  }
+}
