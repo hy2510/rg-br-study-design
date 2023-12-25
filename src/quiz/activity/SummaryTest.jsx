@@ -116,6 +116,7 @@ export const SummaryTest1 = () => {
         <Container>
           {/* <WordPlayButton sentence={"Playback of the completed sentence"} /> */}
           <WordPlayButton sentence={"Playback (completed sentence)"} />
+          <Gap height={0} />
           <CorrectOrders>
             <CorrectTextCard
               correctAnswer={

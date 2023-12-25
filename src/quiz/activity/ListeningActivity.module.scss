@@ -1,7 +1,7 @@
 .comment {
   font-family: "Rg-B", sans-serif;
   font-size: 1.1em;
-  color: #aaa;
+  color: rgba($color: #000, $alpha: 0.4);
   padding: 10px 15px;
 }
 
@@ -23,6 +23,7 @@
     font-family: "Rg-B", sans-serif;
     font-size: 1.4em;
     font-weight: 600;
+    color: rgba($color: #000, $alpha: 0.4);
   }
 }
 

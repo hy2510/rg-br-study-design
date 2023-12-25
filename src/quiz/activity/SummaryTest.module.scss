@@ -1,7 +1,7 @@
 .comment {
   font-family: "Rg-B", sans-serif;
   font-size: 1.1em;
-  color: #aaa;
+  color: rgba($color: #000, $alpha: 0.4);
   padding: 10px 15px;
 }
 
@@ -23,7 +23,7 @@
     font-family: "Rg-B", sans-serif;
     font-size: 1.2em;
     font-weight: 500;
-    color: #aaa;
+    color: rgba($color: #000, $alpha: 0.4);
   }
 }
 
@@ -78,7 +78,7 @@
     &.question {
       border: 2px dashed #000;
       border-radius: 15px;
-      padding: 15px;
+      padding: 13px;
       margin: 10px 0;
     }
     .questionMark {

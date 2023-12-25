@@ -407,7 +407,7 @@ export const ListeningActivity4 = () => {
               "https://wcfresource.a1edu.com/newsystem/image/br/eb/1b-010/eb-1b-010-s1-q1.jpg"
             }
           />
-          <Gap height={20} />
+          <Gap height={15} />
           <Answers>
             {/* 정답액션예시 */}
             <SoundCard

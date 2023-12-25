@@ -219,7 +219,7 @@ export const ReadingComprehension2 = () => {
               "https://wcfresource.a1edu.com/newsystem/image/br/eb/kb-001/eb-kb-001-3-1.jpg"
             }
           />
-          {/* <Gap height={20} /> */}
+          <Gap height={15} />
           <Answers>
             {/* 정답액션예시 */}
             {/* 한번 누르면 소리가 재생되고 바로 한번더 누르면 정답을 함, 음원이 재생되고 1초후 다시 누르면 다시 음원을 재생함, 음원 재생중 누르면 정답을 체크함 */}
