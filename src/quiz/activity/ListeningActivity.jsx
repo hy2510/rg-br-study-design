@@ -6,6 +6,11 @@ import Gap from "../util/Gap";
 
 const style = stylesPc;
 
+// 코멘트
+const Comment = ({ text }) => {
+  return <div className={style.comment}>{text}</div>;
+};
+
 // 단어듣기버튼1
 const WordPlayButton = () => {
   const [isPlay, _isPlay] = useState(true);
@@ -21,7 +26,7 @@ const WordPlayButton = () => {
       ) : (
         <IcoStop colorGray width={40} height={40} />
       )}
-      <span className={style.txtL}>Listen</span>
+      <span className={style.txtL}>Playback</span>
     </div>
   );
 };
@@ -99,6 +104,7 @@ export const ListeningActivity1 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Listen to the audio and choose the correct card."} />
       <QuizBody>
         <WordPlayButton />
         <Gap height={15} />

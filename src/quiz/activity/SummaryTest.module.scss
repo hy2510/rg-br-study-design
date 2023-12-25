@@ -1,0 +1,110 @@
+.comment {
+  font-family: "Rg-B", sans-serif;
+  font-size: 1.1em;
+  color: #aaa;
+  padding: 10px 15px;
+}
+
+.wordPlayButton {
+  cursor: pointer;
+  width: fit-content;
+  height: 40px;
+  margin: 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform: scale(1);
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  &:active {
+    transform: scale(0.9);
+  }
+  .txtL {
+    font-family: "Rg-B", sans-serif;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #aaa;
+  }
+}
+
+.cardNumber {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: rgba($color: #000, $alpha: 0.8);
+  font-family: "Rg-B", sans-serif;
+  font-size: 0.7em;
+}
+
+.summaryTest1 {
+  .container {
+    display: grid;
+    gap: 15px;
+  }
+  .textCard {
+    cursor: pointer;
+    min-width: 200px;
+    width: calc(100% - 20px);
+    min-height: 40px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: all 1s;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    .awnserText {
+      font-family: "Rg-B", sans-serif;
+      font-size: 1.2em;
+    }
+  }
+  .answers {
+    display: grid;
+    gap: 10px;
+  }
+  .correctTextCard {
+    padding: 0 15px;
+    border-radius: 15px;
+    &.question {
+      border: 2px dashed #000;
+      border-radius: 15px;
+      padding: 15px;
+      margin: 10px 0;
+    }
+    .questionMark {
+      font-family: "Rg-B", sans-serif;
+      font-size: 1.4em;
+      text-align: center;
+    }
+    .correctAnswer {
+      font-family: "Rg-B", sans-serif;
+      font-size: 1.4em;
+    }
+    .incorrectAnswer {
+      font-family: "Rg-B", sans-serif;
+      font-size: 1.4em;
+      color: #d95355;
+    }
+  }
+  .correctOrders {
+    display: grid;
+    gap: 15px;
+    max-height: 25vh;
+    overflow-y: scroll;
+  }
+  .correctDirection {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+}

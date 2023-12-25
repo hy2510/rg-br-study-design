@@ -6,6 +6,7 @@ import heart from "../images/heart.svg";
 import chev_right from "../images/chev_right.svg";
 import chev_left from "../images/chev_left.svg";
 import returnIcon from "../images/return.svg";
+import arrow_up from "../images/arrow_up.svg";
 
 export const IcoHbgMenu = ({ width, height, colorBlack }) => {
   return (
@@ -62,5 +63,11 @@ export const IcoReturn = ({ width, height }) => {
     <>
       <img src={returnIcon} width={width} height={height} />
     </>
+  );
+};
+
+export const IcoArrowUp = ({ width, height, colorBlack }) => {
+  return (
+    <>{colorBlack && <img src={arrow_up} width={width} height={height} />}</>
   );
 };

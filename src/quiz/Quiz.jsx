@@ -23,14 +23,15 @@ import {
   ReadingComprehension3,
   ReadingComprehension4,
 } from "./activity/ReadingComprehension";
+import { SummaryTest1 } from "./activity/SummaryTest";
 
 const screenHeight = window.innerHeight + "px";
 
 export default function Quiz() {
   return (
     <>
-      <ReadingComprehension4 />
-      <ReadingComprehension3 />
+      <SummaryTest1 />
+      {/* <ListeningActivity1 /> */}
     </>
   );
 }

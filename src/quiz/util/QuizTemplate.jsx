@@ -3,7 +3,7 @@ import "../themes/theme.scss";
 import { IcoHbgMenu, IcoHeart, IcoTimer } from "./Icons";
 
 const style = stylesPc;
-const theme = "theme-camping";
+const theme = "theme-zoo-2";
 
 // 퀴즈템플릿
 export const QuizTemplate = ({ children }) => {
