@@ -76,12 +76,16 @@
     display: flex;
     align-items: center;
     background-color: #fff;
-    border: 2px solid #eee;
+    border: 2px solid #ddd;
     border-radius: 20px;
     overflow: hidden;
     transform: scale(1);
-    transition: all 1s;
+    transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
+    box-shadow: #ddd 0 3px;
+    &:hover {
+      transform: scale(1.02);
+    }
     img {
       width: 100%;
     }
@@ -105,12 +109,16 @@
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    border: 2px solid #eee;
+    border: 2px solid #ddd;
     border-radius: 20px;
     overflow: hidden;
     transform: scale(1);
-    transition: all 1s;
+    transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
+    box-shadow: #ddd 0 3px;
+    &:hover {
+      transform: scale(1.02);
+    }
     .txtL {
       font-family: "Rg-B", sans-serif;
       font-size: 2.5em;
@@ -134,13 +142,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #eee;
+    border: 2px solid #ddd;
+    background-color: #fff;
     border-radius: 20px;
     overflow: hidden;
     transform: scale(1);
-    transition: all 1s;
+    transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
     position: relative;
+    box-shadow: #ddd 0 3px;
+    &:hover {
+      transform: scale(1.02);
+    }
     .txtL {
       font-family: "Rg-B", sans-serif;
       font-size: 2.5em;
@@ -172,7 +185,6 @@
     }
   }
   .soundCard {
-    cursor: pointer;
     min-width: 200px;
     width: 100%;
     min-height: 80px;
@@ -180,14 +192,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #eee;
+    border: 2px solid #ddd;
     border-radius: 20px;
     overflow: hidden;
     transform: scale(1);
-    transition: all 1s;
+    transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
     position: relative;
     background-color: #fff;
+    box-shadow: #ddd 0 3px;
+    &:hover {
+      transform: scale(1.02);
+    }
     .txtL {
       font-family: "Rg-B", sans-serif;
       font-size: 2.5em;
@@ -203,6 +219,33 @@
       top: calc(50% - 35px);
       left: calc(50% - 35px);
       z-index: 2;
+    }
+    .enterButton {
+      cursor: pointer;
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      position: absolute;
+      top: calc(50% - 20px);
+      right: 10px;
+      z-index: 2;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
+        background-color: rgba($color: #000, $alpha: 0.8);
+        border-radius: 100px;
+      }
+      &:active {
+        transform: scale(0.9);
+      }
     }
   }
   .answers {

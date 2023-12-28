@@ -3,7 +3,7 @@ import "../themes/theme.scss";
 import { IcoHbgMenu, IcoHeart, IcoTimer } from "./Icons";
 
 const style = stylesPc;
-const theme = "theme-zoo-2";
+const theme = "theme-camping";
 
 // 퀴즈템플릿
 export const QuizTemplate = ({ children }) => {
@@ -29,7 +29,6 @@ export const QuizHeader = ({
             <div className={style.txtL}>{attempts}</div>
           </div>
         </div>
-
         <div className={style.qMark}></div>
       </div>
       <div className={style.quizHeaderCol2}>

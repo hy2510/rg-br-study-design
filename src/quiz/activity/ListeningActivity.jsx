@@ -1,7 +1,7 @@
 import stylesPc from "./ListeningActivity.module.scss";
 import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
-import { IcoPlay, IcoStop } from "../util/Icons";
+import { IcoPlay, IcoReturn, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
 
 const style = stylesPc;
@@ -86,8 +86,8 @@ export const ListeningActivity1 = () => {
     return (
       <div
         className={`${style.wordCard} ${
-          viewCorrectAct && "animate__animated animate__tada"
-        } ${viewIncorrectAct && "animate__animated animate__shakeX"}
+          viewCorrectAct && "animate__animated animate__bounce"
+        } ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
         onClick={onClick}
       >
@@ -104,7 +104,7 @@ export const ListeningActivity1 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
-      <Comment text={"Listen to the audio and choose the correct card."} />
+      <Comment text={"Listening Activity"} />
       <QuizBody>
         <WordPlayButton />
         <Gap height={15} />
@@ -178,8 +178,8 @@ export const ListeningActivity2 = () => {
     return (
       <div
         className={`${style.wordCard} ${
-          viewCorrectAct && "animate__animated animate__tada"
-        } ${viewIncorrectAct && "animate__animated animate__shakeX"}
+          viewCorrectAct && "animate__animated animate__bounce"
+        } ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
         onClick={onClick}
       >
@@ -195,6 +195,7 @@ export const ListeningActivity2 = () => {
         totalQuizNumber={4}
         quizTimer={"20:00"}
       />
+      <Comment text={"Listening Activity"} />
       <QuizBody>
         <WordPlayButton />
         <Gap height={15} />
@@ -214,7 +215,7 @@ export const ListeningActivity2 = () => {
           <WordCard word={"Alligaotr"} />
           <WordCard word={"Ox"} />
           <WordCard word={"Apple"} />
-          <WordCard word={"Oh My God"} />
+          <WordCard word={"Pupple"} />
         </Container>
         <Gap height={15} />
       </QuizBody>
@@ -259,8 +260,8 @@ export const ListeningActivity3 = () => {
     return (
       <div
         className={`${style.imageCard} ${
-          viewCorrectAct && "animate__animated animate__tada"
-        } ${viewIncorrectAct && "animate__animated animate__shakeX"}
+          viewCorrectAct && "animate__animated animate__bounce"
+        } ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
         onClick={onClick}
       >
@@ -280,6 +281,7 @@ export const ListeningActivity3 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Listening Activity"} />
       <QuizBody>
         <WordPlayButton />
         <Gap height={15} />
@@ -336,29 +338,6 @@ export const ListeningActivity4 = () => {
     );
   };
 
-  const ImageCard = ({
-    imgSrc,
-    number,
-    onClick,
-    viewCorrectAct,
-    viewIncorrectAct,
-  }) => {
-    return (
-      <div
-        className={`${style.imageCard} ${
-          viewCorrectAct && "animate__animated animate__tada"
-        } ${viewIncorrectAct && "animate__animated animate__shakeX"}
-        `}
-        onClick={onClick}
-      >
-        <img src={imgSrc} width={"100%"} />
-        <div className={style.cardNumberPosition}>
-          <CardNumber number={number} />
-        </div>
-      </div>
-    );
-  };
-
   const QuestionBox = ({ imgSrc }) => {
     return (
       <div className={style.questionBox}>
@@ -371,10 +350,9 @@ export const ListeningActivity4 = () => {
     return (
       <div
         className={`${style.soundCard} ${
-          viewCorrectAct && "animate__animated animate__tada"
-        } ${viewIncorrectAct && "animate__animated animate__shakeX"}
+          viewCorrectAct && "animate__animated animate__bounce"
+        } ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
-        onClick={onClick}
       >
         <div className={style.cardNumberPosition}>
           <CardNumber number={number} />
@@ -382,7 +360,11 @@ export const ListeningActivity4 = () => {
         <div className={style.playSoundPosition}>
           <WordPlayButton2 />
         </div>
-        <div className={style.checkAnswer}></div>
+        <span className={style.enterButton} onClick={onClick}>
+          <span>
+            <IcoReturn width={15} height={15} />
+          </span>
+        </span>
       </div>
     );
   };
@@ -399,6 +381,7 @@ export const ListeningActivity4 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Listening Activity"} />
       <QuizBody>
         <Gap height={15} />
         <Container>

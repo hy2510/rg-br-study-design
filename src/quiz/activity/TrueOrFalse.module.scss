@@ -1,0 +1,65 @@
+.comment {
+  font-family: "Rg-B", sans-serif;
+  font-size: 1.1em;
+  color: rgba($color: #000, $alpha: 0.4);
+  padding: 10px 15px;
+}
+
+.trueOrFalse {
+  .container {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    display: grid;
+    gap: 20px;
+  }
+  .questionText {
+    font-family: "Rg-b", sans-serif;
+    font-size: 1.6em;
+    margin: 15px 0;
+  }
+  .textCard {
+    cursor: pointer;
+    min-width: 200px;
+    width: 100%;
+    // min-height: 70px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    box-shadow: #ddd 0 3px;
+    &:hover {
+      transform: scale(1.02);
+    }
+    .answer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      .true,
+      .false {
+        font-family: "Rg-B", sans-serif;
+        font-size: 2.5em;
+      }
+      .awnserText {
+        font-family: "Rg-B", sans-serif;
+        font-size: 1.2em;
+      }
+    }
+  }
+  .answers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}

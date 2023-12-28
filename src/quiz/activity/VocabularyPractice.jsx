@@ -12,6 +12,11 @@ import Gap from "../util/Gap";
 
 const style = stylesPc;
 
+// 코멘트
+const Comment = ({ text }) => {
+  return <div className={style.comment}>{text}</div>;
+};
+
 // 단어듣기버튼1 (단어와 문장 표시)
 const WordPlayButton = ({ word, sentence }) => {
   const [isPlay, _isPlay] = useState(false);
@@ -99,13 +104,13 @@ export const VocabularyPractice1 = () => {
     return (
       <div className={style.indicator}>
         <span onClick={onClickLeft}>
-          <IcoChevLeft width={34} height={34} />
+          <IcoChevLeft colorBlack width={28} height={28} />
         </span>
         <span>
           {current} / {total}
         </span>
         <span onClick={onClickRight}>
-          <IcoChevRight width={34} height={34} />
+          <IcoChevRight colorBlack width={28} height={28} />
         </span>
       </div>
     );
@@ -128,6 +133,7 @@ export const VocabularyPractice1 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Vocabulary Practice"} />
       <QuizBody>
         <Container>
           <WordCard
@@ -177,13 +183,13 @@ export const VocabularyPractice2 = () => {
     return (
       <div className={style.indicator}>
         <span onClick={onClickLeft}>
-          <IcoChevLeft width={34} height={34} />
+          <IcoChevLeft colorBlack width={28} height={28} />
         </span>
         <span>
           {current} / {total}
         </span>
         <span onClick={onClickRight}>
-          <IcoChevRight width={34} height={34} />
+          <IcoChevRight colorBlack width={28} height={28} />
         </span>
       </div>
     );
@@ -206,6 +212,7 @@ export const VocabularyPractice2 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Vocabulary Practice"} />
       <QuizBody>
         <Container>
           <WordCard
@@ -286,6 +293,7 @@ export const VocabularyPractice3 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Vocabulary Practice"} />
       <QuizBody>
         <Container>
           <Gap height={20} />
@@ -324,7 +332,7 @@ export const VocabularyPractice4 = () => {
         <div className={style.wordText}>
           <WordPlayButton word={word} />
         </div>
-        <Gap height={0} />
+        <Gap height={10} />
         <div className={style.meaning}>{meaning}</div>
         <div className={style.sentence}>{sentence}</div>
       </div>
@@ -335,13 +343,13 @@ export const VocabularyPractice4 = () => {
     return (
       <div className={style.indicator}>
         <span onClick={onClickLeft}>
-          <IcoChevLeft width={34} height={34} />
+          <IcoChevLeft colorBlack width={28} height={28} />
         </span>
         <span>
           {current} / {total}
         </span>
         <span onClick={onClickRight}>
-          <IcoChevRight width={34} height={34} />
+          <IcoChevRight colorBlack width={28} height={28} />
         </span>
       </div>
     );
@@ -364,6 +372,7 @@ export const VocabularyPractice4 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Vocabulary Practice"} />
       <QuizBody>
         <Container>
           <WordCard

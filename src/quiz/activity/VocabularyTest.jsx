@@ -6,6 +6,11 @@ import { IcoReturn } from "../util/Icons";
 
 const style = stylesPc;
 
+// 코멘트
+const Comment = ({ text }) => {
+  return <div className={style.comment}>{text}</div>;
+};
+
 // 카드넘버
 const CardNumber = ({ number }) => {
   return <div className={style.cardNumber}>{number}</div>;
@@ -67,8 +72,8 @@ export const VocabularyTest1 = () => {
     return (
       <div
         className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__tada"
-        } ${viewIncorrectAct && "animate__animated animate__shakeX"}
+          viewCorrectAct && "animate__animated animate__bounce"
+        } ${viewIncorrectAct && "animate__animated animate__headShake"}
           `}
         onClick={onClick}
       >
@@ -92,6 +97,7 @@ export const VocabularyTest1 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Vocabulary Test"} />
       <QuizBody>
         <Gap height={15} />
         <Container>
@@ -173,8 +179,8 @@ export const VocabularyTest2 = () => {
     return (
       <div
         className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__tada"
-        } ${viewIncorrectAct && "animate__animated animate__shakeX"}
+          viewCorrectAct && "animate__animated animate__bounce"
+        } ${viewIncorrectAct && "animate__animated animate__headShake"}
             `}
         onClick={onClick}
       >
@@ -196,6 +202,7 @@ export const VocabularyTest2 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Vocabulary Test"} />
       <QuizBody>
         <Gap height={15} />
         <Container>
@@ -275,6 +282,7 @@ export const VocabularyTest3 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Vocabulary Test"} />
       <QuizBody>
         <Container>
           <Gap height={20} />
@@ -336,8 +344,8 @@ export const VocabularyTest4 = () => {
     return (
       <div
         className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__tada"
-        } ${viewIncorrectAct && "animate__animated animate__shakeX"}
+          viewCorrectAct && "animate__animated animate__bounce"
+        } ${viewIncorrectAct && "animate__animated animate__headShake"}
               `}
         onClick={onClick}
       >
@@ -359,6 +367,7 @@ export const VocabularyTest4 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Vocabulary Test"} />
       <QuizBody>
         <Gap height={15} />
         <Container>

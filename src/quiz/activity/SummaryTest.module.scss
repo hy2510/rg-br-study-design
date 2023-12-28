@@ -40,6 +40,23 @@
   font-size: 0.7em;
 }
 
+.hintButton {
+  cursor: pointer;
+  width: fit-content;
+  height: fit-content;
+  color: #d95355;
+  font-family: "Rg-B", sans-serif;
+  font-size: 0.95em;
+  padding: 12px 20px;
+  background-color: rgba($color: #ddd, $alpha: 0.3);
+  border-radius: 100px;
+  transition: all 0.2s;
+  margin: auto;
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
 .summaryTest1 {
   .container {
     display: grid;
@@ -56,13 +73,17 @@
     justify-content: start;
     gap: 10px;
     padding: 10px;
-    border: 2px solid #eee;
+    border: 2px solid #ddd;
     border-radius: 20px;
     overflow: hidden;
     transform: scale(1);
-    transition: all 1s;
+    transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
     background-color: #fff;
+    box-shadow: #ddd 0 3px;
+    &:hover {
+      transform: scale(1.02);
+    }
     .awnserText {
       font-family: "Rg-B", sans-serif;
       font-size: 1.2em;
@@ -76,15 +97,24 @@
     padding: 0 15px;
     border-radius: 15px;
     &.question {
-      border: 2px dashed #000;
+      border: 2px dotted #000;
       border-radius: 15px;
       padding: 13px;
       margin: 10px 0;
     }
     .questionMark {
       font-family: "Rg-B", sans-serif;
-      font-size: 1.4em;
+      font-size: 1em;
       text-align: center;
+      animation: 1s infinite alternate blink1;
+      @keyframes blink1 {
+        0% {
+          color: rgba($color: #000, $alpha: 0.3);
+        }
+        100% {
+          color: rgba($color: #000, $alpha: 1);
+        }
+      }
     }
     .correctAnswer {
       font-family: "Rg-B", sans-serif;
@@ -98,9 +128,131 @@
   }
   .correctOrders {
     display: grid;
+    gap: 10px;
+    overflow-y: scroll;
+    background-color: rgba($color: #fff, $alpha: 0.6);
+    padding: 20px;
+    border-radius: 15px;
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba($color: #000, $alpha: 0.5);
+      border-radius: 100px;
+    }
+  }
+  .correctDirection {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+  }
+}
+
+.summaryTest2 {
+  .container {
+    display: grid;
     gap: 15px;
+  }
+  .textCard {
+    cursor: pointer;
+    min-width: 200px;
+    width: calc(100% - 20px);
+    min-height: 40px;
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    padding: 10px;
+    border: 2px solid #ddd;
+    border-radius: 20px;
+    overflow: hidden;
+    transform: scale(1);
+    transition: all 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #fff;
+    box-shadow: #ddd 0 3px;
+    &:hover {
+      transform: scale(1.02);
+    }
+    .awnserText {
+      font-family: "Rg-B", sans-serif;
+      font-size: 1.2em;
+      max-width: calc(100% - 45px);
+    }
+  }
+  .answers {
+    max-height: 30vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-bottom: 10px;
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba($color: #000, $alpha: 0.5);
+      border-radius: 100px;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: start;
+      gap: 10px;
+      padding: 0 10px;
+    }
+  }
+  .questionBox {
+    width: calc(100% - 40px);
+    padding: 20px;
+    background-color: rgba($color: #fff, $alpha: 0.6);
+    border-radius: 15px;
+    font-family: "Rg-B", sans-serif;
+    font-size: 1.2em;
+    line-height: 38px;
     max-height: 25vh;
     overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba($color: #000, $alpha: 0.5);
+      border-radius: 100px;
+    }
+    .answerBox {
+      min-width: 100px;
+      padding: 5px 30px;
+      border: 2px dotted #ccc;
+      border-radius: 10px;
+      margin: 0 5px;
+      color: #ccc;
+      &.currentOrder {
+        border: 2px solid #000;
+        color: #000;
+        background-color: #fff;
+        animation: 0.8s infinite alternate blink;
+        @keyframes blink {
+          0% {
+            border: 2px solid rgba($color: #000, $alpha: 0.1);
+          }
+          100% {
+            border: 2px solid rgba($color: #000, $alpha: 1);
+          }
+        }
+      }
+      &.correctAnswer {
+        border: none;
+        padding: 0;
+        color: #0066ff;
+      }
+      &.incorrectAnswer {
+        border: none;
+        padding: 0;
+        color: #f77777;
+      }
+    }
   }
   .correctDirection {
     display: grid;

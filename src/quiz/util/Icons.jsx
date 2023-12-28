@@ -42,19 +42,15 @@ export const IcoHeart = ({ width, height, colorRed }) => {
   return <>{colorRed && <img src={heart} width={width} height={height} />}</>;
 };
 
-export const IcoChevRight = ({ width, height }) => {
+export const IcoChevRight = ({ width, height, colorBlack }) => {
   return (
-    <>
-      <img src={chev_right} width={width} height={height} />
-    </>
+    <>{colorBlack && <img src={chev_right} width={width} height={height} />}</>
   );
 };
 
-export const IcoChevLeft = ({ width, height }) => {
+export const IcoChevLeft = ({ width, height, colorBlack }) => {
   return (
-    <>
-      <img src={chev_left} width={width} height={height} />
-    </>
+    <>{colorBlack && <img src={chev_left} width={width} height={height} />}</>
   );
 };
 

@@ -1,3 +1,10 @@
+.comment {
+  font-family: "Rg-B", sans-serif;
+  font-size: 1.1em;
+  color: rgba($color: #000, $alpha: 0.4);
+  padding: 10px 15px;
+}
+
 .wordPlayButton {
   cursor: pointer;
   width: fit-content;
@@ -129,10 +136,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
+    background-color: #fff;
+    padding: 15px;
+    padding-bottom: 30px;
+    min-width: 400px;
+    min-height: 320px;
+    border-radius: 20px;
     .wordImage {
       display: flex;
-      // width: fit-content;
       max-width: 350px;
       overflow: hidden;
       border-radius: 15px;
@@ -152,7 +163,7 @@
     align-items: center;
     font-size: 1em;
     font-family: "Rg-B", sans-serif;
-    color: #ccc;
+    color: #000;
     span {
       -webkit-tap-highlight-color: transparent;
       &:nth-child(1) {
@@ -212,6 +223,12 @@
     justify-content: center;
     align-items: center;
     gap: 15px;
+    background-color: #fff;
+    min-width: 400px;
+    min-height: 380px;
+    padding: 15px;
+    padding-bottom: 30px;
+    border-radius: 20px;
     .wordImage {
       display: flex;
       min-width: 250px;
@@ -234,7 +251,7 @@
     align-items: center;
     font-size: 1em;
     font-family: "Rg-B", sans-serif;
-    color: #ccc;
+    color: #000;
     span {
       -webkit-tap-highlight-color: transparent;
       &:nth-child(1) {
@@ -324,7 +341,7 @@
           color: #ccc;
           background-color: #fff;
           border-radius: 15px;
-          border: 2px solid #ddd;
+          border: 2px solid #ccc;
           padding: 10px 20px;
           position: absolute;
           top: 0;
@@ -349,6 +366,7 @@
         cursor: pointer;
         transform: scale(1);
         transition: all 0.2s;
+        -webkit-tap-highlight-color: transparent;
         &:active {
           transform: scale(0.9);
         }
@@ -394,13 +412,18 @@
     gap: 30px;
   }
   .wordCard {
-    min-width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 15px;
     text-align: center;
+    background-color: #fff;
+    padding: 15px;
+    padding-bottom: 30px;
+    min-width: 400px;
+    min-height: 320px;
+    border-radius: 20px;
     .wordText {
       display: flex;
       align-items: center;
@@ -426,7 +449,7 @@
     align-items: center;
     font-size: 1em;
     font-family: "Rg-B", sans-serif;
-    color: #ccc;
+    color: #000;
     span {
       -webkit-tap-highlight-color: transparent;
       &:nth-child(1) {

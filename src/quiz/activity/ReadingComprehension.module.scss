@@ -1,3 +1,10 @@
+.comment {
+  font-family: "Rg-B", sans-serif;
+  font-size: 1.1em;
+  color: rgba($color: #000, $alpha: 0.4);
+  padding: 10px 15px;
+}
+
 .wordPlayButton {
   cursor: pointer;
   width: fit-content;
@@ -69,13 +76,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #eee;
+    border: 2px solid #ddd;
     border-radius: 20px;
     overflow: hidden;
     transform: scale(1);
-    transition: all 1s;
+    transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
     position: relative;
+    background-color: #fff;
+    box-shadow: #ddd 0 3px;
+    &:hover {
+      transform: scale(1.02);
+    }
     .txtL {
       font-family: "Rg-B", sans-serif;
       font-size: 2.5em;
@@ -120,7 +132,6 @@
     }
   }
   .textCard {
-    cursor: pointer;
     min-width: 200px;
     width: calc(100% - 20px);
     min-height: 60px;
@@ -130,16 +141,44 @@
     justify-content: start;
     gap: 10px;
     padding: 10px;
-    border: 2px solid #eee;
+    border: 2px solid #ddd;
     border-radius: 20px;
     overflow: hidden;
     transform: scale(1);
-    transition: all 1s;
+    transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
     background-color: #fff;
+    box-shadow: #ddd 0 3px;
+    &:hover {
+      transform: scale(1.02);
+    }
     .awnserText {
       font-family: "Rg-B", sans-serif;
       font-size: 1.5em;
+    }
+    .enterButton {
+      cursor: pointer;
+      display: inline-block;
+      margin-left: auto;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
+        background-color: rgba($color: #000, $alpha: 0.8);
+        border-radius: 100px;
+      }
+      &:active {
+        transform: scale(0.9);
+      }
     }
   }
   .answers {
@@ -162,13 +201,13 @@
   }
   .questionImage {
     background-color: rgba($color: #fff, $alpha: 0.6);
-    border-radius: 15px;
+    border-radius: 33px;
     display: flex;
     max-width: 280px;
     overflow: hidden;
     margin-top: 20px;
     img {
-      border-radius: 35px;
+      border-radius: 33px;
     }
   }
   .questionText {
@@ -186,16 +225,44 @@
     justify-content: start;
     gap: 10px;
     padding: 0 10px;
-    border: 2px solid #eee;
+    border: 2px solid #ddd;
     border-radius: 20px;
     overflow: hidden;
     transform: scale(1);
-    transition: all 1s;
+    transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
     background-color: #fff;
+    box-shadow: #ddd 0 3px;
+    &:hover {
+      transform: scale(1.02);
+    }
     .awnserText {
       font-family: "Rg-B", sans-serif;
       font-size: 1.5em;
+    }
+    .enterButton {
+      cursor: pointer;
+      display: inline-block;
+      margin-left: auto;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 25px;
+        height: 25px;
+        background-color: rgba($color: #000, $alpha: 0.8);
+        border-radius: 100px;
+      }
+      &:active {
+        transform: scale(0.9);
+      }
     }
   }
   .answers {
@@ -228,13 +295,27 @@
     justify-content: start;
     gap: 10px;
     padding: 0 10px;
-    border: 2px solid #eee;
+    border: 2px solid #ddd;
     border-radius: 20px;
     overflow: hidden;
     transform: scale(1);
-    transition: all 1s;
+    transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
     background-color: #fff;
+    box-shadow: #ddd 0 3px;
+    &:hover {
+      transform: scale(1.02);
+    }
+    &.correct {
+      background-color: rgba($color: #289ee4, $alpha: 0.2);
+      border: 2px solid #289ee4;
+      box-shadow: #289ee4 0 3px;
+    }
+    &.incorrect {
+      background-color: rgba($color: #b73133, $alpha: 0.2);
+      border: 2px solid #b73133;
+      box-shadow: #b73133 0 3px;
+    }
     .awnserText {
       font-family: "Rg-B", sans-serif;
       font-size: 1.2em;

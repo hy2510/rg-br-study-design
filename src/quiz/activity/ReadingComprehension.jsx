@@ -1,10 +1,15 @@
 import stylesPc from "./ReadingComprehension.module.scss";
 import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
-import { IcoPlay, IcoStop } from "../util/Icons";
+import { IcoPlay, IcoReturn, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
 
 const style = stylesPc;
+
+// 코멘트
+const Comment = ({ text }) => {
+  return <div className={style.comment}>{text}</div>;
+};
 
 // 듣기버튼1 (문장 폰트 크게)
 const WordPlayButton = ({ question }) => {
@@ -88,9 +93,8 @@ export const ReadingComprehension1 = () => {
     return (
       <div
         className={`${style.imageCard} ${
-          viewCorrectAct && "animate__animated animate__tada"
-        } ${viewIncorrectAct && "animate__animated animate__shakeX"}
-          `}
+          viewCorrectAct && "animate__animated animate__bounce"
+        } ${viewIncorrectAct && "animate__animated animate__headShake"}`}
         onClick={onClick}
       >
         <img src={imgSrc} width={"100%"} />
@@ -109,6 +113,7 @@ export const ReadingComprehension1 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Reading Comprehension"} />
       <QuizBody>
         <Gap height={15} />
         <WordPlayButton question={"The alligator has an ax!"} />
@@ -186,15 +191,19 @@ export const ReadingComprehension2 = () => {
     return (
       <div
         className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__tada"
-        } ${viewIncorrectAct && "animate__animated animate__shakeX"}
+          viewCorrectAct && "animate__animated animate__bounce"
+        } ${viewIncorrectAct && "animate__animated animate__headShake"}
             `}
-        onClick={onClick}
       >
         {/* <div className={style.cardNumberPosition}>
           </div> */}
         <CardNumber number={number} />
         {awnserText}
+        <span className={style.enterButton} onClick={onClick}>
+          <span>
+            <IcoReturn width={15} height={15} />
+          </span>
+        </span>
       </div>
     );
   };
@@ -211,6 +220,7 @@ export const ReadingComprehension2 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Reading Comprehension"} />
       <QuizBody>
         <Gap height={15} />
         <Container>
@@ -295,13 +305,17 @@ export const ReadingComprehension3 = () => {
     return (
       <div
         className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__tada"
-        } ${viewIncorrectAct && "animate__animated animate__shakeX"}
+          viewCorrectAct && "animate__animated animate__bounce"
+        } ${viewIncorrectAct && "animate__animated animate__headShake"}
             `}
-        onClick={onClick}
       >
         <CardNumber number={number} />
         {awnserText}
+        <span className={style.enterButton} onClick={onClick}>
+          <span>
+            <IcoReturn width={15} height={15} />
+          </span>
+        </span>
       </div>
     );
   };
@@ -318,6 +332,7 @@ export const ReadingComprehension3 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Reading Comprehension"} />
       <QuizBody>
         <Gap height={15} />
         <Container>
@@ -400,9 +415,12 @@ export const ReadingComprehension4 = () => {
     return (
       <div
         className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__tada"
-        } ${viewIncorrectAct && "animate__animated animate__shakeX"}
-            `}
+          viewCorrectAct && "animate__animated animate__bounce"
+        }
+        ${viewCorrectAct && style.correct}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
+        ${viewIncorrectAct && style.incorrect}
+        `}
         onClick={onClick}
       >
         {/* <div className={style.cardNumberPosition}>
@@ -425,6 +443,7 @@ export const ReadingComprehension4 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
+      <Comment text={"Reading Comprehension"} />
       <QuizBody>
         <Gap height={15} />
         <Container>
