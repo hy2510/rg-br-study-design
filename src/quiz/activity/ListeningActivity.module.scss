@@ -76,15 +76,25 @@
     display: flex;
     align-items: center;
     background-color: #fff;
-    border: 2px solid #ddd;
     border-radius: 20px;
     overflow: hidden;
     transform: scale(1);
     transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
+    border: 2px solid #ddd;
     box-shadow: #ddd 0 3px;
     &:hover {
       transform: scale(1.02);
+    }
+    &.correct {
+      // background-color: rgba($color: #289ee4, $alpha: 0.2);
+      border: 2px solid #289ee4;
+      box-shadow: #289ee4 0 3px;
+    }
+    &.incorrect {
+      // background-color: rgba($color: #b73133, $alpha: 0.2);
+      border: 2px solid #b73133;
+      box-shadow: #b73133 0 3px;
     }
     img {
       width: 100%;
@@ -123,6 +133,16 @@
       font-family: "Rg-B", sans-serif;
       font-size: 2.5em;
     }
+    &.correct {
+      background-color: rgba($color: #289ee4, $alpha: 0.2);
+      border: 2px solid #289ee4;
+      box-shadow: #289ee4 0 3px;
+    }
+    &.incorrect {
+      background-color: rgba($color: #b73133, $alpha: 0.2);
+      border: 2px solid #b73133;
+      box-shadow: #b73133 0 3px;
+    }
   }
 }
 
@@ -153,6 +173,16 @@
     box-shadow: #ddd 0 3px;
     &:hover {
       transform: scale(1.02);
+    }
+    &.correct {
+      background-color: rgba($color: #289ee4, $alpha: 0.2);
+      border: 2px solid #289ee4;
+      box-shadow: #289ee4 0 3px;
+    }
+    &.incorrect {
+      background-color: rgba($color: #b73133, $alpha: 0.2);
+      border: 2px solid #b73133;
+      box-shadow: #b73133 0 3px;
     }
     .txtL {
       font-family: "Rg-B", sans-serif;
@@ -203,6 +233,16 @@
     box-shadow: #ddd 0 3px;
     &:hover {
       transform: scale(1.02);
+    }
+    &.correct {
+      background-color: rgba($color: #289ee4, $alpha: 0.2);
+      border: 2px solid #289ee4;
+      box-shadow: #289ee4 0 3px;
+    }
+    &.incorrect {
+      background-color: rgba($color: #b73133, $alpha: 0.2);
+      border: 2px solid #b73133;
+      box-shadow: #b73133 0 3px;
     }
     .txtL {
       font-family: "Rg-B", sans-serif;

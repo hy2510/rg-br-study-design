@@ -71,14 +71,14 @@ export const VocabularyTest1 = () => {
   }) => {
     return (
       <div
-        className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
-        } ${viewIncorrectAct && "animate__animated animate__headShake"}
+        className={`${style.textCard} 
+        ${viewCorrectAct && style.correct} 
+        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewIncorrectAct && style.incorrect}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
           `}
         onClick={onClick}
       >
-        {/* <div className={style.cardNumberPosition}>
-        </div> */}
         <CardNumber number={number} />
         <div className={style.awnserText}>{awnserText}</div>
       </div>
@@ -178,9 +178,11 @@ export const VocabularyTest2 = () => {
   }) => {
     return (
       <div
-        className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
-        } ${viewIncorrectAct && "animate__animated animate__headShake"}
+        className={`${style.textCard} 
+        ${viewCorrectAct && style.correct} 
+        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewIncorrectAct && style.incorrect}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
             `}
         onClick={onClick}
       >
@@ -343,10 +345,12 @@ export const VocabularyTest4 = () => {
   }) => {
     return (
       <div
-        className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
-        } ${viewIncorrectAct && "animate__animated animate__headShake"}
-              `}
+        className={`${style.textCard} 
+        ${viewCorrectAct && style.correct} 
+        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewIncorrectAct && style.incorrect}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
+        `}
         onClick={onClick}
       >
         <CardNumber number={number} />

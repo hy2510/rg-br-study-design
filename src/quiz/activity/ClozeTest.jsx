@@ -130,6 +130,23 @@ export const ClozeTest1 = () => {
 
 // ClozeTest2
 export const ClozeTest2 = () => {
+  const [viewCorrectAct, _viewCorrectAct] = useState(false);
+  const [viewIncorrectAct, _viewIncorrectAct] = useState(false);
+
+  const runCorrectAct = () => {
+    _viewCorrectAct(true);
+    setTimeout(() => {
+      _viewCorrectAct(false);
+    }, 1000);
+  };
+
+  const runIncorrectAct = () => {
+    _viewIncorrectAct(true);
+    setTimeout(() => {
+      _viewIncorrectAct(false);
+    }, 1000);
+  };
+
   const Container = ({ children }) => {
     return (
       <div className={style.clozeTest2}>
@@ -147,10 +164,12 @@ export const ClozeTest2 = () => {
   }) => {
     return (
       <div
-        className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
-        } ${viewIncorrectAct && "animate__animated animate__headShake"}
-              `}
+        className={`${style.textCard} 
+        ${viewCorrectAct && style.correct} 
+        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewIncorrectAct && style.incorrect}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
+        `}
         onClick={onClick}
       >
         <CardNumber number={number} />
@@ -197,7 +216,7 @@ export const ClozeTest2 = () => {
         attempts={3}
         quizTimer={"20:00"}
       />
-      <Comment text={"Summary Test"} />
+      <Comment text={"Cloze Test"} />
       <QuizBody>
         <Container>
           <Gap height={0} />
@@ -215,8 +234,20 @@ export const ClozeTest2 = () => {
           </QuestionBox>
           <Gap height={30} />
           <Answers>
-            <TextCard number={1} awnserText={"capital"} />
-            <TextCard number={2} awnserText={"sub"} />
+            {/* 정답예시 */}
+            <TextCard
+              number={1}
+              awnserText={"capital"}
+              onClick={runCorrectAct}
+              viewCorrectAct={viewCorrectAct}
+            />
+            {/* 오답예시 */}
+            <TextCard
+              number={2}
+              awnserText={"sub"}
+              onClick={runIncorrectAct}
+              viewIncorrectAct={viewIncorrectAct}
+            />
             <TextCard number={3} awnserText={"apple"} />
             <TextCard number={4} awnserText={"ant"} />
           </Answers>

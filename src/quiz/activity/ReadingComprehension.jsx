@@ -92,9 +92,12 @@ export const ReadingComprehension1 = () => {
   }) => {
     return (
       <div
-        className={`${style.imageCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
-        } ${viewIncorrectAct && "animate__animated animate__headShake"}`}
+        className={`${style.imageCard} 
+        ${viewCorrectAct && style.correct} 
+        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewIncorrectAct && style.incorrect}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
+        `}
         onClick={onClick}
       >
         <img src={imgSrc} width={"100%"} />
@@ -190,13 +193,13 @@ export const ReadingComprehension2 = () => {
   }) => {
     return (
       <div
-        className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
-        } ${viewIncorrectAct && "animate__animated animate__headShake"}
-            `}
+        className={`${style.textCard} 
+        ${viewCorrectAct && style.correct} 
+        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewIncorrectAct && style.incorrect}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
+        `}
       >
-        {/* <div className={style.cardNumberPosition}>
-          </div> */}
         <CardNumber number={number} />
         {awnserText}
         <span className={style.enterButton} onClick={onClick}>
@@ -304,10 +307,12 @@ export const ReadingComprehension3 = () => {
   }) => {
     return (
       <div
-        className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
-        } ${viewIncorrectAct && "animate__animated animate__headShake"}
-            `}
+        className={`${style.textCard} 
+        ${viewCorrectAct && style.correct} 
+        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewIncorrectAct && style.incorrect}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
+        `}
       >
         <CardNumber number={number} />
         {awnserText}

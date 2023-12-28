@@ -13,6 +13,23 @@ const Comment = ({ text }) => {
 
 // TrueOrFalse
 export const TrueOrFalse = () => {
+  const [viewCorrectAct, _viewCorrectAct] = useState(false);
+  const [viewIncorrectAct, _viewIncorrectAct] = useState(false);
+
+  const runCorrectAct = () => {
+    _viewCorrectAct(true);
+    setTimeout(() => {
+      _viewCorrectAct(false);
+    }, 1000);
+  };
+
+  const runIncorrectAct = () => {
+    _viewIncorrectAct(true);
+    setTimeout(() => {
+      _viewIncorrectAct(false);
+    }, 1000);
+  };
+
   const Container = ({ children }) => {
     return (
       <div className={style.trueOrFalse}>
@@ -33,10 +50,12 @@ export const TrueOrFalse = () => {
   }) => {
     return (
       <div
-        className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
-        } ${viewIncorrectAct && "animate__animated animate__headShake"}
-            `}
+        className={`${style.textCard} 
+        ${viewCorrectAct && style.correct} 
+        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewIncorrectAct && style.incorrect}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
+        `}
         onClick={onClick}
       >
         <div className={style.answer}>
@@ -68,8 +87,18 @@ export const TrueOrFalse = () => {
           <QuestionText text="Bears sleep for a long time in the winter." />
           <Gap height={10} />
           <Answers>
-            <TextCard awnserText="True" />
-            <TextCard awnserText="False" />
+            {/* 정답예시 */}
+            <TextCard
+              awnserText="True"
+              onClick={runCorrectAct}
+              viewCorrectAct={viewCorrectAct}
+            />
+            {/* 오답예시 */}
+            <TextCard
+              awnserText="False"
+              onClick={runIncorrectAct}
+              viewIncorrectAct={viewIncorrectAct}
+            />
           </Answers>
         </Container>
         <Gap height={15} />

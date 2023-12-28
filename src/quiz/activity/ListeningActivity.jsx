@@ -85,9 +85,12 @@ export const ListeningActivity1 = () => {
   const WordCard = ({ imgSrc, onClick, viewCorrectAct, viewIncorrectAct }) => {
     return (
       <div
-        className={`${style.wordCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
-        } ${viewIncorrectAct && "animate__animated animate__headShake"}
+        className={`
+        ${style.wordCard} 
+        ${viewCorrectAct && style.correct} 
+        ${viewCorrectAct && "animate__animated animate__bounce"}
+        ${viewIncorrectAct && style.incorrect}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
         onClick={onClick}
       >
@@ -177,9 +180,11 @@ export const ListeningActivity2 = () => {
   const WordCard = ({ word, onClick, viewCorrectAct, viewIncorrectAct }) => {
     return (
       <div
-        className={`${style.wordCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
-        } ${viewIncorrectAct && "animate__animated animate__headShake"}
+        className={`${style.wordCard} 
+        ${viewCorrectAct && style.correct} 
+        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewIncorrectAct && style.incorrect}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
         onClick={onClick}
       >
@@ -259,9 +264,11 @@ export const ListeningActivity3 = () => {
   }) => {
     return (
       <div
-        className={`${style.imageCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
-        } ${viewIncorrectAct && "animate__animated animate__headShake"}
+        className={`${style.imageCard} 
+        ${viewCorrectAct && style.correct} 
+        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewIncorrectAct && style.incorrect}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
         onClick={onClick}
       >
@@ -349,9 +356,11 @@ export const ListeningActivity4 = () => {
   const SoundCard = ({ number, onClick, viewCorrectAct, viewIncorrectAct }) => {
     return (
       <div
-        className={`${style.soundCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
-        } ${viewIncorrectAct && "animate__animated animate__headShake"}
+        className={`${style.soundCard} 
+        ${viewCorrectAct && style.correct} 
+        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewIncorrectAct && style.incorrect}
+        ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
       >
         <div className={style.cardNumberPosition}>

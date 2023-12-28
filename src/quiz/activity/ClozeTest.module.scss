@@ -164,6 +164,16 @@
     &:hover {
       transform: scale(1.02);
     }
+    &.correct {
+      background-color: rgba($color: #289ee4, $alpha: 0.2);
+      border: 2px solid #289ee4;
+      box-shadow: #289ee4 0 3px;
+    }
+    &.incorrect {
+      background-color: rgba($color: #b73133, $alpha: 0.2);
+      border: 2px solid #b73133;
+      box-shadow: #b73133 0 3px;
+    }
     .awnserText {
       font-family: "Rg-B", sans-serif;
       font-size: 1.2em;
