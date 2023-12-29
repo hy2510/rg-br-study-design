@@ -3,6 +3,7 @@ import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoPlay, IcoReturn, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
+import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
 
 const style = stylesPc;
 
@@ -65,14 +66,14 @@ export const ReadingComprehension1 = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -94,7 +95,7 @@ export const ReadingComprehension1 = () => {
       <div
         className={`${style.imageCard} 
         ${viewCorrectAct && style.correct} 
-        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewCorrectAct && "animate__animated animate__fadeIn"} 
         ${viewIncorrectAct && style.incorrect}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
@@ -143,6 +144,8 @@ export const ReadingComprehension1 = () => {
         </Container>
         <Gap height={15} />
       </QuizBody>
+      {viewCorrectAct && <CorrectPopup />}
+      {viewIncorrectAct && <IncorrectPopup />}
     </QuizTemplate>
   );
 };
@@ -156,14 +159,14 @@ export const ReadingComprehension2 = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -195,7 +198,7 @@ export const ReadingComprehension2 = () => {
       <div
         className={`${style.textCard} 
         ${viewCorrectAct && style.correct} 
-        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewCorrectAct && "animate__animated animate__fadeIn"} 
         ${viewIncorrectAct && style.incorrect}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
@@ -255,6 +258,8 @@ export const ReadingComprehension2 = () => {
         </Container>
         <Gap height={15} />
       </QuizBody>
+      {viewCorrectAct && <CorrectPopup />}
+      {viewIncorrectAct && <IncorrectPopup />}
     </QuizTemplate>
   );
 };
@@ -268,14 +273,14 @@ export const ReadingComprehension3 = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -309,7 +314,7 @@ export const ReadingComprehension3 = () => {
       <div
         className={`${style.textCard} 
         ${viewCorrectAct && style.correct} 
-        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewCorrectAct && "animate__animated animate__fadeIn"} 
         ${viewIncorrectAct && style.incorrect}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
@@ -375,6 +380,8 @@ export const ReadingComprehension3 = () => {
         </Container>
         <Gap height={15} />
       </QuizBody>
+      {viewCorrectAct && <CorrectPopup />}
+      {viewIncorrectAct && <IncorrectPopup />}
     </QuizTemplate>
   );
 };
@@ -388,14 +395,14 @@ export const ReadingComprehension4 = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -420,7 +427,7 @@ export const ReadingComprehension4 = () => {
     return (
       <div
         className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
+          viewCorrectAct && "animate__animated animate__fadeIn"
         }
         ${viewCorrectAct && style.correct}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
@@ -482,6 +489,8 @@ export const ReadingComprehension4 = () => {
         </Container>
         <Gap height={15} />
       </QuizBody>
+      {viewCorrectAct && <CorrectPopup />}
+      {viewIncorrectAct && <IncorrectPopup />}
     </QuizTemplate>
   );
 };

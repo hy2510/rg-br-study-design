@@ -25,8 +25,8 @@ import {
 } from "./activity/ReadingComprehension";
 import { SummaryTest1, SummaryTest2 } from "./activity/SummaryTest";
 import { TrueOrFalse } from "./activity/TrueOrFalse";
-import { WritingActivity1, WritingActivity2 } from "./activity/WritingActivity";
 import { ClozeTest1, ClozeTest2 } from "./activity/ClozeTest";
+import { WritingActivity1, WritingActivity2 } from "./activity/WritingActivity";
 
 const screenHeight = window.innerHeight + "px";
 
@@ -34,7 +34,7 @@ export default function Quiz() {
   return (
     <>
       <ListeningActivity1 />
-      <ListeningActivity2 />
+      {/* <ListeningActivity2 />
       <ListeningActivity3 />
       <ListeningActivity4 />
       <VocabularyPractice1 />
@@ -51,11 +51,11 @@ export default function Quiz() {
       <ReadingComprehension4 />
       <SummaryTest1 />
       <SummaryTest2 />
+      <TrueOrFalse />
       <ClozeTest1 />
       <ClozeTest2 />
-      <TrueOrFalse />
       <WritingActivity1 />
-      <WritingActivity2 />
+      <WritingActivity2 /> */}
     </>
   );
 }

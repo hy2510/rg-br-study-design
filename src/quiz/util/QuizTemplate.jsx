@@ -3,7 +3,7 @@ import "../themes/theme.scss";
 import { IcoHbgMenu, IcoHeart, IcoTimer } from "./Icons";
 
 const style = stylesPc;
-const theme = "theme-camping";
+const theme = "theme-jungle";
 
 // 퀴즈템플릿
 export const QuizTemplate = ({ children }) => {
@@ -18,7 +18,9 @@ export const QuizHeader = ({
   quizTimer,
 }) => {
   return (
-    <div className={style.quizHeader}>
+    <div
+      className={`${style.quizHeader} animate__animated animate__slideInDown`}
+    >
       <div className={style.quizHeaderCol1}>
         <div className={style.quizNumber}>
           {currentQuizNumber}
@@ -49,7 +51,7 @@ export const QuizHeader = ({
 // 퀴즈바디
 export const QuizBody = ({ children }) => {
   return (
-    <div className={style.quizBody}>
+    <div className={`${style.quizBody} animate__animated animate__fadeIn`}>
       <div className={style.container}>{children}</div>
     </div>
   );

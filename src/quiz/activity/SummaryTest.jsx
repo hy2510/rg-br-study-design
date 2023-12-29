@@ -65,7 +65,7 @@ export const SummaryTest1 = () => {
     return (
       <div
         className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
+          viewCorrectAct && "animate__animated animate__fadeIn"
         } ${viewIncorrectAct && "animate__animated animate__headShake"}
             `}
         onClick={onClick}
@@ -180,7 +180,7 @@ export const SummaryTest2 = () => {
     return (
       <div
         className={`${style.textCard} ${
-          viewCorrectAct && "animate__animated animate__bounce"
+          viewCorrectAct && "animate__animated animate__fadeIn"
         } ${viewIncorrectAct && "animate__animated animate__headShake"}
             `}
         onClick={onClick}

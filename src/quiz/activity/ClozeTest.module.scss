@@ -77,7 +77,7 @@
     color: #ccc;
     display: inline-block;
     &.currentOrder {
-      background-color: rgba($color: #fff, $alpha: 0.5);
+      background-color: rgba($color: #fff, $alpha: 1);
       animation: 1s infinite alternate blink;
       @keyframes blink {
         0% {
@@ -220,19 +220,21 @@
   }
   .answerBox {
     padding: 5px 10px;
-    border: 2px dotted #ccc;
+    border: 2px solid #000;
     border-radius: 10px;
+    background-color: #fff;
     margin: 0 5px;
     color: #ccc;
     display: inline-block;
+    min-width: 80px;
+    height: 40px;
+    text-align: center;
     &.correctAnswer {
-      border: none;
-      padding: 0;
+      border: 2px solid transparent;
       color: #0066ff;
     }
     &.incorrectAnswer {
-      border: none;
-      padding: 0;
+      border: 2px solid transparent;
       color: #f77777;
     }
     .currentInput {

@@ -3,6 +3,7 @@ import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoPlay, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
+import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
 
 const style = stylesPc;
 
@@ -20,14 +21,14 @@ export const TrueOrFalse = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -52,7 +53,7 @@ export const TrueOrFalse = () => {
       <div
         className={`${style.textCard} 
         ${viewCorrectAct && style.correct} 
-        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewCorrectAct && "animate__animated animate__fadeIn"} 
         ${viewIncorrectAct && style.incorrect}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
@@ -103,6 +104,8 @@ export const TrueOrFalse = () => {
         </Container>
         <Gap height={15} />
       </QuizBody>
+      {viewCorrectAct && <CorrectPopup />}
+      {viewIncorrectAct && <IncorrectPopup />}
     </QuizTemplate>
   );
 };

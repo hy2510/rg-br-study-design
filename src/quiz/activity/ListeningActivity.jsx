@@ -3,8 +3,12 @@ import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoPlay, IcoReturn, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
+import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
+import { StepIntro } from "../extra/StepBoard";
+import { TestResult1 } from "../extra/TestResult";
 
 const style = stylesPc;
+const readingUnit = "edmond"; // 리딩유닛이름
 
 // 코멘트
 const Comment = ({ text }) => {
@@ -57,6 +61,10 @@ const CardNumber = ({ number }) => {
 
 // ListeningActivity-유형1(EB-KA)
 export const ListeningActivity1 = () => {
+  const [introOut, _introOut] = useState(false);
+  const [startQuiz, _startQuiz] = useState(false);
+  const [endQuiz, _endQuiz] = useState(false);
+
   const [viewCorrectAct, _viewCorrectAct] = useState(false);
   const [viewIncorrectAct, _viewIncorrectAct] = useState(false);
 
@@ -64,14 +72,14 @@ export const ListeningActivity1 = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -88,7 +96,7 @@ export const ListeningActivity1 = () => {
         className={`
         ${style.wordCard} 
         ${viewCorrectAct && style.correct} 
-        ${viewCorrectAct && "animate__animated animate__bounce"}
+        ${viewCorrectAct && "animate__animated animate__fadeIn"}
         ${viewIncorrectAct && style.incorrect}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
@@ -101,51 +109,111 @@ export const ListeningActivity1 = () => {
 
   return (
     <QuizTemplate>
-      <QuizHeader
-        currentQuizNumber={1}
-        totalQuizNumber={4}
-        attempts={3}
-        quizTimer={"20:00"}
-      />
-      <Comment text={"Listening Activity"} />
-      <QuizBody>
-        <WordPlayButton />
-        <Gap height={15} />
-        <Container>
-          {/* 정답액션예시 */}
-          <WordCard
-            imgSrc={
-              "https://wcfresource.a1edu.com/newsystem/image/br/eb/ka-001/apple.png"
+      {/* 퀴즈 인트로 */}
+      <div
+        className={`animate__animated ${
+          !introOut ? "animate__bounceInRight" : "animate__bounceOutLeft"
+        }`}
+        style={
+          startQuiz
+            ? { display: "none" }
+            : endQuiz
+            ? { display: "none" }
+            : { display: "block" }
+        }
+      >
+        <StepIntro
+          stepOrder={1}
+          quizType={"Listening Activity"}
+          comment={"Arrange the items in the correct order."}
+          unit={readingUnit}
+          onClick={() => {
+            {
+              _introOut(true);
+              setTimeout(() => {
+                _startQuiz(true);
+              }, 1000);
             }
-            viewCorrectAct={viewCorrectAct}
-            onClick={runCorrectAct}
-          />
-          {/* 오답액션예시 */}
-          <WordCard
-            imgSrc={
-              "https://wcfresource.a1edu.com/newsystem/image/br/eb/ka-001/ant.png"
-            }
-            viewIncorrectAct={viewIncorrectAct}
-            onClick={runIncorrectAct}
-          />
-          <WordCard
-            imgSrc={
-              "https://wcfresource.a1edu.com/newsystem/image/br/eb/ka-001/ax.png"
-            }
-          />
-          <WordCard
-            imgSrc={
-              "https://wcfresource.a1edu.com/newsystem/image/br/eb/ka-001/ox.png"
-            }
-          />
-          <WordCard
-            imgSrc={
-              "https://wcfresource.a1edu.com/newsystem/image/br/eb/ka-001/alligator.png"
-            }
-          />
-        </Container>
-        <Gap height={15} />
-      </QuizBody>
+          }}
+        />
+      </div>
+      {/* 퀴즈 화면 */}
+      <div
+        style={
+          startQuiz
+            ? endQuiz
+              ? { display: "none" }
+              : { display: "block" }
+            : { display: "none" }
+        }
+      >
+        <QuizHeader
+          currentQuizNumber={1}
+          totalQuizNumber={4}
+          attempts={3}
+          quizTimer={"20:00"}
+        />
+        <Comment text={"Listening Activity"} />
+        <QuizBody>
+          <WordPlayButton />
+          <Gap height={15} />
+          <Container>
+            {/* 정답액션예시 */}
+            <WordCard
+              imgSrc={
+                "https://wcfresource.a1edu.com/newsystem/image/br/eb/ka-001/apple.png"
+              }
+              viewCorrectAct={viewCorrectAct}
+              onClick={runCorrectAct}
+            />
+            {/* 오답액션예시 */}
+            <WordCard
+              imgSrc={
+                "https://wcfresource.a1edu.com/newsystem/image/br/eb/ka-001/ant.png"
+              }
+              viewIncorrectAct={viewIncorrectAct}
+              onClick={runIncorrectAct}
+            />
+            <WordCard
+              imgSrc={
+                "https://wcfresource.a1edu.com/newsystem/image/br/eb/ka-001/ax.png"
+              }
+            />
+            <WordCard
+              imgSrc={
+                "https://wcfresource.a1edu.com/newsystem/image/br/eb/ka-001/ox.png"
+              }
+            />
+            <WordCard
+              imgSrc={
+                "https://wcfresource.a1edu.com/newsystem/image/br/eb/ka-001/alligator.png"
+              }
+            />
+          </Container>
+          <Gap height={15} />
+        </QuizBody>
+        {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+        {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
+        <button
+          onClick={() => {
+            _endQuiz(true);
+          }}
+          style={{ position: "fixed", top: 0 }}
+        >
+          퀴즈종료
+        </button>
+      </div>
+      {/* Test Result (퀴즈 종료) */}
+      <div style={endQuiz ? { display: "block" } : { display: "none" }}>
+        <TestResult1
+          quizType={"Listening Activity"}
+          totalScore={100}
+          correctNum={4}
+          incorrectNum={0}
+          stepNum={1}
+          unit={"edmond"}
+        />
+      </div>
     </QuizTemplate>
   );
 };
@@ -159,14 +227,14 @@ export const ListeningActivity2 = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -182,7 +250,7 @@ export const ListeningActivity2 = () => {
       <div
         className={`${style.wordCard} 
         ${viewCorrectAct && style.correct} 
-        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewCorrectAct && "animate__animated animate__fadeIn"} 
         ${viewIncorrectAct && style.incorrect}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
@@ -224,6 +292,8 @@ export const ListeningActivity2 = () => {
         </Container>
         <Gap height={15} />
       </QuizBody>
+      {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+      {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
     </QuizTemplate>
   );
 };
@@ -237,14 +307,14 @@ export const ListeningActivity3 = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -266,7 +336,7 @@ export const ListeningActivity3 = () => {
       <div
         className={`${style.imageCard} 
         ${viewCorrectAct && style.correct} 
-        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewCorrectAct && "animate__animated animate__fadeIn"} 
         ${viewIncorrectAct && style.incorrect}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
@@ -314,6 +384,8 @@ export const ListeningActivity3 = () => {
         </Container>
         <Gap height={15} />
       </QuizBody>
+      {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+      {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
     </QuizTemplate>
   );
 };
@@ -327,14 +399,14 @@ export const ListeningActivity4 = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -358,7 +430,7 @@ export const ListeningActivity4 = () => {
       <div
         className={`${style.soundCard} 
         ${viewCorrectAct && style.correct} 
-        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewCorrectAct && "animate__animated animate__fadeIn"} 
         ${viewIncorrectAct && style.incorrect}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
@@ -418,6 +490,8 @@ export const ListeningActivity4 = () => {
         </Container>
         <Gap height={15} />
       </QuizBody>
+      {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+      {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
     </QuizTemplate>
   );
 };

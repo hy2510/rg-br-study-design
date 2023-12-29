@@ -3,6 +3,7 @@ import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import Gap from "../util/Gap";
 import { IcoReturn } from "../util/Icons";
+import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
 
 const style = stylesPc;
 
@@ -34,14 +35,14 @@ export const VocabularyTest1 = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -73,7 +74,7 @@ export const VocabularyTest1 = () => {
       <div
         className={`${style.textCard} 
         ${viewCorrectAct && style.correct} 
-        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewCorrectAct && "animate__animated animate__fadeIn"} 
         ${viewIncorrectAct && style.incorrect}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
           `}
@@ -127,6 +128,8 @@ export const VocabularyTest1 = () => {
         </Container>
         <Gap height={15} />
       </QuizBody>
+      {viewCorrectAct && <CorrectPopup />}
+      {viewIncorrectAct && <IncorrectPopup />}
     </QuizTemplate>
   );
 };
@@ -140,14 +143,14 @@ export const VocabularyTest2 = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -180,7 +183,7 @@ export const VocabularyTest2 = () => {
       <div
         className={`${style.textCard} 
         ${viewCorrectAct && style.correct} 
-        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewCorrectAct && "animate__animated animate__fadeIn"} 
         ${viewIncorrectAct && style.incorrect}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
             `}
@@ -235,6 +238,8 @@ export const VocabularyTest2 = () => {
         </Container>
         <Gap height={15} />
       </QuizBody>
+      {viewCorrectAct && <CorrectPopup />}
+      {viewIncorrectAct && <IncorrectPopup />}
     </QuizTemplate>
   );
 };
@@ -309,14 +314,14 @@ export const VocabularyTest4 = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -347,7 +352,7 @@ export const VocabularyTest4 = () => {
       <div
         className={`${style.textCard} 
         ${viewCorrectAct && style.correct} 
-        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewCorrectAct && "animate__animated animate__fadeIn"} 
         ${viewIncorrectAct && style.incorrect}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
@@ -400,6 +405,8 @@ export const VocabularyTest4 = () => {
         </Container>
         <Gap height={15} />
       </QuizBody>
+      {viewCorrectAct && <CorrectPopup />}
+      {viewIncorrectAct && <IncorrectPopup />}
     </QuizTemplate>
   );
 };

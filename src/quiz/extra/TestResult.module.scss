@@ -1,0 +1,205 @@
+.testResult {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .container {
+    width: 400px;
+    min-height: 400px;
+    max-height: 80vh;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: transparent;
+    }
+    .quizType {
+      font-family: "Rg-b", sans-serif;
+      font-size: 1.2em;
+      color: #fff;
+      background-color: rgba($color: #000, $alpha: 0.8);
+      padding: 5px 15px 3px;
+      border-radius: 100px;
+    }
+    .totalScoreContainer {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-radius: 15px;
+      .txtL {
+        font-family: "Rg-b", sans-serif;
+        font-size: 1.6em;
+      }
+      .totalScore {
+        font-family: "Rg-b", sans-serif;
+        font-size: 4.2em;
+      }
+    }
+    .readingUnit {
+      height: 200px;
+      img {
+        height: fit-content;
+      }
+    }
+    .board1 {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      @mixin scoreBox {
+        width: calc(100% - 40px);
+        font-family: "Rg-b", sans-serif;
+        text-align: center;
+        padding: 10px 20px;
+        border-radius: 15px;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+        .title {
+          font-size: 1em;
+          color: rgba($color: #000, $alpha: 0.6);
+        }
+        .number {
+          font-size: 1.8em;
+        }
+      }
+      .correctScore {
+        @include scoreBox;
+        background-color: rgba($color: #3ab6ff, $alpha: 0.1);
+      }
+      .incorrectScore {
+        @include scoreBox;
+        background-color: rgba($color: #cc383a, $alpha: 0.1);
+      }
+    }
+    .board2 {
+      width: 100%;
+      display: grid;
+      gap: 10px;
+      font-family: "Rg-b", sans-serif;
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 5fr 5fr;
+        align-items: center;
+        justify-items: center;
+        &:nth-child(odd) {
+          background-color: rgba($color: #eee, $alpha: 0.6);
+          border-radius: 8px;
+          padding: 5px 0;
+          -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+        }
+      }
+    }
+    .nextButton {
+      position: sticky;
+      bottom: 5px;
+      cursor: pointer;
+      min-width: 340px;
+      text-align: center;
+      border-radius: 15px;
+      border-top: 1px solid #289ee4;
+      border-right: 1px solid #289ee4;
+      border-bottom: 3px solid #289ee4;
+      border-left: 1px solid #289ee4;
+      background: linear-gradient(
+        180deg,
+        #5fc3ff 0%,
+        #38b4fe 85.42%,
+        #5fc3ff 100%
+      );
+      box-shadow: 0 0 5px #fff;
+      color: #fff;
+      font-size: 1.2em;
+      font-family: "Rg-B", sans-serif;
+      width: fit-content;
+      padding: 15px 20px;
+      transform: scale(1);
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+}
+
+// 두근 두근 애니메이션 효과
+.heartbeat {
+  -webkit-animation: heartbeat 1.5s ease-in-out infinite both;
+  animation: heartbeat 1.5s ease-in-out infinite both;
+}
+@-webkit-keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+    transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}
+@keyframes heartbeat {
+  from {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    -webkit-transform: scale(0.91);
+    transform: scale(0.91);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  17% {
+    -webkit-transform: scale(0.98);
+    transform: scale(0.98);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  33% {
+    -webkit-transform: scale(0.87);
+    transform: scale(0.87);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  45% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+}

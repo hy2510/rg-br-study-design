@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoArrowUp, IcoPlay, IcoStop, IcoReturn } from "../util/Icons";
 import Gap from "../util/Gap";
+import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
 
 const style = stylesPc;
 
@@ -137,14 +138,14 @@ export const ClozeTest2 = () => {
     _viewCorrectAct(true);
     setTimeout(() => {
       _viewCorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const runIncorrectAct = () => {
     _viewIncorrectAct(true);
     setTimeout(() => {
       _viewIncorrectAct(false);
-    }, 1000);
+    }, 2000);
   };
 
   const Container = ({ children }) => {
@@ -166,7 +167,7 @@ export const ClozeTest2 = () => {
       <div
         className={`${style.textCard} 
         ${viewCorrectAct && style.correct} 
-        ${viewCorrectAct && "animate__animated animate__bounce"} 
+        ${viewCorrectAct && "animate__animated animate__fadeIn"} 
         ${viewIncorrectAct && style.incorrect}
         ${viewIncorrectAct && "animate__animated animate__headShake"}
         `}
@@ -193,11 +194,6 @@ export const ClozeTest2 = () => {
           correctAnswer && style.correctAnswer
         } ${incorrectAnswer && style.incorrectAnswer}`}
       >
-        {!correctAnswer && !incorrectAnswer ? (
-          <span className={style.currentInput}></span>
-        ) : (
-          ""
-        )}
         {correctAnswer}
         {incorrectAnswer}
       </span>
@@ -225,7 +221,10 @@ export const ClozeTest2 = () => {
             <span>London</span>
             <span>is</span>
             <span>the</span>
-            <AnswerBox correctAnswer={""} incorrectAnswer={""} />
+            <AnswerBox
+              correctAnswer={viewCorrectAct ? "capital" : ""}
+              incorrectAnswer={viewIncorrectAct ? "capital" : ""} // 마지막 기회시 정답을 빨간색으로 표시함
+            />
             <span>city</span>
             <span>of</span>
             <span>the</span>
@@ -253,6 +252,8 @@ export const ClozeTest2 = () => {
           </Answers>
         </Container>
       </QuizBody>
+      {viewCorrectAct && <CorrectPopup />}
+      {viewIncorrectAct && <IncorrectPopup />}
     </QuizTemplate>
   );
 };
