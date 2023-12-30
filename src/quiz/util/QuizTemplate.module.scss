@@ -101,7 +101,7 @@ $quizHeaderHeight: 60px;
 .quizBody {
   width: calc(100% - 40px);
   max-width: 900px;
-  height: calc(100vh - ($quizHeaderHeight + 50px));
+  height: calc(100vh - ($quizHeaderHeight));
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -110,18 +110,21 @@ $quizHeaderHeight: 60px;
   position: relative;
   .container {
     width: 100%;
-    min-height: 500px;
-    max-height: calc(100% - 50px);
+    min-height: 450px;
     background-color: rgba($color: #000, $alpha: 0.02);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     margin-bottom: $quizHeaderHeight;
     padding: 15px;
     border-radius: 20px;
-    // border: 2px solid #ddd;
     overflow-y: scroll;
     &::-webkit-scrollbar {
       display: none;
+    }
+  }
+  @media (pointer: coarse) {
+    .container {
+      margin-top: 15px;
     }
   }
   @include darkMode {

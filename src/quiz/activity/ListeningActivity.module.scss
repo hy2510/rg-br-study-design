@@ -3,6 +3,13 @@
   font-size: 1.1em;
   color: rgba($color: #000, $alpha: 0.4);
   padding: 10px 15px;
+  animation-duration: 1s !important;
+  position: fixed;
+}
+@media (pointer: coarse) {
+  .comment {
+    display: none;
+  }
 }
 
 .wordPlayButton {

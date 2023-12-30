@@ -8,11 +8,15 @@ import { StepIntro } from "../extra/StepBoard";
 import { TestResult1 } from "../extra/TestResult";
 
 const style = stylesPc;
-const readingUnit = "edmond"; // 리딩유닛이름
+const readingUnit = "goma"; // 리딩유닛이름
 
 // 코멘트
 const Comment = ({ text }) => {
-  return <div className={style.comment}>{text}</div>;
+  return (
+    <div className={`${style.comment} animate__animated animate__fadeInLeft`}>
+      {text}
+    </div>
+  );
 };
 
 // 단어듣기버튼1
@@ -194,11 +198,12 @@ export const ListeningActivity1 = () => {
         </QuizBody>
         {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
         {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
+        {/* Test Result를 보기 위한 임시 버튼 */}
         <button
           onClick={() => {
             _endQuiz(true);
           }}
-          style={{ position: "fixed", top: 0 }}
+          style={{ position: "fixed", bottom: 0 }}
         >
           퀴즈종료
         </button>
@@ -211,7 +216,7 @@ export const ListeningActivity1 = () => {
           correctNum={4}
           incorrectNum={0}
           stepNum={1}
-          unit={"edmond"}
+          unit={readingUnit}
         />
       </div>
     </QuizTemplate>

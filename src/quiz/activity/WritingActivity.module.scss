@@ -3,6 +3,7 @@
   font-size: 1.1em;
   color: rgba($color: #000, $alpha: 0.4);
   padding: 10px 15px;
+  animation-duration: 1s !important;
 }
 
 .wordPlayButton {
@@ -133,6 +134,7 @@
       resize: none;
       border-radius: 10px;
       padding: 10px;
+      font-family: "Rg-r", sans-serif;
       font-size: 1.2em;
       &:focus {
         outline: none;

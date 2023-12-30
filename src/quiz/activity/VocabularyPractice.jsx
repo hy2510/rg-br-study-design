@@ -14,7 +14,11 @@ const style = stylesPc;
 
 // 코멘트
 const Comment = ({ text }) => {
-  return <div className={style.comment}>{text}</div>;
+  return (
+    <div className={`${style.comment} animate__animated animate__fadeInLeft`}>
+      {text}
+    </div>
+  );
 };
 
 // 단어듣기버튼1 (단어와 문장 표시)

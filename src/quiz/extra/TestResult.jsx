@@ -14,19 +14,18 @@ export const TestResult1 = ({
 }) => {
   return (
     <div className={style.testResult}>
+      <div className={style.quizType}>
+        Step{stepNum}. {quizType}
+      </div>
+      <div className={style.totalScoreContainer}>
+        <div className={style.txtL}>SCORE: </div>
+        <div className={`${style.totalScore} ${style.heartbeat}`}>
+          {totalScore}
+        </div>
+      </div>
       <div className={style.container}>
-        <div className={style.quizType}>
-          Step{stepNum}. {quizType}
-        </div>
-        <div className={style.totalScoreContainer}>
-          <div className={style.txtL}>SCORE: </div>
-          <div className={`${style.totalScore} ${style.heartbeat}`}>
-            {totalScore}
-          </div>
-        </div>
-
         <div
-          className={`${style.readingUnit} animate__animated animate__fadeIn`}
+          className={`${style.readingUnit} animate__animated animate__jackInTheBox`}
         >
           <img
             src={`https://wcfresource.a1edu.com/newsystem/image/character/subcharacter/${unit}_10.png`}
@@ -72,10 +71,14 @@ export const TestResult1 = ({
           </div>
         </div>
         <Gap height={50} />
-        <div className={style.nextButton} onClick={onClick}>
-          Next
-        </div>
+      </div>
+      <div className={style.nextButton} onClick={onClick}>
+        Next
       </div>
     </div>
   );
+};
+
+export const SubmitRevision = ({ unit, onClick }) => {
+  return <div></div>;
 };

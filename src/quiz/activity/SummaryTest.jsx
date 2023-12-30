@@ -8,7 +8,11 @@ const style = stylesPc;
 
 // 코멘트
 const Comment = ({ text }) => {
-  return <div className={style.comment}>{text}</div>;
+  return (
+    <div className={`${style.comment} animate__animated animate__fadeInLeft`}>
+      {text}
+    </div>
+  );
 };
 
 // 듣기버튼 (문장 폰트 작게)

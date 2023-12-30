@@ -3,12 +3,19 @@ import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoArrowUp, IcoPlay, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
+import { TestResult1 } from "../extra/TestResult";
+import { RevisionIntro, StepIntro } from "../extra/StepBoard";
 
 const style = stylesPc;
+const readingUnit = "baro";
 
 // 코멘트
 const Comment = ({ text }) => {
-  return <div className={style.comment}>{text}</div>;
+  return (
+    <div className={`${style.comment} animate__animated animate__fadeInLeft`}>
+      {text}
+    </div>
+  );
 };
 
 // 단어듣기버튼
@@ -123,6 +130,10 @@ export const WritingActivity1 = () => {
 
 // WritingActivity2
 export const WritingActivity2 = () => {
+  const [introOut, _introOut] = useState(false);
+  const [startQuiz, _startQuiz] = useState(false);
+  const [endQuiz, _endQuiz] = useState(false);
+
   const Container = ({ children }) => {
     return (
       <div className={style.writingActivity2}>
@@ -170,7 +181,14 @@ export const WritingActivity2 = () => {
   };
 
   const SubmitButton = () => {
-    return <div className={style.submitButton}>Submit</div>;
+    return (
+      <div
+        style={{ opacity: "0.5", cursor: "default" }}
+        className={style.submitButton}
+      >
+        Submit
+      </div>
+    );
   };
 
   const GoNextStepBox = ({ children }) => {
@@ -179,33 +197,110 @@ export const WritingActivity2 = () => {
 
   return (
     <QuizTemplate>
-      <QuizHeader
-        currentQuizNumber={1}
-        totalQuizNumber={4}
-        attempts={3}
-        quizTimer={"20:00"}
-      />
-      <Comment text={"Writing Activity"} />
-      <QuizBody>
-        <Gap height={15} />
-        <Container>
-          <Tabs>
-            <TabButton number={1} isSelected={true} />
-            <TabButton number={2} isSelected={false} />
-            <TabButton number={3} isSelected={false} />
-          </Tabs>
-          <QuestionText
-            text={"Describe briefly what happens in the book or the main idea."}
-          />
-          <WritingArea />
-          <GoNextStepBox>
-            <WordLimitIndicator limit={"30~300"} words={0} />
-            <SaveButton />
-            <SubmitButton />
-          </GoNextStepBox>
-        </Container>
-        <Gap height={15} />
-      </QuizBody>
+      {/* 퀴즈 인트로 */}
+      <div
+        className={`animate__animated ${
+          !introOut ? "animate__bounceInRight" : "animate__bounceOutLeft"
+        }`}
+        style={
+          startQuiz
+            ? { display: "none" }
+            : endQuiz
+            ? { display: "none" }
+            : { display: "block" }
+        }
+      >
+        {/* No Revision일 때 */}
+        {/* <StepIntro
+          stepOrder={5}
+          quizType={"Writing Activity"}
+          comment={"Try writing in a way that fits the question."}
+          unit={readingUnit}
+          onClick={() => {
+            {
+              _introOut(true);
+              setTimeout(() => {
+                _startQuiz(true);
+              }, 1000);
+            }
+          }}
+        /> */}
+        {/* All 또는 Limit일 때 */}
+        <RevisionIntro
+          stepOrder={5}
+          quizType={"Writing Activity"}
+          comment={"첨삭을 하시겠습니까?"}
+          unit={readingUnit}
+          onClick={() => {
+            {
+              _introOut(true);
+              setTimeout(() => {
+                _startQuiz(true);
+              }, 1000);
+            }
+          }}
+        />
+      </div>
+      {/* 퀴즈 화면 */}
+      <div
+        style={
+          startQuiz
+            ? endQuiz
+              ? { display: "none" }
+              : { display: "block" }
+            : { display: "none" }
+        }
+      >
+        <QuizHeader
+          currentQuizNumber={1}
+          totalQuizNumber={4}
+          attempts={3}
+          quizTimer={"20:00"}
+        />
+        <Comment text={"Writing Activity"} />
+        <QuizBody>
+          <Gap height={15} />
+          <Container>
+            <Tabs>
+              <TabButton number={1} isSelected={true} />
+              <TabButton number={2} isSelected={false} />
+              <TabButton number={3} isSelected={false} />
+            </Tabs>
+            <QuestionText
+              text={
+                "Describe briefly what happens in the book or the main idea."
+              }
+            />
+            <WritingArea />
+            <GoNextStepBox>
+              <WordLimitIndicator limit={"30~300"} words={0} />
+              <SaveButton />
+              <SubmitButton />
+            </GoNextStepBox>
+          </Container>
+          <Gap height={15} />
+        </QuizBody>
+        {/* Test Result를 보기 위한 임시 버튼 */}
+        <button
+          onClick={() => {
+            _endQuiz(true);
+          }}
+          style={{ position: "fixed", bottom: 0 }}
+        >
+          퀴즈종료
+        </button>
+      </div>
+      {/* Test Result (퀴즈 종료) */}
+      <div style={endQuiz ? { display: "block" } : { display: "none" }}>
+        <TestResult1
+          quizType={"Listening Activity"}
+          totalScore={100}
+          correctNum={4}
+          incorrectNum={0}
+          stepNum={1}
+          unit={readingUnit}
+        />
+      </div>
     </QuizTemplate>
   );
 };
