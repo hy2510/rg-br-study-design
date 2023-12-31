@@ -4,6 +4,8 @@ import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoArrowUp, IcoPlay, IcoStop, IcoReturn } from "../util/Icons";
 import Gap from "../util/Gap";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
+import { TrueSentencePopup } from "../extra/TrueSentencePopup";
+import { TestReview3 } from "../extra/TestReview";
 
 const style = stylesPc;
 
@@ -39,6 +41,50 @@ const WordPlayButton = ({ sentence }) => {
 // 카드넘버
 const CardNumber = ({ number }) => {
   return <div className={style.cardNumber}>{number}</div>;
+};
+
+// 리뷰(페널티)
+const TestReview = ({ title, children, onClick }) => {
+  return (
+    <div className={`${style.testReview}`}>
+      <div className={style.title}>{title}</div>
+      <div className={style.container}>
+        <div className={style.sentence}>{children}</div>
+      </div>
+      <div className={style.nextButton} onClick={onClick}>
+        Next
+      </div>
+    </div>
+  );
+};
+
+// 리뷰(페널티)에 들어갈 빈칸
+const ReviewAnswer = ({ width, currentOrder, correctAnswer }) => {
+  return (
+    <span
+      className={`${style.reviewAnswer} ${currentOrder && style.currentOrder}`}
+    >
+      {currentOrder ? (
+        <span className={style.currentInput}>
+          <input
+            id="textFild"
+            style={{ width: width + 50 + "px" }}
+            type="text"
+          />
+          <span className={style.enterButton}>
+            <span>
+              <IcoReturn width={15} height={15} />
+            </span>
+          </span>
+        </span>
+      ) : (
+        <span className={style.otherInput}>
+          <input style={{ width: width + "px" }} disabled />
+        </span>
+      )}
+      <div className={style.hintText}>{correctAnswer}</div>
+    </span>
+  );
 };
 
 // ClozeTest1
@@ -93,6 +139,8 @@ export const ClozeTest1 = () => {
     return <div className={style.questionBox}>{children}</div>;
   };
 
+  const [viewTestReview, _viewTestReview] = useState(false);
+
   return (
     <QuizTemplate>
       <QuizHeader
@@ -103,31 +151,54 @@ export const ClozeTest1 = () => {
       />
       <Comment text={"Cloze Test"} />
       <QuizBody>
-        <Container>
-          <Gap height={0} />
-          <WordPlayButton sentence={"Playback"} />
-          <QuestionBox>
+        {!viewTestReview && (
+          <Container>
+            <Gap height={0} />
+            <WordPlayButton sentence={"Playback"} />
+            <QuestionBox>
+              <span>London</span>
+              <span>is</span>
+              <span>the</span>
+              <AnswerBox
+                width={80}
+                currentOrder={true}
+                correctAnswer={""}
+                incorrectAnswer={""}
+              />
+              <AnswerBox
+                width={42}
+                currentOrder={false}
+                correctAnswer={""}
+                incorrectAnswer={""}
+              />
+              <span>of</span>
+              <span>the</span>
+              <span>United</span>
+              <span>Kingdom.</span>
+            </QuestionBox>
+          </Container>
+        )}
+        {viewTestReview && (
+          <TestReview title={"Test Review"}>
             <span>London</span>
             <span>is</span>
             <span>the</span>
-            <AnswerBox
+            <ReviewAnswer
               width={80}
               currentOrder={true}
-              correctAnswer={""}
-              incorrectAnswer={""}
+              correctAnswer={"capital"}
             />
-            <AnswerBox
+            <ReviewAnswer
               width={42}
               currentOrder={false}
-              correctAnswer={""}
-              incorrectAnswer={""}
+              correctAnswer={"city"}
             />
             <span>of</span>
             <span>the</span>
             <span>United</span>
             <span>Kingdom.</span>
-          </QuestionBox>
-        </Container>
+          </TestReview>
+        )}
       </QuizBody>
     </QuizTemplate>
   );

@@ -79,6 +79,58 @@ export const TestResult1 = ({
   );
 };
 
-export const SubmitRevision = ({ unit, onClick }) => {
-  return <div></div>;
+export const SubmitRevision = ({
+  stepOrder,
+  quizType,
+  title,
+  comment,
+  revisionGoalNum,
+  revisionCompletedNum,
+  revisionCountNum,
+  onClickNo,
+  onClickYes,
+}) => {
+  return (
+    <div className={style.submitRevision}>
+      <div
+        className={`${style.container} animate__animated animate__bounceInRight`}
+      >
+        <div className={style.stepOrder}>
+          Step{stepOrder}. {quizType}
+        </div>
+        <div className={style.title}>{title}</div>
+        <div className={style.comment}>
+          {revisionCountNum == 0
+            ? "수고했어요! 이달의 남은 첨삭은 모두 사용했어요."
+            : comment}
+        </div>
+        <div className={style.revisionBoard}>
+          {/* <div className={style.txtLabel}>목표 첨삭:</div>
+          <div className={style.txtCount}>{revisionGoalNum}</div> */}
+          <div className={style.txtLabel}>남은 첨삭:</div>
+          <div className={style.txtCount}>
+            {revisionCountNum} / {revisionGoalNum}
+          </div>
+          <div className={style.txtLabel}>첨삭 완료:</div>
+          <div className={style.txtCount}>{revisionCompletedNum}</div>
+        </div>
+        {revisionCountNum == 0 ? (
+          <div className={`${style.selectBox} ${style.revisionDone}`}>
+            <div className={style.noButton} onClick={onClickNo}>
+              Done
+            </div>
+          </div>
+        ) : (
+          <div className={style.selectBox}>
+            <div className={style.noButton} onClick={onClickNo}>
+              No
+            </div>
+            <div className={style.yesButton} onClick={onClickYes}>
+              Yes
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 };

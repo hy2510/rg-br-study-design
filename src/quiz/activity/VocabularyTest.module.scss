@@ -4,6 +4,34 @@
   color: rgba($color: #000, $alpha: 0.4);
   padding: 10px 15px;
   animation-duration: 1s !important;
+  position: fixed;
+}
+@media (pointer: coarse) {
+  .comment {
+    display: none;
+  }
+}
+
+.wordPlayButton {
+  cursor: pointer;
+  width: fit-content;
+  height: 40px;
+  margin: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transform: scale(1);
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  &:active {
+    transform: scale(0.9);
+  }
+  .txtL {
+    font-family: "Rg-B", sans-serif;
+    font-size: 1.4em;
+    font-weight: 600;
+    color: rgba($color: #000, $alpha: 0.4);
+  }
 }
 
 .cardNumber {
@@ -30,9 +58,45 @@
   background-color: rgba($color: #ddd, $alpha: 0.3);
   border-radius: 100px;
   transition: all 0.2s;
+  position: relative;
   &:active {
     transform: scale(0.9);
   }
+}
+.hintPopup {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  right: 50%;
+  z-index: 5;
+  transform: translate(-50%);
+  min-width: 400px;
+  padding: 10px 20px;
+  min-height: 100px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  margin-top: 15px;
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    border-top: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid #fff;
+  }
+}
+.screenBlock {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color: #000, $alpha: 0.5);
+  z-index: 4;
 }
 
 .vocabularyTest1 {

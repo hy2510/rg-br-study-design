@@ -4,6 +4,7 @@ import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoPlay, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
+import { TrueSentencePopup } from "../extra/TrueSentencePopup";
 
 const style = stylesPc;
 
@@ -76,6 +77,8 @@ export const TrueOrFalse = () => {
     return <div className={style.answers}>{children}</div>;
   };
 
+  const [viewTrueSentence, _viewTrueSentence] = useState(false);
+
   return (
     <QuizTemplate>
       <QuizHeader
@@ -86,27 +89,39 @@ export const TrueOrFalse = () => {
       />
       <Comment text={"True or False"} />
       <QuizBody>
-        <Gap height={15} />
-        <Container>
-          <Gap height={10} />
-          <QuestionText text="Bears sleep for a long time in the winter." />
-          <Gap height={10} />
-          <Answers>
-            {/* 정답예시 */}
-            <TextCard
-              awnserText="True"
-              onClick={runCorrectAct}
-              viewCorrectAct={viewCorrectAct}
-            />
-            {/* 오답예시 */}
-            <TextCard
-              awnserText="False"
-              onClick={runIncorrectAct}
-              viewIncorrectAct={viewIncorrectAct}
-            />
-          </Answers>
-        </Container>
-        <Gap height={15} />
+        {/* 퀴즈 문제 */}
+        {!viewTrueSentence && (
+          <>
+            <Gap height={15} />
+            <Container>
+              <Gap height={10} />
+              <QuestionText text="Bears sleep for a long time in the winter." />
+              <Gap height={10} />
+              <Answers>
+                {/* 정답예시 */}
+                <TextCard
+                  awnserText="True"
+                  onClick={runCorrectAct}
+                  viewCorrectAct={viewCorrectAct}
+                />
+                {/* 오답예시 */}
+                <TextCard
+                  awnserText="False"
+                  onClick={runIncorrectAct}
+                  viewIncorrectAct={viewIncorrectAct}
+                />
+              </Answers>
+            </Container>
+            <Gap height={15} />
+          </>
+        )}
+        {/* correct sentence popup */}
+        {viewTrueSentence && (
+          <TrueSentencePopup
+            title={"True Sentence"}
+            sentence={"Bears sleep for a long time in the winter."}
+          />
+        )}
       </QuizBody>
       {viewCorrectAct && <CorrectPopup />}
       {viewIncorrectAct && <IncorrectPopup />}

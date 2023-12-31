@@ -2,7 +2,7 @@ import stylesPc from "./VocabularyTest.module.scss";
 import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import Gap from "../util/Gap";
-import { IcoReturn } from "../util/Icons";
+import { IcoPlay, IcoReturn, IcoStop } from "../util/Icons";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
 
 const style = stylesPc;
@@ -16,6 +16,26 @@ const Comment = ({ text }) => {
   );
 };
 
+// 단어듣기버튼 (힌트)
+const WordPlayButton = () => {
+  const [isPlay, _isPlay] = useState(true);
+
+  const buttonToggle = () => {
+    isPlay ? _isPlay(false) : _isPlay(true);
+  };
+
+  return (
+    <div className={style.wordPlayButton} onClick={buttonToggle}>
+      {isPlay ? (
+        <IcoPlay colorRed width={40} height={40} />
+      ) : (
+        <IcoStop colorGray width={40} height={40} />
+      )}
+      <span className={style.txtL}>Playback</span>
+    </div>
+  );
+};
+
 // 카드넘버
 const CardNumber = ({ number }) => {
   return <div className={style.cardNumber}>{number}</div>;
@@ -23,9 +43,36 @@ const CardNumber = ({ number }) => {
 
 // 힌트버튼
 const HintButton = ({ count, total }) => {
+  const [viewHintPopup, _viewHintPopup] = useState(false);
+
   return (
-    <div className={style.hintButton}>
-      Hint {count} / {total}
+    <div style={{ position: "relative" }}>
+      <div
+        className={style.hintButton}
+        onClick={() => {
+          _viewHintPopup(true);
+        }}
+      >
+        <span>
+          Hint {count} / {total}
+        </span>
+      </div>
+      {count != 0 && viewHintPopup && (
+        <div
+          style={{ position: "relative" }}
+          className="animate__animated animate__fadeIn"
+        >
+          <div className={style.hintPopup}>
+            <WordPlayButton />
+          </div>
+          <div
+            className={style.screenBlock}
+            onClick={() => {
+              _viewHintPopup(false);
+            }}
+          ></div>
+        </div>
+      )}
     </div>
   );
 };

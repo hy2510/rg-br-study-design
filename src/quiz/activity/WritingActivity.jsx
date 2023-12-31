@@ -3,8 +3,12 @@ import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoArrowUp, IcoPlay, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
-import { TestResult1 } from "../extra/TestResult";
-import { RevisionIntro, StepIntro } from "../extra/StepBoard";
+import { SubmitRevision, TestResult1 } from "../extra/TestResult";
+import {
+  RevisionFreeIntro,
+  RevisionIntro,
+  StepIntro,
+} from "../extra/StepBoard";
 
 const style = stylesPc;
 const readingUnit = "baro";
@@ -226,12 +230,31 @@ export const WritingActivity2 = () => {
           }}
         /> */}
         {/* All 또는 Limit일 때 */}
-        <RevisionIntro
+        {/* <RevisionIntro
           stepOrder={5}
           quizType={"Writing Activity"}
-          comment={"첨삭을 하시겠습니까?"}
-          unit={readingUnit}
+          comment={"글쓰기를 하고 첨삭을 받으세요."}
+          revisionGoalNum={4}
+          revisionCompletedNum={0}
+          revisionCountNum={4}
           onClick={() => {
+            {
+              _introOut(true);
+              setTimeout(() => {
+                _startQuiz(true);
+              }, 1000);
+            }
+          }}
+        /> */}
+        {/* Free일 때 */}
+        <RevisionFreeIntro
+          stepOrder={5}
+          quizType={"Writing Activity"}
+          comment={"글쓰기를 하시겠어요?"}
+          revisionCountNum={0}
+          revisionGoalNum={4}
+          revisionCompletedNum={0}
+          onClickGo={() => {
             {
               _introOut(true);
               setTimeout(() => {
@@ -292,13 +315,22 @@ export const WritingActivity2 = () => {
       </div>
       {/* Test Result (퀴즈 종료) */}
       <div style={endQuiz ? { display: "block" } : { display: "none" }}>
-        <TestResult1
+        {/* <TestResult1
           quizType={"Listening Activity"}
           totalScore={100}
           correctNum={4}
           incorrectNum={0}
           stepNum={1}
           unit={readingUnit}
+        /> */}
+        <SubmitRevision
+          stepOrder={5}
+          quizType={"Writing Activity"}
+          title={"이달의 첨삭"}
+          comment={"글쓰기 첨삭을 받으시겠어요?"}
+          revisionCountNum={0}
+          revisionGoalNum={4}
+          revisionCompletedNum={0}
         />
       </div>
     </QuizTemplate>
