@@ -2,16 +2,120 @@ import Gap from "../util/Gap";
 import stylesPc from "./TestResult.module.scss";
 
 const style = stylesPc;
-
-export const TestResult1 = ({
+// 기본결과화면
+export const TestResult = ({
   quizType,
   correctNum,
   incorrectNum,
   totalScore,
   unit,
   stepNum,
+  passmark,
+  viewWrongAnswers,
   onClick,
 }) => {
+  const ScoreBoard = () => {
+    const Score = ({ quizNum }) => {
+      return (
+        <div className={style.score}>
+          <div>{quizNum}</div>
+          <div>X</div>
+          <div>O</div>
+        </div>
+      );
+    };
+
+    return (
+      <div className={style.scoreBoard}>
+        <div className={style.row}>
+          <div>Q</div>
+          <div>1st</div>
+          <div>2nd</div>
+        </div>
+        {/* Test Result 결과가 들어가는 곳 */}
+        <Score quizNum={1} />
+        <Score quizNum={2} />
+        <Score quizNum={3} />
+        <Score quizNum={4} />
+      </div>
+    );
+  };
+
+  const WrongAnswers = () => {
+    const QuizQuestion = ({
+      questionNum,
+      questionText,
+      correctAnswerNum,
+      children,
+    }) => {
+      return (
+        <div className={style.quizQuestion}>
+          <div className={style.questionSentence}>
+            <span className={style.questionNum}>{questionNum}. </span>
+            <span className={style.questionText}>{questionText}</span>
+          </div>
+          <div className={style.answers}>{children}</div>
+          <div className={style.correctAnswer}>
+            <div className={style.txtL}>Correct Answer</div>
+            <div className={style.correctAnswerNum}>{correctAnswerNum}</div>
+          </div>
+        </div>
+      );
+    };
+
+    const QuizAnswer = ({ anserNum, answerText, wrongAnswer }) => {
+      return (
+        <div className={style.quizAnswer}>
+          <div className={`${style.answerNum} ${wrongAnswer && style.wrong}`}>
+            {anserNum}
+          </div>
+          <div className={`${style.answerText} ${wrongAnswer && style.wrong}`}>
+            {answerText}
+          </div>
+        </div>
+      );
+    };
+
+    return (
+      <div className={style.wrongAnswers}>
+        <div className={style.title}>Wrong Answers</div>
+        <QuizQuestion
+          questionNum={1}
+          questionText={"How does Joon feel about the new teacher?"}
+          correctAnswerNum={3}
+        >
+          <QuizAnswer anserNum={1} answerText={"He is joyfull."} />
+          <QuizAnswer anserNum={2} answerText={"He is happy."} wrongAnswer />
+          <QuizAnswer anserNum={3} answerText={"He is scared."} />
+          <QuizAnswer anserNum={4} answerText={"He is scared."} />
+          <div style={{ borderBottom: "1px dotted #00000050" }}></div>
+        </QuizQuestion>
+        <QuizQuestion
+          questionNum={2}
+          questionText={"How does Joon feel about the new teacher?"}
+          correctAnswerNum={3}
+        >
+          <QuizAnswer anserNum={1} answerText={"He is joyfull."} />
+          <QuizAnswer anserNum={2} answerText={"He is happy."} wrongAnswer />
+          <QuizAnswer anserNum={3} answerText={"He is scared."} />
+          <QuizAnswer anserNum={4} answerText={"He is scared."} />
+          <div style={{ borderBottom: "1px dotted #00000050" }}></div>
+        </QuizQuestion>
+        <QuizQuestion
+          questionNum={3}
+          questionText={"How does Joon feel about the new teacher?"}
+          correctAnswerNum={3}
+        >
+          <QuizAnswer anserNum={1} answerText={"He is joyfull."} />
+          <QuizAnswer anserNum={2} answerText={"He is happy."} wrongAnswer />
+          <QuizAnswer anserNum={3} answerText={"He is scared."} />
+          <QuizAnswer anserNum={4} answerText={"He is scared."} />
+          <div style={{ borderBottom: "1px dotted #00000050" }}></div>
+        </QuizQuestion>
+      </div>
+    );
+  };
+
   return (
     <div className={style.testResult}>
       <div className={style.quizType}>
@@ -23,6 +127,7 @@ export const TestResult1 = ({
           {totalScore}
         </div>
       </div>
+
       <div className={style.container}>
         <div
           className={`${style.readingUnit} animate__animated animate__jackInTheBox`}
@@ -32,6 +137,7 @@ export const TestResult1 = ({
             alt=""
           />
         </div>
+        <div className={style.passmark}>Passmark: {passmark}</div>
         <div className={`${style.board1} animate__animated animate__fadeIn`}>
           <div className={style.correctScore}>
             <div className={style.title}>correct</div>
@@ -43,32 +149,9 @@ export const TestResult1 = ({
           </div>
         </div>
         <div className={style.board2}>
-          <div className={style.row}>
-            <div>Q</div>
-            <div>1st</div>
-            <div>2nd</div>
-          </div>
-          {/* Test Result 결과가 들어가는 곳 */}
-          <div className={style.row}>
-            <div>1</div>
-            <div>X</div>
-            <div>O</div>
-          </div>
-          <div className={style.row}>
-            <div>2</div>
-            <div>X</div>
-            <div>O</div>
-          </div>
-          <div className={style.row}>
-            <div>3</div>
-            <div>X</div>
-            <div>O</div>
-          </div>
-          <div className={style.row}>
-            <div>4</div>
-            <div>X</div>
-            <div>O</div>
-          </div>
+          {!viewWrongAnswers && <ScoreBoard />}
+          {/* ReadingComprehension4를 통과했을 때 보여줌 */}
+          {viewWrongAnswers && <WrongAnswers />}
         </div>
         <Gap height={50} />
       </div>
@@ -79,6 +162,7 @@ export const TestResult1 = ({
   );
 };
 
+// 첨삭결과화면
 export const SubmitRevision = ({
   stepOrder,
   quizType,

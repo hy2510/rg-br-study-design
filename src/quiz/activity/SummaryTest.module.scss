@@ -64,6 +64,142 @@
   }
 }
 
+.testReview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  .title {
+    font-size: 1.4em;
+    font-family: "Rg-b", sans-serif;
+    margin-bottom: 15px;
+  }
+  .container {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background-color: rgba($color: #000, $alpha: 0.03);
+    border-radius: 15px;
+    margin-bottom: 15px;
+    .sentence {
+      font-size: 1.4em;
+      font-family: "Rg-b", sans-serif;
+      margin: 15px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      align-items: center;
+    }
+  }
+  @mixin buttonStyle {
+    margin: auto;
+    min-width: 150px;
+    text-align: center;
+    border-radius: 15px;
+    border-top: 1px solid #289ee4;
+    border-right: 1px solid #289ee4;
+    border-bottom: 3px solid #289ee4;
+    border-left: 1px solid #289ee4;
+    background: linear-gradient(
+      180deg,
+      #5fc3ff 0%,
+      #38b4fe 85.42%,
+      #5fc3ff 100%
+    );
+    color: #fff;
+    font-size: 1.2em;
+    font-family: "Rg-B", sans-serif;
+    width: fit-content;
+    padding: 15px 20px;
+    transform: scale(1);
+    transition: all 0.2s;
+  }
+  .nextButton {
+    cursor: pointer;
+    @include buttonStyle;
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+  .deactNextButton {
+    filter: grayscale(1);
+    @include buttonStyle;
+    color: #ddd;
+  }
+}
+
+.reviewAnswer {
+  padding: 5px 10px;
+  border: 2px dotted #ccc;
+  border-radius: 10px;
+  margin: 0 5px;
+  color: #ccc;
+  background-color: #fff;
+  display: inline-block;
+  position: relative;
+  &.currentOrder {
+    background-color: rgba($color: #fff, $alpha: 1);
+    animation: 1s infinite alternate blink;
+    @keyframes blink {
+      0% {
+        border: 2px solid rgba($color: #000, $alpha: 0.1);
+      }
+      100% {
+        border: 2px solid rgba($color: #000, $alpha: 1);
+      }
+    }
+  }
+  input {
+    background-color: transparent;
+    border: none;
+    font-family: "Rg-B", sans-serif;
+    font-size: 1em;
+    padding: 0 !important;
+  }
+  .currentInput,
+  .otherInput {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    position: relative;
+    z-index: 2;
+    .enterButton {
+      cursor: pointer;
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        background-color: #000;
+        border-radius: 100px;
+      }
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+  }
+  .hintText {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    position: absolute;
+    top: 5px;
+    z-index: 1;
+  }
+}
+
 .summaryTest1 {
   .container {
     display: grid;
@@ -91,6 +227,16 @@
     &:hover {
       transform: scale(1.02);
     }
+    &.correct {
+      background-color: rgba($color: #289ee4, $alpha: 0.2);
+      border: 2px solid #289ee4;
+      box-shadow: #289ee4 0 3px;
+    }
+    &.incorrect {
+      background-color: rgba($color: #b73133, $alpha: 0.2);
+      border: 2px solid #b73133;
+      box-shadow: #b73133 0 3px;
+    }
     .awnserText {
       font-family: "Rg-B", sans-serif;
       font-size: 1.2em;
@@ -104,7 +250,7 @@
     padding: 0 15px;
     border-radius: 15px;
     &.question {
-      border: 2px dotted #000;
+      border: 2px dotted #ccc;
       border-radius: 15px;
       padding: 13px;
       margin: 10px 0;

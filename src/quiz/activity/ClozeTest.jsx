@@ -44,14 +44,19 @@ const CardNumber = ({ number }) => {
 };
 
 // 리뷰(페널티)
-const TestReview = ({ title, children, onClick }) => {
+const TestReview = ({ title, children, onClick, active }) => {
   return (
     <div className={`${style.testReview}`}>
       <div className={style.title}>{title}</div>
       <div className={style.container}>
         <div className={style.sentence}>{children}</div>
       </div>
-      <div className={style.nextButton} onClick={onClick}>
+      <div
+        className={`${active ? style.nextButton : style.deactNextButton} ${
+          active && "animate__animated animate__bounce"
+        }`}
+        onClick={onClick}
+      >
         Next
       </div>
     </div>
@@ -59,31 +64,74 @@ const TestReview = ({ title, children, onClick }) => {
 };
 
 // 리뷰(페널티)에 들어갈 빈칸
-const ReviewAnswer = ({ width, currentOrder, correctAnswer }) => {
+// const ReviewAnswer = ({ width, currentOrder, correctAnswer }) => {
+//   return (
+//     <span
+//       className={`${style.reviewAnswer} ${currentOrder && style.currentOrder}`}
+//     >
+//       {currentOrder ? (
+//         <span className={style.currentInput}>
+//           <input
+//             id="textFild"
+//             style={{ width: width + 50 + "px" }}
+//             type="text"
+//           />
+//           <span className={style.enterButton}>
+//             <span>
+//               <IcoReturn width={15} height={15} />
+//             </span>
+//           </span>
+//         </span>
+//       ) : (
+//         <span className={style.otherInput}>
+//           <input style={{ width: width + "px" }} disabled />
+//         </span>
+//       )}
+//       <div className={style.hintText}>{correctAnswer}</div>
+//     </span>
+//   );
+// };
+const ReviewAnswer = ({ id, width, currentOrder, correctAnswer }) => {
+  const [inputVal, _inputVal] = useState("");
+  const saveVal = (e) => {
+    _inputVal(e.target.value);
+  };
+
   return (
-    <span
-      className={`${style.reviewAnswer} ${currentOrder && style.currentOrder}`}
-    >
-      {currentOrder ? (
-        <span className={style.currentInput}>
-          <input
-            id="textFild"
-            style={{ width: width + 50 + "px" }}
-            type="text"
-          />
-          <span className={style.enterButton}>
-            <span>
-              <IcoReturn width={15} height={15} />
+    <>
+      {correctAnswer != inputVal && (
+        <span
+          className={`${style.reviewAnswer} ${
+            currentOrder && style.currentOrder
+          }`}
+        >
+          {currentOrder ? (
+            <span className={style.currentInput}>
+              <input
+                id={`textFild${id}`}
+                style={{ width: width + "px" }}
+                type="text"
+                value={inputVal}
+                onChange={saveVal}
+              />
+              {/* <span className={style.enterButton}>
+                <span>
+                  <IcoReturn width={15} height={15} />
+                </span>
+              </span> */}
             </span>
-          </span>
-        </span>
-      ) : (
-        <span className={style.otherInput}>
-          <input style={{ width: width + "px" }} disabled />
+          ) : (
+            <span className={style.otherInput}>
+              <input style={{ width: width + "px" }} disabled />
+            </span>
+          )}
+          <div className={style.hintText}>{correctAnswer}</div>
         </span>
       )}
-      <div className={style.hintText}>{correctAnswer}</div>
-    </span>
+      {correctAnswer == inputVal && (
+        <span style={{ color: "#289EE4" }}>{correctAnswer}</span>
+      )}
+    </>
   );
 };
 
@@ -179,7 +227,7 @@ export const ClozeTest1 = () => {
           </Container>
         )}
         {viewTestReview && (
-          <TestReview title={"Test Review"}>
+          <TestReview title={"Test Review"} active={true}>
             <span>London</span>
             <span>is</span>
             <span>the</span>

@@ -4,8 +4,12 @@ import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoPlay, IcoReturn, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
+import { TestResult } from "../extra/TestResult";
+import { StepIntro } from "../extra/StepBoard";
 
 const style = stylesPc;
+
+const readingUnit = "baro";
 
 // 코멘트
 const Comment = ({ text }) => {
@@ -392,6 +396,10 @@ export const ReadingComprehension3 = () => {
 
 // ReadingComprehension4 (EB-2A~,PB-KC_A타입이상,PB-2A_B타입이상)
 export const ReadingComprehension4 = () => {
+  const [introOut, _introOut] = useState(false);
+  const [startQuiz, _startQuiz] = useState(false);
+  const [endQuiz, _endQuiz] = useState(false);
+
   const [viewCorrectAct, _viewCorrectAct] = useState(false);
   const [viewIncorrectAct, _viewIncorrectAct] = useState(false);
 
@@ -453,48 +461,112 @@ export const ReadingComprehension4 = () => {
 
   return (
     <QuizTemplate>
-      <QuizHeader
-        currentQuizNumber={1}
-        totalQuizNumber={4}
-        attempts={3}
-        quizTimer={"20:00"}
-      />
-      <Comment text={"Reading Comprehension"} />
-      <QuizBody>
-        <Gap height={15} />
-        <Container>
-          <Answers>
-            <Gap height={10} />
-            {/* 기본 Question */}
-            <QuestionText text={"Where is London located?"} />
-            {/* 4레벨 이상 음원 재생기능이 설정되어 있는 경우 */}
-            {/* <WordPlayButton question={"Why did Ray like having a dog?"} /> */}
-            <Gap height={10} />
-            {/* 정답액션예시 */}
-            <TextCard
-              number={1}
-              awnserText={"It is located on the River Thames."}
-              viewCorrectAct={viewCorrectAct}
-              onClick={runCorrectAct}
-            />
-            {/* 오답액션예시 */}
-            <TextCard
-              number={2}
-              awnserText={"It is the capital of Europe."}
-              viewIncorrectAct={viewIncorrectAct}
-              onClick={runIncorrectAct}
-            />
-            <TextCard number={3} awnserText={"It is the capital of Ireland."} />
-            <TextCard
-              number={4}
-              awnserText={"It is the capital of the River Thames."}
-            />
-          </Answers>
-        </Container>
-        <Gap height={15} />
-      </QuizBody>
-      {viewCorrectAct && <CorrectPopup />}
-      {viewIncorrectAct && <IncorrectPopup />}
+      {/* 퀴즈 인트로 */}
+      <div
+        className={`animate__animated ${
+          !introOut ? "animate__bounceInRight" : "animate__bounceOutLeft"
+        }`}
+        style={
+          startQuiz
+            ? { display: "none" }
+            : endQuiz
+            ? { display: "none" }
+            : { display: "block" }
+        }
+      >
+        <StepIntro
+          stepOrder={1}
+          quizType={"Reading Comprehension"}
+          comment={"Choose the best answer for each question."}
+          unit={readingUnit}
+          onClick={() => {
+            {
+              _introOut(true);
+              setTimeout(() => {
+                _startQuiz(true);
+              }, 1000);
+            }
+          }}
+        />
+      </div>
+      {/* 퀴즈 화면 */}
+      <div
+        style={
+          startQuiz
+            ? endQuiz
+              ? { display: "none" }
+              : { display: "block" }
+            : { display: "none" }
+        }
+      >
+        <QuizHeader
+          currentQuizNumber={1}
+          totalQuizNumber={4}
+          attempts={3}
+          quizTimer={"20:00"}
+        />
+        <Comment text={"Reading Comprehension"} />
+        <QuizBody>
+          <Gap height={15} />
+          <Container>
+            <Answers>
+              <Gap height={10} />
+              {/* 기본 Question */}
+              <QuestionText text={"Where is London located?"} />
+              {/* 4레벨 이상 음원 재생기능이 설정되어 있는 경우 */}
+              {/* <WordPlayButton question={"Why did Ray like having a dog?"} /> */}
+              <Gap height={10} />
+              {/* 정답액션예시 */}
+              <TextCard
+                number={1}
+                awnserText={"It is located on the River Thames."}
+                viewCorrectAct={viewCorrectAct}
+                onClick={runCorrectAct}
+              />
+              {/* 오답액션예시 */}
+              <TextCard
+                number={2}
+                awnserText={"It is the capital of Europe."}
+                viewIncorrectAct={viewIncorrectAct}
+                onClick={runIncorrectAct}
+              />
+              <TextCard
+                number={3}
+                awnserText={"It is the capital of Ireland."}
+              />
+              <TextCard
+                number={4}
+                awnserText={"It is the capital of the River Thames."}
+              />
+            </Answers>
+          </Container>
+          <Gap height={15} />
+        </QuizBody>
+        {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+        {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
+        {/* Test Result를 보기 위한 임시 버튼 */}
+        <button
+          onClick={() => {
+            _endQuiz(true);
+          }}
+          style={{ position: "fixed", bottom: 0 }}
+        >
+          퀴즈종료
+        </button>
+      </div>
+      {/* Test Result (퀴즈 종료) */}
+      <div style={endQuiz ? { display: "block" } : { display: "none" }}>
+        <TestResult
+          quizType={"Reading Comprehension"}
+          totalScore={100}
+          correctNum={7}
+          incorrectNum={3}
+          stepNum={1}
+          passmark={70}
+          viewWrongAnswers={true}
+          unit={readingUnit}
+        />
+      </div>
     </QuizTemplate>
   );
 };

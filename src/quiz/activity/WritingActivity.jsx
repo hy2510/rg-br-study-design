@@ -3,7 +3,7 @@ import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoArrowUp, IcoPlay, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
-import { SubmitRevision, TestResult1 } from "../extra/TestResult";
+import { SubmitRevision, TestResult } from "../extra/TestResult";
 import {
   RevisionFreeIntro,
   RevisionIntro,
@@ -315,7 +315,7 @@ export const WritingActivity2 = () => {
       </div>
       {/* Test Result (퀴즈 종료) */}
       <div style={endQuiz ? { display: "block" } : { display: "none" }}>
-        {/* <TestResult1
+        {/* <TestResult
           quizType={"Listening Activity"}
           totalScore={100}
           correctNum={4}

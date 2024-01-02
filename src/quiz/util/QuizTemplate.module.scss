@@ -129,7 +129,7 @@ $quizHeaderHeight: 60px;
   }
   @include darkMode {
     .container {
-      background-color: rgba($color: #000, $alpha: 0.2);
+      // background-color: rgba($color: #000, $alpha: 0.2);
     }
   }
 }

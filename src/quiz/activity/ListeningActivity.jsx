@@ -5,7 +5,7 @@ import { IcoPlay, IcoReturn, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
 import { StepIntro } from "../extra/StepBoard";
-import { TestResult1 } from "../extra/TestResult";
+import { TestResult } from "../extra/TestResult";
 
 const style = stylesPc;
 const readingUnit = "goma"; // 리딩유닛이름
@@ -210,7 +210,7 @@ export const ListeningActivity1 = () => {
       </div>
       {/* Test Result (퀴즈 종료) */}
       <div style={endQuiz ? { display: "block" } : { display: "none" }}>
-        <TestResult1
+        <TestResult
           quizType={"Listening Activity"}
           totalScore={100}
           correctNum={4}

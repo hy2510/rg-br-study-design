@@ -1,11 +1,12 @@
 import stylesPc from "./VocabularyTest.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import Gap from "../util/Gap";
 import { IcoPlay, IcoReturn, IcoStop } from "../util/Icons";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
 
 const style = stylesPc;
+const readingUnit = "baro";
 
 // 코멘트
 const Comment = ({ text }) => {
@@ -74,6 +75,74 @@ const HintButton = ({ count, total }) => {
         </div>
       )}
     </div>
+  );
+};
+
+// 리뷰(페널티)
+const TestReview = ({ title, children, onClick, active }) => {
+  return (
+    <div className={`${style.testReview}`}>
+      <div className={style.title}>{title}</div>
+      <div className={style.container}>
+        <div className={style.sentence}>{children}</div>
+      </div>
+      <div
+        className={`${active ? style.nextButton : style.deactNextButton} ${
+          active && "animate__animated animate__bounce"
+        }`}
+        onClick={onClick}
+      >
+        Next
+      </div>
+    </div>
+  );
+};
+
+// 리뷰(페널티)에 들어갈 빈칸
+const ReviewAnswer = ({ id, currentOrder, correctAnswer }) => {
+  const [inputVal, _inputVal] = useState("");
+  const saveVal = (e) => {
+    _inputVal(e.target.value);
+  };
+
+  return (
+    <>
+      {correctAnswer != inputVal && (
+        <span
+          className={`${style.reviewAnswer} ${
+            currentOrder && style.currentOrder
+          }`}
+        >
+          {currentOrder ? (
+            <span className={style.currentInput}>
+              <input
+                id={`textFild${id}`}
+                type="text"
+                value={inputVal}
+                onChange={saveVal}
+              />
+              {/* <span className={style.enterButton}>
+                <span>
+                  <IcoReturn width={15} height={15} />
+                </span>
+              </span> */}
+            </span>
+          ) : (
+            <span className={style.otherInput}>
+              <input disabled />
+            </span>
+          )}
+          <div className={style.hintText}>{correctAnswer}</div>
+        </span>
+      )}
+      {correctAnswer == inputVal && (
+        <span
+          className={`${style.reviewAnswer} ${style.correctAnswer} animate__animated animate__flipInX`}
+        >
+          {correctAnswer}
+        </span>
+      )}
+    </>
   );
 };
 
@@ -297,6 +366,8 @@ export const VocabularyTest2 = () => {
 
 // VocabularyTest-유형3 (EB-2A이상,PB-KC_A타입이상,PB-2A_B타입이상)
 export const VocabularyTest3 = () => {
+  const [viewTestReview, _viewTestReview] = useState(false);
+
   const Container = ({ children }) => {
     return (
       <div className={style.vocabularyTest3}>
@@ -305,30 +376,65 @@ export const VocabularyTest3 = () => {
     );
   };
 
-  const WordCard = ({ word, meaning, sentence, current, total }) => {
+  const WordCard = ({ meaning, sentence, current, total, correctAnswer }) => {
+    const [inputVal, _inputVal] = useState("");
+    const saveVal = (e) => {
+      _inputVal(e.target.value);
+    };
+    const [incorrectAct, _incorrectAct] = useState("");
+
     return (
-      <>
-        <div className={style.wordCard}>
-          <div className={style.wordTyping}>
-            <div style={{ width: 70 }}></div>
-            <div className={style.textField}>
-              <input className={style.inputField} type="text" />
-              <div className={style.wordText}>{word}</div>
-            </div>
-            <div className={style.enterButton}>
+      <div className={style.wordCard}>
+        <div className={style.wordTyping}>
+          <div style={{ width: 70 }}></div>
+          <div
+            className={`${style.textField} animate__animated ${incorrectAct} ${
+              incorrectAct && style.incorrect
+            }`}
+          >
+            {inputVal != correctAnswer && (
+              <>
+                <input
+                  className={style.inputField}
+                  type="text"
+                  value={inputVal}
+                  onChange={saveVal}
+                />
+                <div className={style.wordText}></div>
+              </>
+            )}
+            {inputVal == correctAnswer && (
+              <div
+                className={`${style.correctAnswer} animate__animated animate__flipInX`}
+              >
+                {correctAnswer}
+              </div>
+            )}
+          </div>
+          <div
+            className={style.enterButton}
+            onClick={() => {
+              _incorrectAct("animate__headShake");
+              setTimeout(() => {
+                _incorrectAct("");
+              }, 2000);
+            }}
+          >
+            {inputVal != correctAnswer && (
               <div className={style.enterIcon}>
                 <IcoReturn width={20} height={20} />
               </div>
-            </div>
-          </div>
-          <Gap height={20} />
-          <div className={style.meaning}>
-            <div className={style.txtL}>{meaning}</div>
-            <Gap height={10} />
-            <div className={style.txtP}>{sentence}</div>
+            )}
+            {inputVal == correctAnswer && <></>}
           </div>
         </div>
-      </>
+        <Gap height={20} />
+        <div className={style.meaning}>
+          <div className={style.txtL}>{meaning}</div>
+          <Gap height={10} />
+          <div className={style.txtP}>{sentence}</div>
+        </div>
+      </div>
     );
   };
 
@@ -342,15 +448,24 @@ export const VocabularyTest3 = () => {
       />
       <Comment text={"Vocabulary Test"} />
       <QuizBody>
-        <Container>
-          <Gap height={20} />
-          <WordCard
-            word=""
-            meaning="abj. 겁에 질린, 무서워하는"
-            sentence={"abj. afraid of something"}
-          />
-          <HintButton count={2} total={2} />
-        </Container>
+        {!viewTestReview && (
+          <Container>
+            <Gap height={20} />
+            <WordCard
+              meaning="abj. 겁에 질린, 무서워하는"
+              sentence={"abj. afraid of something"}
+              correctAnswer="scare"
+            />
+            <HintButton count={2} total={2} />
+          </Container>
+        )}
+        {viewTestReview && (
+          <TestReview title={"Test Review"} active={false}>
+            <ReviewAnswer currentOrder={true} correctAnswer={"scare"} />
+            <ReviewAnswer currentOrder={false} correctAnswer={"scare"} />
+            <ReviewAnswer currentOrder={false} correctAnswer={"scare"} />
+          </TestReview>
+        )}
       </QuizBody>
     </QuizTemplate>
   );

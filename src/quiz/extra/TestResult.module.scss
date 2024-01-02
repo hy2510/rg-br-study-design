@@ -5,6 +5,103 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  .scoreBoard {
+    width: 100%;
+    display: grid;
+    gap: 10px;
+    font-family: "Rg-b", sans-serif;
+    .score {
+      display: grid;
+      grid-template-columns: 1fr 5fr 5fr;
+      align-items: center;
+      justify-items: center;
+      &:nth-child(even) {
+        background-color: rgba($color: #eee, $alpha: 0.7);
+        border-radius: 8px;
+        padding: 5px 0;
+        -webkit-backdrop-filter: blur(5px);
+        backdrop-filter: blur(5px);
+      }
+    }
+  }
+  .wrongAnswers {
+    width: calc(100% - 40px);
+    background-color: rgba($color: #000, $alpha: 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    display: grid;
+    gap: 15px;
+    .title {
+      font-size: 1.2em;
+      text-align: center;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      color: rgba($color: #000, $alpha: 0.4);
+    }
+    .quizQuestion {
+      background-color: rgba($color: #fff, $alpha: 0.8);
+      padding: 15px 20px;
+      border-radius: 15px;
+      display: grid;
+      gap: 15px;
+      .questionSentence {
+        color: #000;
+      }
+      .answers {
+        width: 100%;
+        display: grid;
+        gap: 10px;
+        color: #000;
+        font-size: 0.9em;
+      }
+      .correctAnswer {
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        gap: 10px;
+        color: #000;
+        .txtL {
+          font-size: 0.9em;
+        }
+        .correctAnswerNum {
+          font-size: 0.8em;
+          width: 20px;
+          height: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 2px solid #000;
+          border-radius: 100px;
+        }
+      }
+    }
+    .quizAnswer {
+      display: flex;
+      align-items: center;
+      justify-content: start;
+      gap: 5px;
+      .answerNum {
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid #000;
+        border-radius: 100px;
+        font-size: 0.9em;
+        &.wrong {
+          color: #cc383a;
+          border: 2px solid #cc383a;
+        }
+      }
+      .answerText {
+        font-size: 1em;
+        &.wrong {
+          color: #cc383a;
+        }
+      }
+    }
+  }
   .quizType {
     font-family: "Rg-b", sans-serif;
     font-size: 1.2em;
@@ -12,7 +109,7 @@
     background-color: rgba($color: #000, $alpha: 0.8);
     padding: 5px 15px 3px;
     border-radius: 100px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
   }
   .totalScoreContainer {
     width: 100%;
@@ -35,6 +132,7 @@
     min-height: 200px;
     max-height: 30vh;
     overflow-y: scroll;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,6 +151,10 @@
       img {
         height: fit-content;
       }
+    }
+    .passmark {
+      font-family: "RG-b", sans-serif;
+      font-size: 1.2em;
     }
     .board1 {
       width: 100%;
@@ -95,13 +197,6 @@
         grid-template-columns: 1fr 5fr 5fr;
         align-items: center;
         justify-items: center;
-        &:nth-child(odd) {
-          background-color: rgba($color: #eee, $alpha: 0.7);
-          border-radius: 8px;
-          padding: 5px 0;
-          -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-        }
       }
     }
   }
