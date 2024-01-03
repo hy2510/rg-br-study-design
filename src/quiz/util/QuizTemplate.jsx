@@ -40,7 +40,12 @@ export const QuizHeader = ({
         </div>
       </div>
       <div className={style.quizHeaderCol3}>
-        <div className={style.openMenuButton}>
+        <div
+          className={style.openMenuButton}
+          onClick={() => {
+            document.documentElement.requestFullscreen();
+          }}
+        >
           <IcoHbgMenu colorBlack width={24} height={24} />
         </div>
       </div>

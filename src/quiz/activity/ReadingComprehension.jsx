@@ -355,8 +355,11 @@ export const ReadingComprehension3 = () => {
         <Gap height={15} />
         <Container>
           <QuestionImage
+            // imgSrc={
+            //   "https://wcfresource.a1edu.com/newsystem/image/br/eb/kc-001/eb-kc-001-3-1.jpg"
+            // }
             imgSrc={
-              "https://wcfresource.a1edu.com/newsystem/image/br/eb/1a-003/eb-1a-003-s3-q1.jpg"
+              "https://wcfresource.a1edu.com/newsystem/image/br/eb/1a-006/eb-1a-006-s3-q1.jpg"
             }
           />
           <Answers>

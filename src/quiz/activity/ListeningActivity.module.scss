@@ -90,6 +90,7 @@
     -webkit-tap-highlight-color: transparent;
     border: 2px solid #ddd;
     box-shadow: #ddd 0 3px;
+    position: relative;
     &:hover {
       transform: scale(1.02);
     }
@@ -105,6 +106,32 @@
     }
     img {
       width: 100%;
+    }
+    .word {
+      font-family: "Rg-B";
+      font-size: 2em;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      // &.correcr {
+      //   color: #289ee4;
+      // }
+      // &.incorrect {
+      //   color: #b73133;
+      // }
+    }
+    .wordBlock {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba($color: #fff, $alpha: 0.6);
+      -webkit-backdrop-filter: blur(5px);
+      backdrop-filter: blur(5px);
+      border-radius: 20px;
     }
   }
 }

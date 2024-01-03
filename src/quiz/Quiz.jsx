@@ -34,6 +34,7 @@ export default function Quiz() {
   return (
     <>
       <ListeningActivity1 />
+      {/* <ListeningActivity1 />
       <ListeningActivity2 />
       <ListeningActivity3 />
       <ListeningActivity4 />
@@ -55,7 +56,7 @@ export default function Quiz() {
       <ClozeTest1 />
       <ClozeTest2 />
       <WritingActivity1 />
-      <WritingActivity2 />
+      <WritingActivity2 /> */}
     </>
   );
 }

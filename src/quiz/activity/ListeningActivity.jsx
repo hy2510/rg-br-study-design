@@ -94,7 +94,15 @@ export const ListeningActivity1 = () => {
     );
   };
 
-  const WordCard = ({ imgSrc, onClick, viewCorrectAct, viewIncorrectAct }) => {
+  const WordCard = ({
+    imgSrc,
+    onClick,
+    viewCorrectAct,
+    viewIncorrectAct,
+    word,
+  }) => {
+    const [showWord, _showWord] = useState(false);
+
     return (
       <div
         className={`
@@ -107,6 +115,14 @@ export const ListeningActivity1 = () => {
         onClick={onClick}
       >
         <img src={imgSrc} />
+        {showWord && (
+          <>
+            <div className={style.word}>{word}</div>
+            <div
+              className={`${style.wordBlock} animate__animated animate__fadeIn`}
+            ></div>
+          </>
+        )}
       </div>
     );
   };
@@ -169,6 +185,7 @@ export const ListeningActivity1 = () => {
               }
               viewCorrectAct={viewCorrectAct}
               onClick={runCorrectAct}
+              word={"Apple"}
             />
             {/* 오답액션예시 */}
             <WordCard
@@ -177,6 +194,7 @@ export const ListeningActivity1 = () => {
               }
               viewIncorrectAct={viewIncorrectAct}
               onClick={runIncorrectAct}
+              word={"Ant"}
             />
             <WordCard
               imgSrc={
