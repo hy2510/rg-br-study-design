@@ -94,6 +94,12 @@
     &:hover {
       transform: scale(1.02);
     }
+    &.done {
+      cursor: default !important;
+      &:hover {
+        transform: scale(1);
+      }
+    }
     &.correct {
       // background-color: rgba($color: #289ee4, $alpha: 0.2);
       border: 2px solid #289ee4;

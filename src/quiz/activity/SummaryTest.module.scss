@@ -240,6 +240,7 @@
     .awnserText {
       font-family: "Rg-B", sans-serif;
       font-size: 1.2em;
+      width: calc(100% - 50px);
     }
   }
   .answers {
@@ -269,13 +270,32 @@
         }
       }
     }
-    .correctAnswer {
+    @mixin answerStyle {
       font-family: "Rg-B", sans-serif;
       font-size: 1.4em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      &:active {
+        transform: scale(0.98);
+      }
+      .playIcon {
+        font-size: 0.5em;
+        color: rgba($color: #000, $alpha: 0.2);
+      }
+      .highlight {
+        color: blue;
+        transform: scale(1.05);
+        transform-origin: left 0;
+      }
+    }
+    .correctAnswer {
+      @include answerStyle;
     }
     .incorrectAnswer {
-      font-family: "Rg-B", sans-serif;
-      font-size: 1.4em;
+      @include answerStyle;
       color: #d95355;
     }
   }

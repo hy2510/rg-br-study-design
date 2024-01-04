@@ -185,10 +185,20 @@ export const SummaryTest1 = () => {
           </div>
         )}
         {correctAnswer && (
-          <div className={style.correctAnswer}>{correctAnswer}</div>
+          <div className={style.correctAnswer}>
+            <span className={style.playIcon}>►</span>
+            {/* 음원 재생중 하이라이트 */}
+            {/* <span className={style.highlight}>{correctAnswer}</span> */}
+            <span>{correctAnswer}</span>
+          </div>
         )}
         {incorrectAnswer && (
-          <div className={style.incorrectAnswer}>{incorrectAnswer}</div>
+          <div className={style.incorrectAnswer}>
+            <span className={style.playIcon}>►</span>
+            {/* 음원 재생중 하이라이트 */}
+            {/* <span className={style.highlight}>{incorrectAnswer}</span> */}
+            {incorrectAnswer}
+          </div>
         )}
       </div>
     );
@@ -218,8 +228,8 @@ export const SummaryTest1 = () => {
       <QuizBody>
         {!viewTestReview && (
           <Container>
-            {/* <WordPlayButton sentence={"Playback of the completed sentence"} /> */}
-            <WordPlayButton sentence={"Playback (completed sentence)"} />
+            {/* 문제를 다 풀고나면 활성화 됨 */}
+            {/* <WordPlayButton sentence={"Playback (completed sentence)"} /> */}
             <CorrectOrders>
               <CorrectTextCard
                 correctAnswer={
@@ -238,14 +248,20 @@ export const SummaryTest1 = () => {
               {/* 정답예시 */}
               <TextCard
                 number={1}
-                awnserText={"He fed the hens and the ducks, too."}
+                awnserText={
+                  "One day, Sam plays on a gnarled tree on a hill that transforms into a pirate ship like magic."
+                }
+                // awnserText={"He fed the hens and the ducks, too."}
                 viewCorrectAct={viewCorrectAct}
                 onClick={runCorrectAct}
               />
               {/* 오답예시 */}
               <TextCard
                 number={2}
-                awnserText={"Then he petted his puppy in the shed."}
+                awnserText={
+                  "Sam guards the ship when Agu, a new friend, approaches and wants to join, but she hesitates at first."
+                }
+                // awnserText={"Then he petted his puppy in the shed."}
                 viewIncorrectAct={viewIncorrectAct}
                 onClick={runIncorrectAct}
               />

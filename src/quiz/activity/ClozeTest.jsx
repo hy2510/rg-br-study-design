@@ -187,7 +187,7 @@ export const ClozeTest1 = () => {
     return <div className={style.questionBox}>{children}</div>;
   };
 
-  const [viewTestReview, _viewTestReview] = useState(false);
+  const [viewTestReview, _viewTestReview] = useState(true);
 
   return (
     <QuizTemplate>
