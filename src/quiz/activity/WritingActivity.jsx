@@ -75,10 +75,11 @@ export const WritingActivity1 = () => {
     onClick,
     viewCorrectAct,
     viewIncorrectAct,
+    sendTop,
   }) => {
     return (
       <div
-        className={`${style.textCard} ${style.send} ${
+        className={`${style.textCard} ${sendTop && style.send} ${
           viewCorrectAct && "animate__animated animate__fadeIn"
         } ${viewIncorrectAct && "animate__animated animate__headShake"}
             `}
@@ -120,6 +121,8 @@ export const WritingActivity1 = () => {
           </EnterBox>
           <CorrectDirection />
           <Answers>
+            <TextCard awnserText="Spring" sendTop={true} />
+            <TextCard awnserText="is" sendTop={true} />
             <TextCard awnserText="a good" />
             <TextCard awnserText="time" />
             <TextCard awnserText="to see" />

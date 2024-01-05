@@ -72,10 +72,14 @@
       transform: scale(1.05);
     }
     &.send {
+      cursor: default;
       background-color: rgba($color: #ccc, $alpha: 0.5);
       box-shadow: none;
       color: rgba($color: #555, $alpha: 0.3);
       border: none;
+      &:hover {
+        transform: scale(1);
+      }
     }
     .awnserText {
       font-family: "Rg-B", sans-serif;
