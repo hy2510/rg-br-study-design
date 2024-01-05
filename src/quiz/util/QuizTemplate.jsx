@@ -5,7 +5,7 @@ import SideMenu from "../../side-menu/SideMenu";
 import { useState } from "react";
 
 const style = stylesPc;
-const theme = "theme-jungle";
+const theme = "theme-antarctica";
 
 // 퀴즈템플릿
 export const QuizTemplate = ({ children }) => {
@@ -20,6 +20,7 @@ export const QuizHeader = ({
   quizTimer,
 }) => {
   const [viewSideMenu, _viewSideMenu] = useState(false);
+  const [isFullScreen, _isFullScreen] = useState(false);
 
   return (
     <>
@@ -68,6 +69,25 @@ export const QuizHeader = ({
           stepTitle="Listening Activity"
         />
       )}
+      <div
+        style={{
+          position: "fixed",
+          right: "10px",
+          bottom: "10px",
+          cursor: "pointer",
+        }}
+        onClick={() => {
+          if (!isFullScreen) {
+            document.body.requestFullscreen();
+            _isFullScreen(true);
+          } else {
+            document.exitFullscreen();
+            _isFullScreen(false);
+          }
+        }}
+      >
+        {!isFullScreen ? "Full Screen" : "Exit Full Screen"}
+      </div>
     </>
   );
 };

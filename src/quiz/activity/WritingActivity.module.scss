@@ -71,6 +71,12 @@
     &:hover {
       transform: scale(1.05);
     }
+    &.send {
+      background-color: rgba($color: #ccc, $alpha: 0.5);
+      box-shadow: none;
+      color: rgba($color: #555, $alpha: 0.3);
+      border: none;
+    }
     .awnserText {
       font-family: "Rg-B", sans-serif;
       font-size: 1.2em;

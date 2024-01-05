@@ -78,7 +78,7 @@ export const WritingActivity1 = () => {
   }) => {
     return (
       <div
-        className={`${style.textCard} ${
+        className={`${style.textCard} ${style.send} ${
           viewCorrectAct && "animate__animated animate__fadeIn"
         } ${viewIncorrectAct && "animate__animated animate__headShake"}
             `}
