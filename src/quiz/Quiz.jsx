@@ -1,4 +1,3 @@
-import "./fonts/custom-font.scss";
 import {
   ListeningActivity1,
   ListeningActivity2,

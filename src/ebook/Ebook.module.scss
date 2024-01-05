@@ -1,0 +1,24 @@
+.ebook {
+  // font-size: 16px;
+  position: relative;
+  // width: 100%;
+  width: 100vw;
+  background-blend-mode: multiply;
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    // -webkit-backdrop-filter: blur(5px);
+    // backdrop-filter: blur(5px);
+    z-index: 0;
+  }
+  // @include landscape {
+  //   padding-top: 0;
+  // }
+}

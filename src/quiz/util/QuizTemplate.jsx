@@ -1,6 +1,8 @@
 import stylesPc from "./QuizTemplate.module.scss";
 import "../themes/theme.scss";
 import { IcoHbgMenu, IcoHeart, IcoTimer } from "./Icons";
+import SideMenu from "../../side-menu/SideMenu";
+import { useState } from "react";
 
 const style = stylesPc;
 const theme = "theme-jungle";
@@ -17,39 +19,56 @@ export const QuizHeader = ({
   attempts,
   quizTimer,
 }) => {
+  const [viewSideMenu, _viewSideMenu] = useState(false);
+
   return (
-    <div
-      className={`${style.quizHeader} animate__animated animate__slideInDown`}
-    >
-      <div className={style.quizHeaderCol1}>
-        <div className={style.quizNumber}>
-          {currentQuizNumber}
-          <span style={{ fontSize: "16px" }}>/</span>
-          {totalQuizNumber}
-          <div className={style.attempts}>
-            <IcoHeart colorRed width={18} height={18} />
-            <div className={style.txtL}>{attempts}</div>
+    <>
+      <div
+        className={`${style.quizHeader} animate__animated animate__slideInDown`}
+      >
+        <div className={style.quizHeaderCol1}>
+          <div className={style.quizNumber}>
+            {currentQuizNumber}
+            <span style={{ fontSize: "16px" }}>/</span>
+            {totalQuizNumber}
+            <div className={style.attempts}>
+              <IcoHeart colorRed width={18} height={18} />
+              <div className={style.txtL}>{attempts}</div>
+            </div>
+          </div>
+          <div className={style.qMark}></div>
+        </div>
+        <div className={style.quizHeaderCol2}>
+          <div className={style.quizTimer}>
+            <IcoTimer colorBlack width={24} height={24} />
+            {quizTimer}
           </div>
         </div>
-        <div className={style.qMark}></div>
-      </div>
-      <div className={style.quizHeaderCol2}>
-        <div className={style.quizTimer}>
-          <IcoTimer colorBlack width={24} height={24} />
-          {quizTimer}
+        <div className={style.quizHeaderCol3}>
+          <div
+            className={style.openMenuButton}
+            onClick={() => {
+              _viewSideMenu(true);
+            }}
+          >
+            <IcoHbgMenu colorBlack width={24} height={24} />
+          </div>
         </div>
       </div>
-      <div className={style.quizHeaderCol3}>
-        <div
-          className={style.openMenuButton}
-          onClick={() => {
-            document.documentElement.requestFullscreen();
-          }}
-        >
-          <IcoHbgMenu colorBlack width={24} height={24} />
-        </div>
-      </div>
-    </div>
+      {viewSideMenu && (
+        <SideMenu
+          isEBook={false}
+          isEBookReadCompleted={true}
+          isQuiz={true}
+          isPbook={false}
+          viewSideMenu={viewSideMenu}
+          _viewSideMenu={_viewSideMenu}
+          bookCode="EB-KA-001"
+          bookTitle="Alligators Apples"
+          stepTitle="Listening Activity"
+        />
+      )}
+    </>
   );
 };
 
