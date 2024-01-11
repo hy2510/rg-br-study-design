@@ -115,6 +115,15 @@ const ReviewAnswer = ({ id, width, currentOrder, correctAnswer }) => {
   );
 };
 
+// 다음스텝으로넘어가기버튼
+const GoToTestButton = () => {
+  return (
+    <div className={`${style.goToTestButton} animate__animated animate__flash`}>
+      Go to Test
+    </div>
+  );
+};
+
 // SummaryTest1 (EB-1A~,PB-KC 이상)
 export const SummaryTest1 = () => {
   const [viewTestReview, _viewTestReview] = useState(false);
@@ -271,6 +280,8 @@ export const SummaryTest1 = () => {
               />
             </Answers>
             <HintButton count={1} total={2} />
+            {/* 문제를 다 풀고나면 활성화 됨 */}
+            {/* <GoToTestButton /> */}
           </Container>
         )}
         {viewTestReview && (
