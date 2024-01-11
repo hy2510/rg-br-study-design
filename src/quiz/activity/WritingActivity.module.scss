@@ -34,6 +34,29 @@
   }
 }
 
+.goNextButton {
+  cursor: pointer;
+  min-width: 150px;
+  text-align: center;
+  border-radius: 15px;
+  border-top: 1px solid #289ee4;
+  border-right: 1px solid #289ee4;
+  border-bottom: 3px solid #289ee4;
+  border-left: 1px solid #289ee4;
+  background: linear-gradient(180deg, #5fc3ff 0%, #38b4fe 85.42%, #5fc3ff 100%);
+  color: #fff;
+  font-size: 1.2em;
+  font-family: "Rg-B", sans-serif;
+  width: fit-content;
+  padding: 15px 20px;
+  margin: auto;
+  transform: scale(1);
+  transition: all 0.2s;
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
 .writingActivity1 {
   .container {
     width: 100%;

@@ -42,6 +42,15 @@ const WordPlayButton = () => {
   );
 };
 
+// 다음문제로넘어가기버튼
+const GoNextButton = () => {
+  return (
+    <div className={`${style.goNextButton} animate__animated animate__flash`}>
+      Next
+    </div>
+  );
+};
+
 // WritingActivity1
 export const WritingActivity1 = () => {
   const Container = ({ children }) => {
@@ -128,6 +137,8 @@ export const WritingActivity1 = () => {
             <TextCard awnserText="to see" />
             <TextCard awnserText="bears." />
           </Answers>
+          {/* 다음 문제로 넘어가기 전 활성화 됨 */}
+          <GoNextButton />
         </Container>
         <Gap height={15} />
       </QuizBody>
