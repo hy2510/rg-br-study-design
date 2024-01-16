@@ -55,22 +55,39 @@ export const TestResult = ({
             <span className={style.questionText}>{questionText}</span>
           </div>
           <div className={style.answers}>{children}</div>
-          <div className={style.correctAnswer}>
+          {/* <div className={style.correctAnswer}>
             <div className={style.txtL}>Correct Answer</div>
             <div className={style.correctAnswerNum}>{correctAnswerNum}</div>
-          </div>
+          </div> */}
         </div>
       );
     };
 
-    const QuizAnswer = ({ anserNum, answerText, wrongAnswer }) => {
+    const QuizAnswer = ({
+      anserNum,
+      answerText,
+      correctAnswer,
+      wrongAnswer,
+    }) => {
       return (
+        // <div className={style.quizAnswer}>
+        //   <div className={`${style.answerNum} ${wrongAnswer && style.wrong}`}>
+        //     {anserNum}
+        //   </div>
+        //   <div className={`${style.answerText} ${wrongAnswer && style.wrong}`}>
+        //     {answerText}
+        //   </div>
+        // </div>
         <div className={style.quizAnswer}>
-          <div className={`${style.answerNum} ${wrongAnswer && style.wrong}`}>
-            {anserNum}
+          <div className={style.answers}>
+            <span className={style.correctIcon}></span>
+            {/* <span className={style.label}>Correct:</span> */}
+            <span className={style.correctAnswer}>{correctAnswer}</span>
           </div>
-          <div className={`${style.answerText} ${wrongAnswer && style.wrong}`}>
-            {answerText}
+          <div className={style.answers}>
+            <span className={style.incorrectIcon}></span>
+            {/* <span className={style.label}>Wrong:</span> */}
+            <div className={style.wrongAnswer}>{wrongAnswer}</div>
           </div>
         </div>
       );
@@ -84,13 +101,12 @@ export const TestResult = ({
           questionText={"How does Joon feel about the new teacher?"}
           correctAnswerNum={3}
         >
-          <QuizAnswer anserNum={1} answerText={"He is joyfull."} />
-          <QuizAnswer anserNum={2} answerText={"He is happy."} wrongAnswer />
-          <QuizAnswer anserNum={3} answerText={"He is scared."} />
-          <QuizAnswer anserNum={4} answerText={"He is scared."} />
-          <div style={{ borderBottom: "1px dotted #00000050" }}></div>
+          <QuizAnswer
+            correctAnswer={"He is joyfull."}
+            wrongAnswer={"He is scared."}
+          />
         </QuizQuestion>
-        <QuizQuestion
+        {/* <QuizQuestion
           questionNum={2}
           questionText={"How does Joon feel about the new teacher?"}
           correctAnswerNum={3}
@@ -100,18 +116,7 @@ export const TestResult = ({
           <QuizAnswer anserNum={3} answerText={"He is scared."} />
           <QuizAnswer anserNum={4} answerText={"He is scared."} />
           <div style={{ borderBottom: "1px dotted #00000050" }}></div>
-        </QuizQuestion>
-        <QuizQuestion
-          questionNum={3}
-          questionText={"How does Joon feel about the new teacher?"}
-          correctAnswerNum={3}
-        >
-          <QuizAnswer anserNum={1} answerText={"He is joyfull."} />
-          <QuizAnswer anserNum={2} answerText={"He is happy."} wrongAnswer />
-          <QuizAnswer anserNum={3} answerText={"He is scared."} />
-          <QuizAnswer anserNum={4} answerText={"He is scared."} />
-          <div style={{ borderBottom: "1px dotted #00000050" }}></div>
-        </QuizQuestion>
+        </QuizQuestion> */}
       </div>
     );
   };
