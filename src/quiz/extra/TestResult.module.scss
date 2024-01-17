@@ -10,6 +10,18 @@
     display: grid;
     gap: 10px;
     font-family: "Rg-b", sans-serif;
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 5fr 5fr;
+      align-items: center;
+      justify-items: center;
+      &.count1 {
+        grid-template-columns: 1fr 10fr;
+      }
+      &.count3 {
+        grid-template-columns: 1fr 3fr 3fr 3fr;
+      }
+    }
     .score {
       display: grid;
       grid-template-columns: 1fr 5fr 5fr;
