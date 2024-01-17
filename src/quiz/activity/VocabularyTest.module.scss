@@ -59,16 +59,17 @@
   border-radius: 100px;
   transition: all 0.2s;
   position: relative;
+  z-index: 100;
   &:active {
     transform: scale(0.9);
   }
 }
 .hintPopup {
   position: absolute;
-  top: 100%;
+  bottom: calc(100% + 60px);
   left: 50%;
   right: 50%;
-  z-index: 5;
+  z-index: 999;
   transform: translate(-50%);
   min-width: 400px;
   padding: 10px 20px;
@@ -82,11 +83,11 @@
   &::before {
     content: "";
     position: absolute;
-    bottom: 100%;
-    border-top: 10px solid transparent;
+    top: 100%;
+    border-top: 10px solid #fff;
     border-right: 10px solid transparent;
     border-left: 10px solid transparent;
-    border-bottom: 10px solid #fff;
+    border-bottom: 10px solid transparent;
   }
 }
 .screenBlock {
@@ -499,7 +500,7 @@
           position: absolute;
           top: 0;
           left: 0;
-          z-index: 1;
+          // z-index: 1;
         }
         .correctAnswer {
           display: flex;
