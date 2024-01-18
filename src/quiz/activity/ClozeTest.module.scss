@@ -48,11 +48,11 @@
 }
 
 .testReview {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
   padding: 20px;
   .title {
     font-size: 1.4em;
@@ -183,7 +183,7 @@
   }
 }
 
-.clozeTest1 {
+.clozeTest2 {
   position: relative;
   .container {
     display: grid;
@@ -282,7 +282,7 @@
   }
 }
 
-.clozeTest2 {
+.clozeTest1 {
   .container {
     display: grid;
     gap: 15px;

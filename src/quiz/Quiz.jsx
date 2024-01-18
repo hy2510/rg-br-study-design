@@ -32,7 +32,7 @@ const screenHeight = window.innerHeight + "px";
 export default function Quiz() {
   return (
     <>
-      <VocabularyTest3 />
+      <ClozeTest2 />
       {/* <ListeningActivity1 />
       <ListeningActivity2 />
       <ListeningActivity3 />

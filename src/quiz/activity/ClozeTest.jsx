@@ -5,7 +5,6 @@ import { IcoArrowUp, IcoPlay, IcoStop, IcoReturn } from "../util/Icons";
 import Gap from "../util/Gap";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
 import { TrueSentencePopup } from "../extra/TrueSentencePopup";
-import { TestReview3 } from "../extra/TestReview";
 
 const style = stylesPc;
 
@@ -135,11 +134,11 @@ const ReviewAnswer = ({ id, width, currentOrder, correctAnswer }) => {
   );
 };
 
-// ClozeTest1
-export const ClozeTest1 = () => {
+// ClozeTest2
+export const ClozeTest2 = () => {
   const Container = ({ children }) => {
     return (
-      <div className={style.clozeTest1}>
+      <div className={style.clozeTest2}>
         <div className={style.container}>{children}</div>
       </div>
     );
@@ -187,7 +186,7 @@ export const ClozeTest1 = () => {
     return <div className={style.questionBox}>{children}</div>;
   };
 
-  const [viewTestReview, _viewTestReview] = useState(true);
+  const [viewTestReview, _viewTestReview] = useState(false);
 
   return (
     <QuizTemplate>
@@ -252,8 +251,8 @@ export const ClozeTest1 = () => {
   );
 };
 
-// ClozeTest2
-export const ClozeTest2 = () => {
+// ClozeTest1
+export const ClozeTest1 = () => {
   const [viewCorrectAct, _viewCorrectAct] = useState(false);
   const [viewIncorrectAct, _viewIncorrectAct] = useState(false);
 
@@ -273,7 +272,7 @@ export const ClozeTest2 = () => {
 
   const Container = ({ children }) => {
     return (
-      <div className={style.clozeTest2}>
+      <div className={style.clozeTest1}>
         <div className={style.container}>{children}</div>
       </div>
     );
