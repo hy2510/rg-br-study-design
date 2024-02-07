@@ -326,6 +326,8 @@ export const ClozeTest1 = () => {
     return <div className={style.questionBox}>{children}</div>;
   };
 
+  const [viewTrueSentence, _viewTrueSentence] = useState(true);
+
   return (
     <QuizTemplate>
       <QuizHeader
@@ -336,43 +338,51 @@ export const ClozeTest1 = () => {
       />
       <Comment text={"Cloze Test"} />
       <QuizBody>
-        <Container>
-          <Gap height={0} />
-          <WordPlayButton sentence={"Playback"} />
-          <QuestionBox>
-            <span>London</span>
-            <span>is</span>
-            <span>the</span>
-            <AnswerBox
-              correctAnswer={viewCorrectAct ? "capital" : ""}
-              incorrectAnswer={viewIncorrectAct ? "capital" : ""} // 마지막 기회시 정답을 빨간색으로 표시함
-            />
-            <span>city</span>
-            <span>of</span>
-            <span>the</span>
-            <span>United</span>
-            <span>Kingdom.</span>
-          </QuestionBox>
-          <Gap height={30} />
-          <Answers>
-            {/* 정답예시 */}
-            <TextCard
-              number={1}
-              awnserText={"capital"}
-              onClick={runCorrectAct}
-              viewCorrectAct={viewCorrectAct}
-            />
-            {/* 오답예시 */}
-            <TextCard
-              number={2}
-              awnserText={"sub"}
-              onClick={runIncorrectAct}
-              viewIncorrectAct={viewIncorrectAct}
-            />
-            <TextCard number={3} awnserText={"apple"} />
-            <TextCard number={4} awnserText={"ant"} />
-          </Answers>
-        </Container>
+        {!viewTrueSentence && (
+          <Container>
+            <Gap height={0} />
+            <WordPlayButton sentence={"Playback"} />
+            <QuestionBox>
+              <span>London</span>
+              <span>is</span>
+              <span>the</span>
+              <AnswerBox
+                correctAnswer={viewCorrectAct ? "capital" : ""}
+                incorrectAnswer={viewIncorrectAct ? "capital" : ""} // 마지막 기회시 정답을 빨간색으로 표시함
+              />
+              <span>city</span>
+              <span>of</span>
+              <span>the</span>
+              <span>United</span>
+              <span>Kingdom.</span>
+            </QuestionBox>
+            <Gap height={30} />
+            <Answers>
+              {/* 정답예시 */}
+              <TextCard
+                number={1}
+                awnserText={"capital"}
+                onClick={runCorrectAct}
+                viewCorrectAct={viewCorrectAct}
+              />
+              {/* 오답예시 */}
+              <TextCard
+                number={2}
+                awnserText={"sub"}
+                onClick={runIncorrectAct}
+                viewIncorrectAct={viewIncorrectAct}
+              />
+              <TextCard number={3} awnserText={"apple"} />
+              <TextCard number={4} awnserText={"ant"} />
+            </Answers>
+          </Container>
+        )}
+        {viewTrueSentence && (
+          <TrueSentencePopup
+            title={"Correctt Sentence"}
+            sentence={"Bears sleep for a long time in the winter."}
+          />
+        )}
       </QuizBody>
       {viewCorrectAct && <CorrectPopup />}
       {viewIncorrectAct && <IncorrectPopup />}
