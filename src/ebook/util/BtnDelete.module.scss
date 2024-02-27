@@ -1,0 +1,17 @@
+.btnDelete {
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  background-color: rgba($color: #000, $alpha: 0.15);
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+  background-image: url("src/quiz/images/delete_white.svg");
+  background-size: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  cursor: pointer;
+}

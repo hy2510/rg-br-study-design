@@ -10,9 +10,16 @@ import {
   EbookPageArrows,
   EbookVocabularyNote,
   EbookBodyMobileP,
+  MovieContents,
+  EbookSpeakBar,
+  SpeakGoodJob,
+  SpeakTryAgain,
+  SpeakResultExcellent,
+  SpeakResultGoodEffort,
 } from "./EbookComponent";
 import { useImportPageImage } from "./EBookHook";
 import stylePc from "./Ebook.module.scss";
+import EbookRating from "../quiz/extra/EbookRating";
 
 const style = stylePc;
 
@@ -122,113 +129,137 @@ export default function Ebook() {
 
   return (
     // 배경 이미지는 해당 eBook의 추천 도서에서 사용되는 배경 이미지가 나와야 함
-    <div
-      className={style.ebook}
-      style={{
-        backgroundImage: `url("https://wcfresource.a1edu.com/newsystem/image/br/bgebook/aa-1.jpg")`,
-        height: windowHeight,
-      }}
-    >
-      {IsMobile() ? (
-        <>
-          <EbookBodyMobileP
-            pageAniFX={pageAniFX}
-            _touchStart={_touchStart}
-            _touchEnd={_touchEnd}
-          >
-            <EbookPage
-              pageWidth={pageWidth}
-              pageImage={pageImgSrc[pageNumber - 1]}
-              pagesScale={pagesScale}
-              pageNumber={pageNumber}
-              pageStyle={ebPageData[pageNumber - 1].pageStyle}
-              pageContents={ebPageData[pageNumber - 1].pageContents}
+    <>
+      <div
+        className={style.ebook}
+        style={{
+          backgroundImage: `url("https://wcfresource.a1edu.com/newsystem/image/br/bgebook/aa-1.jpg")`,
+          height: windowHeight,
+        }}
+      >
+        {IsMobile() ? (
+          <>
+            <EbookBodyMobileP
+              pageAniFX={pageAniFX}
+              _touchStart={_touchStart}
+              _touchEnd={_touchEnd}
+            >
+              <EbookPage
+                pageWidth={pageWidth}
+                pageImage={pageImgSrc[pageNumber - 1]}
+                pagesScale={pagesScale}
+                pageNumber={pageNumber}
+                pageStyle={ebPageData[pageNumber - 1].pageStyle}
+                pageContents={ebPageData[pageNumber - 1].pageContents}
+              />
+            </EbookBodyMobileP>
+            {/* 북리딩 모드 */}
+            <EbookPlayBar
+              progressWidth={progressWidth}
+              turnPageLeft={turnPageLeft}
+              turnPageRight={turnPageRight}
+              isAudioPlay={isAudioPlay}
+              _isAudioPlay={_isAudioPlay}
+              isAudioPause={isAudioPause}
+              _isAudioPause={_isAudioPause}
+              _viewSideMenu={_viewSideMenu}
+              _viewVocaList={_viewVocaList}
+              touchStart={touchStart}
+              touchEnd={touchEnd}
+              _touchStart={_touchStart}
+              _touchEnd={_touchEnd}
+              IsMobile={IsMobile}
             />
-          </EbookBodyMobileP>
-          <EbookPlayBar
-            progressWidth={progressWidth}
-            turnPageLeft={turnPageLeft}
-            turnPageRight={turnPageRight}
-            isAudioPlay={isAudioPlay}
-            _isAudioPlay={_isAudioPlay}
-            isAudioPause={isAudioPause}
-            _isAudioPause={_isAudioPause}
+            {/* 스피크 모드 */}
+            {/* <EbookSpeakBar progressWidth={progressWidth} /> */}
+            {/* <SpeakGoodJob /> */}
+            {/* <SpeakTryAgain /> */}
+            {/* <SpeakResultExcellent /> */}
+            {/* <SpeakResultGoodEffort /> */}
+          </>
+        ) : (
+          <>
+            <EbookHeader _viewSideMenu={_viewSideMenu} />
+            <EbookBodyPC
+              pageWidth={pageWidth}
+              pagesScale={pagesScale}
+              pageAniFX={pageAniFX}
+            >
+              <EbookPage
+                pageWidth={pageWidth}
+                pageHeight={pageHeight}
+                pagesScale={pagesScale}
+                pageImage={pageImgSrc[pageNumber - 1]}
+                pageNumber={pageNumber}
+                pageStyle={ebPageData[pageNumber - 1].pageStyle}
+                pageContents={ebPageData[pageNumber - 1].pageContents}
+              />
+              <EbookPage
+                pageWidth={pageWidth}
+                pageHeight={pageHeight}
+                pagesScale={pagesScale}
+                pageImage={pageImgSrc[pageNumber]}
+                pageNumber={pageNumber}
+                pageStyle={ebPageData[pageNumber].pageStyle}
+                pageContents={ebPageData[pageNumber].pageContents}
+              />
+            </EbookBodyPC>
+            <EbookPageArrows
+              pageWidth={pageWidth}
+              pagesScale={pagesScale}
+              turnPageLeft={turnPageLeft}
+              turnPageRight={turnPageRight}
+            />
+            {/* 북리딩 모드 */}
+            {/* <EbookPlayBar
+              progressWidth={progressWidth}
+              turnPageLeft={turnPageLeft}
+              turnPageRight={turnPageRight}
+              isAudioPlay={isAudioPlay}
+              _isAudioPlay={_isAudioPlay}
+              isAudioPause={isAudioPause}
+              _isAudioPause={_isAudioPause}
+              isFullScreen={isFullScreen}
+              _isFullScreen={_isFullScreen}
+              _viewVocaList={_viewVocaList}
+              IsMobile={IsMobile}
+            /> */}
+            {/* 스피크 모드 */}
+            <EbookSpeakBar progressWidth={progressWidth} />
+            {/* <SpeakGoodJob /> */}
+            {/* <SpeakTryAgain /> */}
+            {/* <SpeakResultExcellent /> */}
+            {/* <SpeakResultGoodEffort /> */}
+          </>
+        )}
+        {viewSideMenu && (
+          <SideMenu
+            isEBook={true}
+            isEBookReadCompleted={true}
+            isQuiz={false}
+            isPbook={false}
+            viewSideMenu={viewSideMenu}
             _viewSideMenu={_viewSideMenu}
+            bookCode="EB-KA-001"
+            bookTitle="Alligators Apples"
+            stepTitle="Listening Activity"
+          />
+        )}
+        {viewVocaList && (
+          <EbookVocabularyNote
+            viewVocaList={viewVocaList}
             _viewVocaList={_viewVocaList}
-            touchStart={touchStart}
-            touchEnd={touchEnd}
-            _touchStart={_touchStart}
-            _touchEnd={_touchEnd}
-            IsMobile={IsMobile}
           />
-        </>
-      ) : (
-        <>
-          <EbookHeader _viewSideMenu={_viewSideMenu} />
-          <EbookBodyPC
-            pageWidth={pageWidth}
-            pagesScale={pagesScale}
-            pageAniFX={pageAniFX}
-          >
-            <EbookPage
-              pageWidth={pageWidth}
-              pageHeight={pageHeight}
-              pagesScale={pagesScale}
-              pageImage={pageImgSrc[pageNumber - 1]}
-              pageNumber={pageNumber}
-              pageStyle={ebPageData[pageNumber - 1].pageStyle}
-              pageContents={ebPageData[pageNumber - 1].pageContents}
-            />
-            <EbookPage
-              pageWidth={pageWidth}
-              pageHeight={pageHeight}
-              pagesScale={pagesScale}
-              pageImage={pageImgSrc[pageNumber]}
-              pageNumber={pageNumber}
-              pageStyle={ebPageData[pageNumber].pageStyle}
-              pageContents={ebPageData[pageNumber].pageContents}
-            />
-          </EbookBodyPC>
-          <EbookPageArrows
-            pageWidth={pageWidth}
-            pagesScale={pagesScale}
-            turnPageLeft={turnPageLeft}
-            turnPageRight={turnPageRight}
-          />
-          <EbookPlayBar
-            progressWidth={progressWidth}
-            turnPageLeft={turnPageLeft}
-            turnPageRight={turnPageRight}
-            isAudioPlay={isAudioPlay}
-            _isAudioPlay={_isAudioPlay}
-            isAudioPause={isAudioPause}
-            _isAudioPause={_isAudioPause}
-            isFullScreen={isFullScreen}
-            _isFullScreen={_isFullScreen}
-            _viewVocaList={_viewVocaList}
-            IsMobile={IsMobile}
-          />
-        </>
-      )}
-      {viewSideMenu && (
-        <SideMenu
-          isEBook={true}
-          isEBookReadCompleted={true}
-          isQuiz={false}
-          isPbook={false}
-          viewSideMenu={viewSideMenu}
-          _viewSideMenu={_viewSideMenu}
-          bookCode="EB-KA-001"
-          bookTitle="Alligators Apples"
-          stepTitle="Listening Activity"
-        />
-      )}
-      {viewVocaList && (
-        <EbookVocabularyNote
-          viewVocaList={viewVocaList}
-          _viewVocaList={_viewVocaList}
-        />
-      )}
-    </div>
+        )}
+      </div>
+      {/* Rating 화면 */}
+      {/* <EbookRating /> */}
+      {/* 무비 화면 */}
+      {/* <MovieContents
+        videoSrc={
+          "https://moviebook.a1edu.com/newsystem/moviebook/eb-ka-001.mp4"
+        }
+      /> */}
+    </>
   );
 }

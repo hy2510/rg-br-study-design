@@ -366,7 +366,7 @@ export const VocabularyTest2 = () => {
 
 // VocabularyTest-유형3 (EB-2A이상,PB-KC_A타입이상,PB-2A_B타입이상)
 export const VocabularyTest3 = () => {
-  const [viewTestReview, _viewTestReview] = useState(false);
+  const [viewTestReview, _viewTestReview] = useState(true);
 
   const Container = ({ children }) => {
     return (

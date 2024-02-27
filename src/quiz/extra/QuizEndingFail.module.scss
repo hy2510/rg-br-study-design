@@ -1,0 +1,72 @@
+.quizEndingFail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba($color: #000, $alpha: 0.7);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: RG-B;
+  .container {
+    $ratio: 0.8;
+    width: calc(577px * $ratio);
+    height: calc(543px * $ratio);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    animation-duration: 0.2s;
+    padding-top: 50px;
+    .groupTryAgin {
+      width: calc(577px * $ratio);
+      height: calc(543px * $ratio);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      .imgUnit {
+        width: calc(344px * $ratio);
+        height: calc(270px * $ratio);
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: relative;
+        z-index: 2;
+      }
+      .imgTryAgainRibbon {
+        width: calc(482px * $ratio);
+        height: calc(125px * $ratio);
+        flex-shrink: 0;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url("src/quiz/images/quiz_ending/img_try_again_ribbon.svg");
+      }
+    }
+    .groupScore {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+      justify-content: center;
+      span {
+        color: #aaa;
+        font-size: 2.5em;
+        margin-bottom: 8px;
+        &:nth-child(1) {
+          color: #fff;
+          font-size: 3.5em;
+          margin-bottom: 0;
+        }
+        &:nth-child(2) {
+          font-size: 2em;
+          margin-bottom: 15px;
+        }
+      }
+    }
+  }
+}

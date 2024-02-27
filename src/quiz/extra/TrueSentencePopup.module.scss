@@ -17,6 +17,9 @@
     font-size: 1.2em;
     font-weight: 500;
     color: rgba($color: #000, $alpha: 0.4);
+    @media (prefers-color-scheme: dark) {
+      color: rgba($color: #fff, $alpha: 0.4);
+    }
   }
 }
 
@@ -28,6 +31,9 @@
   right: 0;
   bottom: 0;
   padding: 20px;
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba($color: #000, $alpha: 0.3);
+  }
   .title {
     font-size: 1.4em;
     font-family: "Rg-b", sans-serif;
@@ -41,6 +47,9 @@
     background-color: rgba($color: #000, $alpha: 0.03);
     border-radius: 15px;
     margin-bottom: 15px;
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba($color: #fff, $alpha: 0.03);
+    }
     .sentence {
       font-size: 1.4em;
       font-family: "Rg-b", sans-serif;

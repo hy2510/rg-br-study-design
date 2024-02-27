@@ -26,6 +26,14 @@ import ico_speed_10 from "./images/ico_speed10.svg";
 import ico_speed_12 from "./images/ico_speed12.svg";
 import ico_speed_15 from "./images/ico_speed15.svg";
 import stylePc from "./EbookComponent.module.scss";
+import {
+  LottieAudioPlayAni,
+  LottieExcellentAni,
+  LottieGoodEffortAni,
+  LottieRecordAni,
+  LottieUserSayAni,
+} from "../quiz/util/LottieAni";
+import BtnDelete from "./util/BtnDelete";
 
 const style = stylePc;
 
@@ -411,6 +419,205 @@ export const EbookPlayBar = ({
   );
 };
 
+// eBook 스피크바
+export const EbookSpeakBar = ({ progressWidth }) => {
+  const [isOn, _isOn] = useState(false);
+  const [isReady, _isReady] = useState(true);
+  const [isListening, _isListening] = useState(false);
+  const [isRecording, _isRecording] = useState(false);
+  const [isUserFilePlay, _isUserFilePlay] = useState(false);
+
+  // 녹음대기, 음원재생
+  const GroupRecord = () => {
+    return (
+      <div
+        className={`${style.group_record} animate__animated ${
+          isOn && "animate__slideInUp"
+        }`}
+      >
+        <div
+          className={style.btn_listen}
+          onClick={() => {
+            isListening ? _isListening(false) : _isListening(true);
+            _isReady(false);
+          }}
+        >
+          <div
+            className={`${style.ico_listen} ${
+              isListening ? style.listening : ""
+            }`}
+          ></div>
+          <span>{isListening ? "Listening" : "Listen"}</span>
+        </div>
+        <span style={{ opacity: "0.15" }}>&</span>
+        <div
+          className={style.btn_speak}
+          onClick={() => {
+            isRecording ? _isRecording(false) : _isRecording(true);
+            _isReady(false);
+          }}
+        >
+          <div className={style.ico_rec}></div>
+          <span>Speak!</span>
+        </div>
+      </div>
+    );
+  };
+
+  // 음원 재생중 표시
+  const GroupListening = ({ 음원길이 }) => {
+    // let 길이 = 음원길이;
+    let 길이 = 3000;
+
+    useEffect(() => {
+      isListening &&
+        setTimeout(() => {
+          _isListening(false);
+          _isReady(true);
+          _isOn(true);
+          setTimeout(() => {
+            _isOn(false);
+          }, 300);
+        }, 길이);
+    }, [isListening]);
+
+    return (
+      <div
+        className={`${style.group_listening} animate__animated animate__slideInUp`}
+      >
+        <LottieAudioPlayAni />
+      </div>
+    );
+  };
+
+  // 녹음중 표시
+  const GroupRecording = ({ 음원길이 }) => {
+    // let 녹음길이 = 음원길이 + 1000;
+    let 녹음길이 = 2000 + 1000;
+
+    useEffect(() => {
+      isRecording &&
+        setTimeout(() => {
+          _isRecording(false);
+          _isUserFilePlay(true);
+        }, 녹음길이);
+    }, [isRecording]);
+
+    return (
+      <div
+        className={`${style.group_recording} animate__animated animate__slideInUp`}
+      >
+        <LottieRecordAni />
+        <spna>REC</spna>
+      </div>
+    );
+  };
+
+  // 녹음후 재생 표시
+  const GroupUserFilePlay = ({ 음원길이 }) => {
+    // let 파일길이 = 음원길이 + 1000;
+    let 파일길이 = 2000 + 1000;
+
+    useEffect(() => {
+      isUserFilePlay &&
+        setTimeout(() => {
+          _isUserFilePlay(false);
+          _isReady(true);
+          _isOn(true);
+          setTimeout(() => {
+            _isOn(false);
+          }, 300);
+        }, 파일길이);
+    }, [isUserFilePlay]);
+
+    return (
+      <div
+        className={`${style.group_user_file_play} animate__animated animate__slideInUp`}
+      >
+        <LottieUserSayAni />
+      </div>
+    );
+  };
+
+  return (
+    <>
+      {/* 페이지 프로그레스바 */}
+      <div className={style.ebook_progress_bar}>
+        <div
+          className={style.progress}
+          style={{ width: `${progressWidth}%` }}
+        ></div>
+      </div>
+      {/* 스피크바 */}
+      <div className={style.ebook_speak_bar}>
+        <div></div>
+        {isReady && <GroupRecord />}
+        {isListening && <GroupListening />}
+        {isRecording && <GroupRecording />}
+        {isUserFilePlay && <GroupUserFilePlay />}
+        <div className={style.group_exit_speak}>
+          <BtnDelete />
+        </div>
+      </div>
+    </>
+  );
+};
+
+// eBook 스피크 good job 메세지바
+export const SpeakGoodJob = () => {
+  return (
+    <div
+      className={`${style.speak_good_job} animate__animated animate__slideInUp`}
+    >
+      Good Job!
+    </div>
+  );
+};
+
+// eBook 스피크 try again 메세지바
+export const SpeakTryAgain = ({ 틀린횟수 }) => {
+  // let 횟수 = 틀릿횟수;
+  let 횟수 = 3;
+
+  return (
+    <div
+      className={`${style.speak_try_again} animate__animated animate__slideInUp`}
+    >
+      {`Try Again ${횟수} / 3`}
+    </div>
+  );
+};
+
+// eBook 스피크 결과 팝업 - Excellent
+export const SpeakResultExcellent = () => {
+  return (
+    <div className={style.speak_result_excellent}>
+      <div className={style.container}>
+        <BtnDelete />
+        <div>
+          <LottieExcellentAni />
+        </div>
+        <div className={style.txt_caption}>Excellent!</div>
+      </div>
+    </div>
+  );
+};
+
+// eBook 스피크 결과 팝업 - Good Effort
+export const SpeakResultGoodEffort = () => {
+  return (
+    <div className={style.speak_result_good_effort}>
+      <div className={style.container}>
+        <BtnDelete />
+        <div>
+          <LottieGoodEffortAni />
+        </div>
+        <div className={style.txt_caption}>Good Effort</div>
+      </div>
+    </div>
+  );
+};
+
 // eBook 콘텐츠 PC
 export const EbookBodyPC = ({ pageWidth, pagesScale, pageAniFX, children }) => {
   return (
@@ -543,5 +750,18 @@ export const EbookVocabularyNote = (props) => {
         ></div>
       )}
     </>
+  );
+};
+
+export const MovieContents = ({ videoSrc, onClickDelete }) => {
+  return (
+    <div className={style.movieContents}>
+      <div className={style.container}>
+        <video width="100%" height="100%" controls="controls">
+          <source src={videoSrc} type="video/mp4" />
+        </video>
+        <div className={style.btnDelete} onClick={onClickDelete}></div>
+      </div>
+    </div>
   );
 };

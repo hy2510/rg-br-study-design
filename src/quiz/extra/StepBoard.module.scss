@@ -22,11 +22,17 @@
     .quizType {
       font-family: "Rg-b", sans-serif;
       font-size: 3.5em;
+      @media (prefers-color-scheme: dark) {
+        color: #ffffff;
+      }
     }
     .comment {
       font-family: "Rg-b", sans-serif;
       font-size: 1.2em;
       color: rgba($color: #000, $alpha: 0.4);
+      @media (prefers-color-scheme: dark) {
+        color: rgba($color: #fff, $alpha: 0.4);
+      }
     }
     .readingUnit {
       width: 220px;
@@ -89,12 +95,18 @@
     .quizType {
       font-family: "Rg-b", sans-serif;
       font-size: 3.5em;
+      @media (prefers-color-scheme: dark) {
+        color: #fff;
+      }
     }
     .comment {
       font-family: "Rg-b", sans-serif;
       font-size: 1.2em;
       font-weight: 600;
       color: rgba($color: #000, $alpha: 0.4);
+      @media (prefers-color-scheme: dark) {
+        color: rgba($color: #fff, $alpha: 0.4);
+      }
     }
     .revisionBoard {
       width: 250px;
@@ -103,12 +115,19 @@
       border-top: 2px solid rgba($color: #000, $alpha: 0.2);
       margin: 15px 0 20px;
       aspect-ratio: 16 / 9;
+      @media (prefers-color-scheme: dark) {
+        color: #fff;
+        border-top: 2px solid rgba($color: #fff, $alpha: 0.2);
+      }
       @mixin boxSpace {
         padding: 10px 5px;
         border-bottom: 2px solid rgba($color: #000, $alpha: 0.2);
         font-size: 1.2em;
         font-weight: 500;
         text-align: center;
+        @media (prefers-color-scheme: dark) {
+          border-bottom: 2px solid rgba($color: #fff, $alpha: 0.2);
+        }
       }
       .txtLabel {
         @include boxSpace;
@@ -171,12 +190,18 @@
     .quizType {
       font-family: "Rg-b", sans-serif;
       font-size: 3.5em;
+      @media (prefers-color-scheme: dark) {
+        color: #fff;
+      }
     }
     .comment {
       font-family: "Rg-b", sans-serif;
       font-size: 1.2em;
       font-weight: 600;
       color: rgba($color: #000, $alpha: 0.4);
+      @media (prefers-color-scheme: dark) {
+        color: rgba($color: #fff, $alpha: 0.4);
+      }
     }
     .revisionBoard {
       width: 250px;
@@ -185,12 +210,19 @@
       border-top: 2px solid rgba($color: #000, $alpha: 0.2);
       margin: 15px 0 20px;
       aspect-ratio: 16 / 9;
+      @media (prefers-color-scheme: dark) {
+        color: #fff;
+        border-top: 2px solid rgba($color: #fff, $alpha: 0.2);
+      }
       @mixin boxSpace {
         padding: 10px 5px;
         border-bottom: 2px solid rgba($color: #000, $alpha: 0.2);
         font-size: 1.2em;
         font-weight: 500;
         text-align: center;
+        @media (prefers-color-scheme: dark) {
+          border-bottom: 2px solid rgba($color: #fff, $alpha: 0.2);
+        }
       }
       .txtLabel {
         @include boxSpace;

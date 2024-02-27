@@ -220,7 +220,8 @@ export const SummaryTest1 = () => {
   const CorrectDirection = () => {
     return (
       <div className={style.correctDirection}>
-        <IcoArrowUp colorBlack width={24} height={24} />
+        <div className={style.icoArrowUp}></div>
+        {/* <IcoArrowUp colorBlack width={24} height={24} /> */}
       </div>
     );
   };
@@ -394,7 +395,8 @@ export const SummaryTest2 = () => {
   const CorrectDirection = () => {
     return (
       <div className={style.correctDirection}>
-        <IcoArrowUp colorBlack width={24} height={24} />
+        <div className={style.icoArrowUp}></div>
+        {/* <IcoArrowUp colorBlack width={24} height={24} /> */}
       </div>
     );
   };

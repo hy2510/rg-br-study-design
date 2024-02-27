@@ -27,6 +27,9 @@ $quizHeaderHeight: 60px;
   align-items: end;
   margin: 0 30px;
   position: relative;
+  @media (prefers-color-scheme: dark) {
+    color: #ffffff;
+  }
   .quizHeaderCol1 {
     display: flex;
     align-items: center;
@@ -77,6 +80,18 @@ $quizHeaderHeight: 60px;
       display: flex;
       align-items: center;
       gap: 5px;
+      .icoTimer {
+        $size: 26px;
+        width: $size;
+        height: $size;
+        background-image: url("src/quiz/images/timer.svg");
+        background-repeat: no-repeat;
+        background-size: $size;
+        background-position: center -1px;
+        @media (prefers-color-scheme: dark) {
+          background-image: url("src/quiz/images/timer_white.svg");
+        }
+      }
       img {
         margin-bottom: 2px;
       }
@@ -93,6 +108,13 @@ $quizHeaderHeight: 60px;
       display: flex;
       align-items: center;
       justify-content: center;
+      background-image: url("src/quiz/images/hbg_menu_black.svg");
+      background-repeat: no-repeat;
+      background-size: 24px;
+      background-position: center;
+      @media (prefers-color-scheme: dark) {
+        background-image: url("src/quiz/images/hbg_menu_white.svg");
+      }
     }
   }
 }
@@ -111,7 +133,7 @@ $quizHeaderHeight: 60px;
   .container {
     width: 100%;
     min-height: 450px;
-    background-color: rgba($color: #fff, $alpha: 0.6);
+    background-color: rgba($color: #000, $alpha: 0.05);
     -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     margin-bottom: $quizHeaderHeight;
@@ -129,7 +151,8 @@ $quizHeaderHeight: 60px;
   }
   @include darkMode {
     .container {
-      // background-color: rgba($color: #000, $alpha: 0.2);
+      color: #ffffff;
+      background-color: rgba($color: #fff, $alpha: 0.05);
     }
   }
 }

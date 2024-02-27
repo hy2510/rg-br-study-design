@@ -59,6 +59,9 @@
   border-radius: 100px;
   transition: all 0.2s;
   margin: auto;
+  @media (prefers-color-scheme: dark) {
+    background-color: rgba($color: #000, $alpha: 0.3);
+  }
   &:active {
     transform: scale(0.9);
   }
@@ -223,6 +226,18 @@
   }
 }
 
+.icoArrowUp {
+  width: 24px;
+  height: 24px;
+  background-image: url("src/quiz/images/arrow_up.svg");
+  background-size: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+  @media (prefers-color-scheme: dark) {
+    background-image: url("src/quiz/images/arrow_up_white.svg");
+  }
+}
+
 .summaryTest1 {
   .container {
     display: grid;
@@ -247,6 +262,11 @@
     -webkit-tap-highlight-color: transparent;
     background-color: #fff;
     box-shadow: #ddd 0 3px;
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba($color: #000000, $alpha: 0.3);
+      border: 2px solid rgba($color: #000000, $alpha: 0.3);
+      box-shadow: rgba($color: #000000, $alpha: 0.3) 0 3px;
+    }
     &:hover {
       transform: scale(1.02);
     }
@@ -292,6 +312,16 @@
           color: rgba($color: #000, $alpha: 1);
         }
       }
+      @media (prefers-color-scheme: dark) {
+        @keyframes blink1 {
+          0% {
+            color: rgba($color: #fff, $alpha: 0.3);
+          }
+          100% {
+            color: rgba($color: #fff, $alpha: 1);
+          }
+        }
+      }
     }
     @mixin answerStyle {
       font-family: "Rg-B", sans-serif;
@@ -307,6 +337,9 @@
       .playIcon {
         font-size: 0.5em;
         color: rgba($color: #000, $alpha: 0.2);
+        @media (prefers-color-scheme: dark) {
+          color: rgba($color: #fff, $alpha: 0.5);
+        }
       }
       .highlight {
         color: blue;
@@ -329,6 +362,9 @@
     background-color: rgba($color: #fff, $alpha: 0.6);
     padding: 20px;
     border-radius: 15px;
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba($color: #000, $alpha: 0.3);
+    }
     &::-webkit-scrollbar {
       width: 6px;
       background-color: transparent;
@@ -369,6 +405,11 @@
     -webkit-tap-highlight-color: transparent;
     background-color: #fff;
     box-shadow: #ddd 0 3px;
+    @media (prefers-color-scheme: dark) {
+      border: 2px solid rgba($color: #000000, $alpha: 0.3);
+      background-color: rgba($color: #000000, $alpha: 0.3);
+      box-shadow: rgba($color: #000000, $alpha: 0.3) 0 3px;
+    }
     &:hover {
       transform: scale(1.02);
     }
@@ -409,6 +450,9 @@
     line-height: 38px;
     max-height: 25vh;
     overflow-y: scroll;
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba($color: #000, $alpha: 0.3);
+    }
     &::-webkit-scrollbar {
       width: 6px;
       background-color: transparent;

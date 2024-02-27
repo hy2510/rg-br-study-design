@@ -31,6 +31,9 @@
     font-size: 1.2em;
     font-weight: 500;
     color: rgba($color: #000, $alpha: 0.4);
+    @media (prefers-color-scheme: dark) {
+      color: rgba($color: #fff, $alpha: 0.4);
+    }
   }
 }
 
@@ -306,6 +309,11 @@
     -webkit-tap-highlight-color: transparent;
     background-color: #fff;
     box-shadow: #ddd 0 3px;
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba($color: #000, $alpha: 0.3);
+      border: 2px solid rgba($color: #000, $alpha: 0.3);
+      box-shadow: rgba($color: #000, $alpha: 0.3) 0 3px;
+    }
     &:hover {
       transform: scale(1.02);
     }
@@ -374,6 +382,9 @@
     min-width: 80px;
     height: 40px;
     text-align: center;
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba($color: #fff, $alpha: 0.8);
+    }
     &.correctAnswer {
       border: 2px solid transparent;
       color: #0066ff;

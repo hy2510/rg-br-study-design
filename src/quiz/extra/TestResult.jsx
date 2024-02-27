@@ -1,4 +1,5 @@
 import Gap from "../util/Gap";
+import { LottieScrollDownAni } from "../util/LottieAni";
 import stylesPc from "./TestResult.module.scss";
 
 const style = stylesPc;
@@ -141,6 +142,17 @@ export const TestResult = ({
             src={`https://wcfresource.a1edu.com/newsystem/image/character/subcharacter/${unit}_10.png`}
             alt=""
           />
+          <div style={{ position: "relative" }}>
+            <div
+              style={{
+                position: "absolute",
+                right: "-230px",
+                bottom: "-50px",
+              }}
+            >
+              <LottieScrollDownAni />
+            </div>
+          </div>
         </div>
         <div className={style.passmark}>Passmark: {passmark}</div>
         <div className={`${style.board1} animate__animated animate__fadeIn`}>

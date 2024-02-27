@@ -395,6 +395,187 @@
   }
 }
 
+// eBook 스피크바
+.ebook_speak_bar {
+  width: calc(100% - 40px);
+  height: 56px;
+  color: #fff;
+  background-color: #111111;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  position: relative;
+  z-index: 5;
+  .group_listening {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .group_record {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-family: RG-b, sans-serif;
+    font-size: 0.95em;
+    @mixin record_activity_button_size {
+      width: 150px;
+      height: 40px;
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: rgba($color: #fff, $alpha: 0.03);
+      cursor: pointer;
+      transition: all 0.2s;
+      &:active {
+        transform: scale(0.9);
+      }
+      span {
+        width: calc(100% - 50px);
+        padding-top: 3px;
+        text-align: center;
+        color: rgba($color: #fff, $alpha: 0.95);
+      }
+    }
+    @mixin icon_size {
+      width: 40px;
+      height: 40px;
+      // margin-left: 5px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: 40px;
+    }
+    .btn_listen {
+      @include record_activity_button_size;
+      .ico_listen {
+        @include icon_size;
+        background-image: url("src/ebook/images/btn_play.svg");
+        &.listening {
+          background-image: url("src/ebook/images/btn_pause.svg");
+        }
+      }
+    }
+    .btn_speak {
+      @include record_activity_button_size;
+      .ico_rec {
+        @include icon_size;
+        background-image: url("src/ebook/images/ico_rec.svg");
+      }
+    }
+  }
+  .group_recording {
+    font-family: RG-b, sans-serif;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+  }
+  .group_user_file_play {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 10px;
+  }
+  .group_exit_speak {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+  }
+}
+
+// eBook 스피크 good job 메세지바
+.speak_good_job {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  width: 100%;
+  height: 60px;
+  background-color: #3ab6ff;
+  font-family: RG-b;
+  font-size: 1.5em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// eBook 스피크 try again 메세지바
+.speak_try_again {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  width: 100%;
+  height: 60px;
+  background-color: #d04e50;
+  font-family: RG-b;
+  font-size: 1.5em;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin result-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 998;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba($color: #000, $alpha: 0.7);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: RG-b, sans-serif;
+  font-weight: 700;
+  font-size: 3.5em;
+}
+// eBook 스피크 결과 팝업 - Excellent
+.speak_result_excellent {
+  @include result-popup;
+  .container {
+    width: 400px;
+    height: 450px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .txt_caption {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
+
+// eBook 스피크 결과 팝업 - Good Effort
+.speak_result_good_effort {
+  @include result-popup;
+  .container {
+    width: 400px;
+    height: 380px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .txt_caption {
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
+
 // eBook 콘텐츠 PC
 .ebook_body_pc {
   margin: auto;
@@ -527,4 +708,40 @@
   left: 0;
   right: 0;
   z-index: 99;
+}
+
+.movieContents {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($color: #000, $alpha: 0.7);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  .container {
+    $video_width: 70vw;
+    width: $video_width;
+    height: calc($video_width * 0.5625);
+    background-color: #fff;
+    position: relative;
+    .btnDelete {
+      width: 50px;
+      height: 50px;
+      border-radius: 100px;
+      background-color: rgba($color: #fff, $alpha: 0.15);
+      background-image: url("src/quiz/images/delete_white.svg");
+      background-size: 30px;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: absolute;
+      top: -50px;
+      right: -50px;
+      cursor: pointer;
+    }
+  }
 }

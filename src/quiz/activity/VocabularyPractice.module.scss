@@ -5,6 +5,9 @@
   padding: 10px 15px;
   animation-duration: 1s !important;
   position: fixed;
+  @media (prefers-color-scheme: dark) {
+    color: rgba($color: #fff, $alpha: 0.4);
+  }
 }
 @media (pointer: coarse) {
   .comment {
@@ -126,6 +129,30 @@
   }
 }
 
+@mixin iconChevLeftRightSize {
+  $size: 28px;
+  width: $size;
+  height: $size;
+  background-image: url("src/quiz/images/chev_left.svg");
+  background-size: $size;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.icoChevLeft {
+  @include iconChevLeftRightSize;
+  background-image: url("src/quiz/images/chev_left.svg");
+  @media (prefers-color-scheme: dark) {
+    background-image: url("src/quiz/images/chev_left_white.svg");
+  }
+}
+.icoChevRight {
+  @include iconChevLeftRightSize;
+  background-image: url("src/quiz/images/chev_right.svg");
+  @media (prefers-color-scheme: dark) {
+    background-image: url("src/quiz/images/chev_right_white.svg");
+  }
+}
+
 .vocabularyPractice1 {
   height: 100%;
   display: flex;
@@ -149,6 +176,9 @@
     min-width: 400px;
     min-height: 320px;
     border-radius: 20px;
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba($color: #000000, $alpha: 0.3);
+    }
     .wordImage {
       display: flex;
       max-width: 350px;
@@ -171,6 +201,9 @@
     font-size: 1em;
     font-family: "Rg-B", sans-serif;
     color: #000;
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+    }
     span {
       -webkit-tap-highlight-color: transparent;
       &:nth-child(1) {
@@ -236,6 +269,9 @@
     padding: 15px;
     padding-bottom: 30px;
     border-radius: 20px;
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba($color: #000000, $alpha: 0.3);
+    }
     .wordImage {
       display: flex;
       min-width: 250px;
@@ -259,6 +295,9 @@
     font-size: 1em;
     font-family: "Rg-B", sans-serif;
     color: #000;
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+    }
     span {
       -webkit-tap-highlight-color: transparent;
       &:nth-child(1) {
@@ -354,6 +393,9 @@
           top: 0;
           left: 0;
           z-index: 1;
+          @media (prefers-color-scheme: dark) {
+            border: 2px solid rgba($color: #000000, $alpha: 0.3);
+          }
         }
         .count {
           position: absolute;
@@ -431,6 +473,9 @@
     min-width: 400px;
     min-height: 320px;
     border-radius: 20px;
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba($color: #000000, $alpha: 0.3);
+    }
     .wordText {
       display: flex;
       align-items: center;
@@ -457,6 +502,9 @@
     font-size: 1em;
     font-family: "Rg-B", sans-serif;
     color: #000;
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+    }
     span {
       -webkit-tap-highlight-color: transparent;
       &:nth-child(1) {

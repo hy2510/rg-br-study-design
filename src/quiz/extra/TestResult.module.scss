@@ -10,11 +10,15 @@
     display: grid;
     gap: 10px;
     font-family: "Rg-b", sans-serif;
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+    }
     .score {
       display: grid;
       grid-template-columns: 1fr 5fr 5fr;
       align-items: center;
       justify-items: center;
+
       &.count1 {
         grid-template-columns: 1fr 10fr;
       }
@@ -27,6 +31,9 @@
         padding: 5px 0;
         -webkit-backdrop-filter: blur(5px);
         backdrop-filter: blur(5px);
+        @media (prefers-color-scheme: dark) {
+          background-color: rgba($color: #eee, $alpha: 0.1);
+        }
       }
     }
   }
@@ -43,6 +50,9 @@
       padding-top: 5px;
       padding-bottom: 5px;
       color: rgba($color: #000, $alpha: 0.4);
+      @media (prefers-color-scheme: dark) {
+        color: #fff;
+      }
     }
     .quizQuestion {
       background-color: rgba($color: #fff, $alpha: 0.8);
@@ -164,6 +174,9 @@
     justify-content: center;
     gap: 10px;
     border-radius: 15px;
+    @media (prefers-color-scheme: dark) {
+      color: #fff;
+    }
     .txtL {
       font-family: "Rg-b", sans-serif;
       font-size: 1.6em;
@@ -201,6 +214,9 @@
     .passmark {
       font-family: "RG-b", sans-serif;
       font-size: 1.2em;
+      @media (prefers-color-scheme: dark) {
+        color: #fff;
+      }
     }
     .board1 {
       width: 100%;
@@ -322,12 +338,18 @@
       font-size: 3em;
       font-weight: 600;
       margin-top: 10px;
+      @media (prefers-color-scheme: dark) {
+        color: #fff;
+      }
     }
     .comment {
       font-family: "Rg-b", sans-serif;
       font-size: 1.2em;
       font-weight: 600;
       color: rgba($color: #000, $alpha: 0.4);
+      @media (prefers-color-scheme: dark) {
+        color: rgba($color: #fff, $alpha: 0.4);
+      }
     }
     .revisionBoard {
       width: 300px;
@@ -336,12 +358,19 @@
       border-top: 2px solid rgba($color: #000, $alpha: 0.2);
       margin: 15px 0 20px;
       aspect-ratio: 16 / 9;
+      @media (prefers-color-scheme: dark) {
+        color: #fff;
+        border-top: 2px solid rgba($color: #fff, $alpha: 0.2);
+      }
       @mixin boxSpace {
         padding: 10px 5px;
         border-bottom: 2px solid rgba($color: #000, $alpha: 0.2);
         font-size: 1.2em;
         font-weight: 500;
         text-align: center;
+        @media (prefers-color-scheme: dark) {
+          border-bottom: 2px solid rgba($color: #fff, $alpha: 0.2);
+        }
       }
       .txtLabel {
         @include boxSpace;

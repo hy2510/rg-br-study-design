@@ -108,13 +108,15 @@ export const VocabularyPractice1 = () => {
     return (
       <div className={style.indicator}>
         <span onClick={onClickLeft}>
-          <IcoChevLeft colorBlack width={28} height={28} />
+          <div className={style.icoChevLeft}></div>
+          {/* <IcoChevLeft colorBlack width={28} height={28} /> */}
         </span>
         <span>
           {current} / {total}
         </span>
         <span onClick={onClickRight}>
-          <IcoChevRight colorBlack width={28} height={28} />
+          <div className={style.icoChevRight}></div>
+          {/* <IcoChevRight colorBlack width={28} height={28} /> */}
         </span>
       </div>
     );
@@ -187,13 +189,15 @@ export const VocabularyPractice2 = () => {
     return (
       <div className={style.indicator}>
         <span onClick={onClickLeft}>
-          <IcoChevLeft colorBlack width={28} height={28} />
+          <div className={style.icoChevLeft}></div>
+          {/* <IcoChevLeft colorBlack width={28} height={28} /> */}
         </span>
         <span>
           {current} / {total}
         </span>
         <span onClick={onClickRight}>
-          <IcoChevRight colorBlack width={28} height={28} />
+          <div className={style.icoChevRight}></div>
+          {/* <IcoChevRight colorBlack width={28} height={28} /> */}
         </span>
       </div>
     );
@@ -347,13 +351,15 @@ export const VocabularyPractice4 = () => {
     return (
       <div className={style.indicator}>
         <span onClick={onClickLeft}>
-          <IcoChevLeft colorBlack width={28} height={28} />
+          <div className={style.icoChevLeft}></div>
+          {/* <IcoChevLeft colorBlack width={28} height={28} /> */}
         </span>
         <span>
           {current} / {total}
         </span>
         <span onClick={onClickRight}>
-          <IcoChevRight colorBlack width={28} height={28} />
+          <div className={style.icoChevRight}></div>
+          {/* <IcoChevRight colorBlack width={28} height={28} /> */}
         </span>
       </div>
     );

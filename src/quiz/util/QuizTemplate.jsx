@@ -3,9 +3,11 @@ import "../themes/theme.scss";
 import { IcoHbgMenu, IcoHeart, IcoTimer } from "./Icons";
 import SideMenu from "../../side-menu/SideMenu";
 import { useState } from "react";
+import QuizEndingPass from "../extra/QuizEndingPass";
+import QuizEndingFail from "../extra/QuizEndingFail";
 
 const style = stylesPc;
-const theme = "theme-antarctica";
+const theme = "theme-jungle";
 
 // 퀴즈템플릿
 export const QuizTemplate = ({ children }) => {
@@ -41,7 +43,8 @@ export const QuizHeader = ({
         </div>
         <div className={style.quizHeaderCol2}>
           <div className={style.quizTimer}>
-            <IcoTimer colorBlack width={24} height={24} />
+            {/* <IcoTimer colorBlack width={24} height={24} /> */}
+            <div className={style.icoTimer}></div>
             {quizTimer}
           </div>
         </div>
@@ -52,7 +55,7 @@ export const QuizHeader = ({
               _viewSideMenu(true);
             }}
           >
-            <IcoHbgMenu colorBlack width={24} height={24} />
+            {/* <IcoHbgMenu colorBlack width={24} height={24} /> */}
           </div>
         </div>
       </div>
@@ -88,6 +91,10 @@ export const QuizHeader = ({
       >
         {!isFullScreen ? "Full Screen" : "Exit Full Screen"}
       </div>
+      {/* GoodJob 화면 */}
+      {/* <QuizEndingPass totalScore={70} earnPoint={30.3} /> */}
+      {/* TryAgain 화면 */}
+      {/* <QuizEndingFail totalScore={69} /> */}
     </>
   );
 };
