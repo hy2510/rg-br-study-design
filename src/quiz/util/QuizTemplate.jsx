@@ -1,12 +1,16 @@
 import stylesPc from "./QuizTemplate.module.scss";
+import stylesMobile from "./QuizTemplate_m.module.scss";
 import "../themes/theme.scss";
 import { IcoHbgMenu, IcoHeart, IcoTimer } from "./Icons";
 import SideMenu from "../../side-menu/SideMenu";
 import { useState } from "react";
 import QuizEndingPass from "../extra/QuizEndingPass";
 import QuizEndingFail from "../extra/QuizEndingFail";
+import { useMobileDetect } from "./isMobile";
 
-const style = stylesPc;
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPc;
+
 const theme = "theme-jungle";
 
 // 퀴즈템플릿
@@ -72,7 +76,7 @@ export const QuizHeader = ({
           stepTitle="Listening Activity"
         />
       )}
-      <div
+      {/* <div
         style={{
           position: "fixed",
           right: "10px",
@@ -90,7 +94,7 @@ export const QuizHeader = ({
         }}
       >
         {!isFullScreen ? "Full Screen" : "Exit Full Screen"}
-      </div>
+      </div> */}
       {/* GoodJob 화면 */}
       {/* <QuizEndingPass totalScore={70} earnPoint={30.3} /> */}
       {/* TryAgain 화면 */}

@@ -16,10 +16,9 @@
 }
 
 .wordPlayButton {
-  cursor: pointer;
   width: fit-content;
   height: 40px;
-  margin: 15px;
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
   gap: 10px;
@@ -31,7 +30,7 @@
   }
   .txtL {
     font-family: "Rg-B", sans-serif;
-    font-size: 1.4em;
+    font-size: 1.2em;
     color: rgba($color: #000, $alpha: 0.4);
     @media (prefers-color-scheme: dark) {
       color: rgba($color: #fff, $alpha: 0.4);
@@ -42,6 +41,7 @@
 .goNextButton {
   cursor: pointer;
   min-width: 150px;
+  width: calc(100% - 36px);
   text-align: center;
   border-radius: 15px;
   border-top: 1px solid #289ee4;
@@ -52,8 +52,7 @@
   color: #fff;
   font-size: 1.2em;
   font-family: "Rg-B", sans-serif;
-  width: fit-content;
-  padding: 12px 20px;
+  padding: 12px 15px;
   margin: auto;
   transform: scale(1);
   transition: all 0.2s;
@@ -83,38 +82,37 @@
     gap: 20px;
   }
   .enterBox {
-    width: calc(100% - 40px);
+    width: calc(100% - 20px);
     min-height: 120px;
-    padding: 20px;
+    padding: 10px;
     background-color: rgba($color: #fff, $alpha: 0.6);
     border-radius: 15px;
     display: flex;
-    gap: 10px;
+    gap: 5px;
     flex-wrap: wrap;
     align-items: flex-start;
     @media (prefers-color-scheme: dark) {
       background-color: rgba($color: #000, $alpha: 0.3);
     }
     .correctText {
-      padding: 15px;
+      padding: 10px;
       color: #289ee4;
       font-family: "Rg-B", sans-serif;
-      font-size: 1.4em;
+      font-size: 1.2em;
     }
     .incorrectText {
-      padding: 15px;
+      padding: 10px;
       color: #b73133;
       font-family: "Rg-B", sans-serif;
-      font-size: 1.4em;
+      font-size: 1.2em;
     }
   }
   .textCard {
     cursor: pointer;
-    padding: 10px 15px;
+    padding: 8px 12px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
     border: 2px solid #eee;
     border-radius: 15px;
     overflow: hidden;
@@ -185,8 +183,8 @@
     font-size: 1em;
     font-family: "Rg-b", sans-serif;
     color: #ccc;
-    width: 40px;
-    height: 40px;
+    width: 32px;
+    height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -206,9 +204,9 @@
     line-height: 1.2;
   }
   .writingArea {
-    width: calc(100% - 40px);
-    min-height: 28vh;
-    padding: 20px;
+    width: calc(100% - 20px);
+    min-height: 30vh;
+    padding: 10px;
     background-color: #fff;
     border-radius: 15px;
     display: flex;
@@ -243,7 +241,8 @@
   }
   .saveButton {
     cursor: pointer;
-    min-width: 150px;
+    // min-width: 150px;
+    min-width: calc(100% - 44px);
     text-align: center;
     border-radius: 15px;
     border-top: 1px solid #ccc;
@@ -270,7 +269,8 @@
   }
   .submitButton {
     cursor: pointer;
-    min-width: 150px;
+    // min-width: 150px;
+    min-width: calc(100% - 44px);
     text-align: center;
     border-radius: 15px;
     border-top: 1px solid #289ee4;
@@ -297,10 +297,12 @@
   }
   .goNextStepBox {
     display: flex;
+    flex-direction: column;
     gap: 15px;
     align-items: center;
     justify-content: flex-end;
     .groupButtons {
+      width: 100%;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 15px;

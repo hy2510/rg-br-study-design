@@ -1,8 +1,11 @@
 import Gap from "../util/Gap";
 import { LottieScrollDownAni } from "../util/LottieAni";
+import { useMobileDetect } from "../util/isMobile";
 import stylesPc from "./TestResult.module.scss";
+import stylesMobile from "./TestResult_m.module.scss";
 
-const style = stylesPc;
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPc;
 // 기본결과화면
 export const TestResult = ({
   quizType,
@@ -146,7 +149,7 @@ export const TestResult = ({
             <div
               style={{
                 position: "absolute",
-                right: "-230px",
+                right: isMobile ? "-180px" : "-220px",
                 bottom: "-50px",
               }}
             >
@@ -154,7 +157,7 @@ export const TestResult = ({
             </div>
           </div>
         </div>
-        <div className={style.passmark}>Passmark: {passmark}</div>
+        {passmark && <div className={style.passmark}>Passmark: {passmark}</div>}
         <div className={`${style.board1} animate__animated animate__fadeIn`}>
           <div className={style.correctScore}>
             <div className={style.title}>correct</div>

@@ -30,7 +30,7 @@
   }
   .txtL {
     font-family: "Rg-B", sans-serif;
-    font-size: 2.5em;
+    font-size: 2.2em;
   }
   .txtP {
     font-family: "Rg-B", sans-serif;
@@ -42,7 +42,6 @@
   cursor: pointer;
   width: 40px;
   height: 40px;
-  margin: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -50,7 +49,6 @@
   transform: scale(1);
   transition: all 0.2s;
   -webkit-tap-highlight-color: transparent;
-  padding-top: 5px;
   &:active {
     transform: scale(0.9);
   }
@@ -63,7 +61,6 @@
 
 .goToTestButton {
   cursor: pointer;
-  min-width: 150px;
   text-align: center;
   border-radius: 15px;
   border-top: 1px solid #289ee4;
@@ -74,8 +71,8 @@
   color: #fff;
   font-size: 1.2em;
   font-family: "Rg-B", sans-serif;
-  width: fit-content;
-  padding: 15px 20px;
+  width: calc(100% - 40px);
+  padding: 12px 20px;
   margin: auto;
   transform: scale(1);
   transition: all 0.2s;
@@ -86,7 +83,6 @@
 
 .reTryButton {
   cursor: pointer;
-  min-width: 150px;
   text-align: center;
   border-radius: 15px;
   border-top: 1px solid #ccc;
@@ -97,8 +93,8 @@
   color: #999;
   font-size: 1.2em;
   font-family: "Rg-B", sans-serif;
-  width: fit-content;
-  padding: 15px 20px;
+  width: calc(100% - 40px);
+  padding: 12px 20px;
   margin: auto;
   transform: scale(1);
   transition: all 0.2s;
@@ -109,16 +105,16 @@
 
 @mixin goNextStepBox {
   .goNextStepBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 15px;
     position: relative;
     z-index: 4;
     &::before {
       content: "";
       position: fixed;
-      background-color: rgba($color: #000, $alpha: 0.5);
+      background-color: rgba($color: #000, $alpha: 0.4);
       top: 0;
       left: 0;
       right: 0;
@@ -153,16 +149,13 @@
 
 .vocabularyPractice1 {
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    padding-bottom: 20px;
+    gap: 25px;
+    padding-bottom: 10px;
   }
   .wordCard {
     display: flex;
@@ -172,8 +165,8 @@
     background-color: #fff;
     padding: 15px;
     padding-bottom: 30px;
-    min-width: 400px;
-    min-height: 320px;
+    width: calc(100% - 30px);
+    height: 45vh;
     border-radius: 20px;
     @media (prefers-color-scheme: dark) {
       background-color: rgba($color: #000000, $alpha: 0.3);
@@ -234,9 +227,9 @@
         justify-content: center;
         gap: 5px;
         color: #555;
+        margin-left: auto;
         background-color: rgba($color: #000000, $alpha: 0.05);
         border-radius: 50%;
-        margin-left: auto;
         transform: scale(1);
         transition: all 0.1s;
         &:active {
@@ -250,36 +243,35 @@
 
 .vocabularyPractice2 {
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 30px;
-    padding-bottom: 20px;
+    gap: 25px;
+    padding-bottom: 10px;
   }
   .wordCard {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 15px;
     background-color: #fff;
-    min-width: 400px;
-    min-height: 380px;
     padding: 15px;
     padding-bottom: 30px;
+    gap: 15px;
+    width: calc(100% - 30px);
+    height: 50vh;
     border-radius: 20px;
+    font-size: 0.9em;
+    line-height: 1.2;
+    letter-spacing: -0.8px;
     @media (prefers-color-scheme: dark) {
       background-color: rgba($color: #000000, $alpha: 0.3);
     }
     .wordImage {
       display: flex;
-      min-width: 250px;
-      max-width: 350px;
+      width: calc(100% - 40px);
       overflow: hidden;
       border-radius: 15px;
     }
@@ -360,26 +352,31 @@
     gap: 25px;
   }
   .wordCard {
+    width: 100%;
     .wordTyping {
-      display: flex;
+      display: grid;
+      grid-template-columns: 44px 1fr 44px;
       align-items: center;
+      justify-items: start;
       .textField {
-        width: 440px;
+        width: 100%;
         height: 60px;
         position: relative;
-        $inputFontSize: 2.1em;
+        $inputWidth: calc(100% - 40px);
+        $inputHeight: calc(100% - 24px);
+        $inputFontSize: 1.6em;
         .inputField {
           display: flex;
           align-items: center;
           justify-content: start;
-          width: 400px;
-          height: 40px;
+          width: $inputWidth;
+          height: $inputHeight;
+          font-size: $inputFontSize;
           background-color: transparent;
           border: 2px solid transparent;
           font-family: "Rg-B", sans-serif;
-          font-size: $inputFontSize;
           margin: 0 !important;
-          padding: 10px 20px !important;
+          padding: 10px 20px 10px 15px !important;
           position: absolute;
           top: 0;
           left: 0;
@@ -390,15 +387,17 @@
           display: flex;
           align-items: center;
           justify-content: start;
-          width: 400px;
-          height: 40px;
-          font-family: "Rg-B", sans-serif;
+          width: $inputWidth;
+          height: $inputHeight;
           font-size: $inputFontSize;
+          font-family: "Rg-B", sans-serif;
+          font-size: 1.6em;
           color: #ccc;
           background-color: #fff;
           border-radius: 15px;
           border: 2px solid #ccc;
           padding: 10px 20px;
+          padding-left: 15px;
           position: absolute;
           top: 0;
           left: 0;
@@ -414,14 +413,18 @@
           z-index: 3;
           font-family: "Rg-R", sans-serif;
           font-size: 0.9em;
+          @media (min-width: 376px) {
+            top: calc(50% - 9px);
+          }
         }
       }
       .enterButton {
-        width: 70px;
-        height: 60px;
+        width: 40px;
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-left: auto;
         cursor: pointer;
         transform: scale(1);
         transition: all 0.2s;
@@ -430,8 +433,8 @@
           transform: scale(0.9);
         }
         .enterIcon {
-          width: 22px;
-          height: 22px;
+          width: 24px;
+          height: 24px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -442,15 +445,16 @@
       }
     }
     .meaning {
-      padding-left: 90px;
+      padding-left: 10px;
+      line-height: 1.2;
       .txtL {
-        max-width: 480px;
-        font-size: 1.5em;
+        width: 100%;
+        font-size: 1.4em;
         font-weight: 600;
       }
       .txtP {
-        max-width: 400px;
-        font-size: 1.2em;
+        width: 100%;
+        font-size: 1em;
         color: #888;
       }
     }
@@ -480,8 +484,8 @@
     background-color: #fff;
     padding: 15px;
     padding-bottom: 30px;
-    min-width: 400px;
-    min-height: 320px;
+    min-width: calc(100% - 30px);
+    min-height: 280px;
     border-radius: 20px;
     @media (prefers-color-scheme: dark) {
       background-color: rgba($color: #000000, $alpha: 0.3);
@@ -546,11 +550,11 @@
         justify-content: center;
         gap: 5px;
         color: #555;
-        background-color: rgba($color: #000000, $alpha: 0.05);
-        border-radius: 50%;
         margin-left: auto;
         transform: scale(1);
         transition: all 0.1s;
+        background-color: rgba($color: #000000, $alpha: 0.05);
+        border-radius: 50%;
         &:active {
           transform: scale(0.7);
         }

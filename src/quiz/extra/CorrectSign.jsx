@@ -1,6 +1,9 @@
+import { useMobileDetect } from "../util/isMobile";
 import stylesPc from "./CorrectSign.module.scss";
+import stylesMobile from "./CorrectSign_m.module.scss";
 
-const style = stylesPc;
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPc;
 
 export const CorrectPopup = ({ unit }) => {
   return (

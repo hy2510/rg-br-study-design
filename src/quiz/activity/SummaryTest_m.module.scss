@@ -74,14 +74,14 @@
   // left: 0;
   // right: 0;
   // bottom: 0;
-  // padding: 20px;
+  // padding: 10px;
   .title {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-family: "Rg-b", sans-serif;
-    margin: 10px 0 15px 10px;
+    margin: 5px 5px 10px 5px;
   }
   .container {
-    padding: 15px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -89,9 +89,9 @@
     border-radius: 15px;
     margin-bottom: 15px;
     .sentence {
-      font-size: 1.4em;
+      font-size: 1.2em;
       font-family: "Rg-b", sans-serif;
-      margin: 15px;
+      // margin: 15px;
       display: flex;
       flex-wrap: wrap;
       gap: 5px;
@@ -101,6 +101,7 @@
   @mixin buttonStyle {
     margin: auto;
     min-width: 150px;
+    width: calc(100% - 50px);
     text-align: center;
     border-radius: 15px;
     border-top: 1px solid #289ee4;
@@ -116,8 +117,7 @@
     color: #fff;
     font-size: 1.2em;
     font-family: "Rg-B", sans-serif;
-    width: fit-content;
-    padding: 12px 20px;
+    padding: 12px 15px;
     transform: scale(1);
     transition: all 0.2s;
   }
@@ -139,7 +139,7 @@
   padding: 5px 10px;
   border: 2px dotted #ccc;
   border-radius: 10px;
-  margin: 0 5px;
+  margin: 0;
   color: #ccc;
   background-color: #fff;
   display: inline-block;
@@ -240,6 +240,7 @@
 }
 
 .summaryTest1 {
+  font-size: 0.95em;
   line-height: 1.2;
   .container {
     display: grid;
@@ -296,7 +297,7 @@
     gap: 10px;
   }
   .correctTextCard {
-    padding: 0 15px;
+    padding: 0;
     border-radius: 15px;
     &.question {
       border: 2px dotted #ccc;
@@ -333,7 +334,7 @@
     }
     @mixin answerStyle {
       font-family: "Rg-B", sans-serif;
-      font-size: 1.4em;
+      font-size: 1.2em;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -354,7 +355,7 @@
         }
       }
       .highlight {
-        color: #0066ff;
+        color: #0082cd;
         transform: scale(1.05);
         transform-origin: left 0;
       }
@@ -371,7 +372,7 @@
     display: grid;
     gap: 10px;
     overflow-y: scroll;
-    background-color: rgba($color: #f0f2f5, $alpha: 1);
+    background-color: rgba($color: #f2f2f2, $alpha: 1);
     padding: 20px;
     border-radius: 15px;
     position: sticky;
@@ -409,6 +410,7 @@
     min-width: 200px;
     width: calc(100% - 20px);
     min-height: 40px;
+    height: fit-content;
     display: flex;
     align-items: center;
     justify-content: start;
@@ -454,11 +456,11 @@
     }
     .container {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: 1fr;
       align-items: stretch;
       justify-items: center;
       gap: 10px;
-      padding: 0 10px;
+      padding: 0 5px;
     }
   }
   .questionBox {

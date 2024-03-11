@@ -1,12 +1,17 @@
 import stylesPc from "./TrueOrFalse.module.scss";
+import stylesMobile from "./TrueOrFalse_m.module.scss";
 import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoPlay, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
 import { TrueSentencePopup } from "../extra/TrueSentencePopup";
+import { useMobileDetect } from "../util/isMobile";
 
-const style = stylesPc;
+const readingUnit = "baro";
+
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPc;
 
 // 코멘트
 const Comment = ({ text }) => {
@@ -123,8 +128,8 @@ export const TrueOrFalse = () => {
           />
         )}
       </QuizBody>
-      {viewCorrectAct && <CorrectPopup />}
-      {viewIncorrectAct && <IncorrectPopup />}
+      {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+      {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
     </QuizTemplate>
   );
 };

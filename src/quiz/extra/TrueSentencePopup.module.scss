@@ -24,20 +24,21 @@
 }
 
 .trueSentencePopup {
-  background-color: rgba($color: #fff, $alpha: 0.8);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 20px;
-  @media (prefers-color-scheme: dark) {
-    background-color: rgba($color: #000, $alpha: 0.3);
-  }
+  // background-color: rgba($color: #fff, $alpha: 0.8);
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
+  padding: 10px;
+  // @media (prefers-color-scheme: dark) {
+  //   background-color: rgba($color: #000, $alpha: 0.3);
+  // }
   .title {
     font-size: 1.4em;
     font-family: "Rg-b", sans-serif;
     margin-bottom: 15px;
+    // margin: 10px 0 15px 10px;
   }
   .container {
     padding: 15px;

@@ -1,4 +1,5 @@
 import stylesPc from "./VocabularyPractice.module.scss";
+import stylesMobile from "./VocabularyPractice_m.module.scss";
 import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import {
@@ -9,8 +10,10 @@ import {
   IcoStop,
 } from "../util/Icons";
 import Gap from "../util/Gap";
+import { useMobileDetect } from "../util/isMobile";
 
-const style = stylesPc;
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPc;
 
 // 코멘트
 const Comment = ({ text }) => {
@@ -261,7 +264,14 @@ export const VocabularyPractice3 = () => {
           <div className={style.wordTyping}>
             <WordPlayButton2 />
             <div className={style.textField}>
-              <input className={style.inputField} type="text" />
+              <input
+                className={style.inputField}
+                type="text"
+                autoCapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                inputmode="search"
+              />
               <div className={style.wordText}>{word}</div>
               <div className={style.count}>
                 {current} / {total}
@@ -273,7 +283,7 @@ export const VocabularyPractice3 = () => {
               </div>
             </div>
           </div>
-          <Gap height={20} />
+          <Gap height={isMobile ? 50 : 20} />
           <div className={style.meaning}>
             <div className={style.txtL}>{meaning}</div>
             <Gap height={10} />

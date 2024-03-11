@@ -19,10 +19,11 @@
   cursor: pointer;
   width: fit-content;
   height: 40px;
-  margin: 15px;
+  // margin: 10px 0;
+  margin-bottom: 15px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   transform: scale(1);
   transition: all 0.2s;
   -webkit-tap-highlight-color: transparent;
@@ -31,7 +32,7 @@
   }
   .txtL {
     font-family: "Rg-B", sans-serif;
-    font-size: 1.4em;
+    font-size: 1.2em;
     color: rgba($color: #000, $alpha: 0.4);
     @media (prefers-color-scheme: dark) {
       color: rgba($color: #fff, $alpha: 0.4);
@@ -59,7 +60,7 @@
 }
 
 .cardNumber {
-  margin-left: 10px;
+  margin-left: 5px;
   min-width: 24px;
   width: 24px;
   height: 24px;
@@ -79,17 +80,17 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 15px;
   }
   .wordCard {
     cursor: pointer;
-    width: calc((100% / 3) - 20px);
+    width: calc((100% / 2) - 20px);
     height: fit-content;
-    min-height: 200px;
+    min-height: 80px;
     display: flex;
     align-items: center;
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 15px;
     overflow: hidden;
     transform: scale(1);
     transition: all 0.2s;
@@ -102,18 +103,12 @@
       box-shadow: rgba($color: #000, $alpha: 0.3) 0 3px;
     }
     &:hover {
-      transform: scale(1.02);
-      @media (pointer: coarse) {
-        transform: none;
-      }
+      transform: none;
     }
     &.done {
       cursor: default !important;
       &:hover {
-        transform: scale(1);
-        @media (pointer: coarse) {
-          transform: none;
-        }
+        transform: none;
       }
     }
     &.correct {
@@ -164,19 +159,19 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 12px;
   }
   .wordCard {
     cursor: pointer;
-    width: calc((100% / 3) - 20px);
+    width: calc((100% / 2) - 15px);
     height: fit-content;
-    min-height: 200px;
+    min-height: 13vh;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #fff;
     border: 2px solid #ddd;
-    border-radius: 20px;
+    border-radius: 15px;
     overflow: hidden;
     transform: scale(1);
     transition: all 0.2s;
@@ -188,14 +183,11 @@
       box-shadow: rgba($color: #000, $alpha: 0.3) 0 3px;
     }
     &:hover {
-      transform: scale(1.02);
-      @media (pointer: coarse) {
-        transform: none;
-      }
+      transform: none;
     }
     .txtL {
       font-family: "Rg-B", sans-serif;
-      font-size: 2.5em;
+      font-size: 1.6em;
     }
     &.correct {
       background-color: rgba($color: #289ee4, $alpha: 0.2);
@@ -213,23 +205,20 @@
 .listeningActivity3 {
   .container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr;
     place-items: center;
-    gap: 20px;
+    gap: 15px;
   }
   .imageCard {
     cursor: pointer;
-    min-width: 200px;
-    max-width: 300px;
-    min-height: 200px;
-    height: fit-content;
+    width: 100%;
+    height: 30vh;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid #ddd;
-    background-color: #fff;
+    background-color: rgba($color: #fff, $alpha: 1);
     border-radius: 20px;
-    overflow: hidden;
     transform: scale(1);
     transition: all 0.2s;
     -webkit-tap-highlight-color: transparent;
@@ -241,10 +230,7 @@
       background-color: rgba($color: #000, $alpha: 0.3);
     }
     &:hover {
-      transform: scale(1.02);
-      @media (pointer: coarse) {
-        transform: none;
-      }
+      transform: none;
     }
     &.correct {
       background-color: rgba($color: #289ee4, $alpha: 0.2);
@@ -276,6 +262,7 @@
   }
   .questionBox {
     width: calc(100% - 40px);
+    height: 33vh;
     padding: 20px;
     background-color: rgba($color: #fff, $alpha: 0.5);
     border-radius: 15px;
@@ -285,6 +272,9 @@
     @media (prefers-color-scheme: dark) {
       background-color: rgba($color: #000, $alpha: 0.3);
     }
+    @media screen and (max-height: 740px) {
+      height: 28vh;
+    }
     img {
       border-radius: 20px;
     }
@@ -292,7 +282,7 @@
   .soundCard {
     min-width: 200px;
     width: 100%;
-    min-height: 80px;
+    min-height: 70px;
     height: fit-content;
     display: flex;
     align-items: center;
@@ -312,10 +302,7 @@
       box-shadow: rgba($color: #000000, $alpha: 0.3) 0 3px;
     }
     &:hover {
-      transform: scale(1.02);
-      @media (pointer: coarse) {
-        transform: none;
-      }
+      transform: none;
     }
     &.correct {
       background-color: rgba($color: #289ee4, $alpha: 0.2);
@@ -373,8 +360,8 @@
   }
   .answers {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     place-items: center;
-    gap: 20px;
+    gap: 15px;
   }
 }

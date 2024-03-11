@@ -1,12 +1,15 @@
 import stylesPc from "./SummaryTest.module.scss";
+import stylesMobile from "./SummaryTest_m.module.scss";
 import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoArrowUp, IcoPlay, IcoReturn, IcoStop } from "../util/Icons";
 import Gap from "../util/Gap";
 import { flushSync } from "react-dom";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
+import { useMobileDetect } from "../util/isMobile";
 
-const style = stylesPc;
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPc;
 const readingUnit = "baro";
 
 // 코멘트
@@ -95,6 +98,10 @@ const ReviewAnswer = ({ id, width, currentOrder, correctAnswer }) => {
                 type="text"
                 value={inputVal}
                 onChange={saveVal}
+                autoCapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                inputmode="search"
               />
               {/* <span className={style.enterButton}>
                 <span>
@@ -195,7 +202,7 @@ export const SummaryTest1 = () => {
         )}
         {correctAnswer && (
           <div className={style.correctAnswer}>
-            <span className={style.playIcon}>►</span>
+            <span className={style.playIcon}></span>
             {/* 음원 재생중 하이라이트 */}
             {/* <span className={style.highlight}>{correctAnswer}</span> */}
             <span>{correctAnswer}</span>
@@ -203,7 +210,7 @@ export const SummaryTest1 = () => {
         )}
         {incorrectAnswer && (
           <div className={style.incorrectAnswer}>
-            <span className={style.playIcon}>►</span>
+            <span className={style.playIcon}></span>
             {/* 음원 재생중 하이라이트 */}
             {/* <span className={style.highlight}>{incorrectAnswer}</span> */}
             {incorrectAnswer}

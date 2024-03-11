@@ -1,12 +1,17 @@
 import stylesPc from "./ClozeTest.module.scss";
+import stylesMobile from "./ClozeTest_m.module.scss";
 import { useEffect, useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoArrowUp, IcoPlay, IcoStop, IcoReturn } from "../util/Icons";
 import Gap from "../util/Gap";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
 import { TrueSentencePopup } from "../extra/TrueSentencePopup";
+import { useMobileDetect } from "../util/isMobile";
 
-const style = stylesPc;
+const readingUnit = "gino";
+
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPc;
 
 // 코멘트
 const Comment = ({ text }) => {
@@ -28,9 +33,9 @@ const WordPlayButton = ({ sentence }) => {
   return (
     <div className={style.wordPlayButton} onClick={buttonToggle}>
       {isPlay ? (
-        <IcoPlay colorRed width={24} height={24} />
+        <IcoPlay colorRed width={34} height={34} />
       ) : (
-        <IcoStop colorGray width={24} height={24} />
+        <IcoStop colorGray width={34} height={34} />
       )}
       {sentence && <div className={style.txtL}>{sentence}</div>}
     </div>
@@ -112,6 +117,10 @@ const ReviewAnswer = ({ id, width, currentOrder, correctAnswer }) => {
                 type="text"
                 value={inputVal}
                 onChange={saveVal}
+                autoCapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                inputmode="search"
               />
               {/* <span className={style.enterButton}>
                 <span>
@@ -163,6 +172,10 @@ export const ClozeTest2 = () => {
                 id="textFild"
                 style={{ width: width + 50 + "px" }}
                 type="text"
+                autoCapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                inputmode="search"
               />
               <span className={style.enterButton}>
                 <span>
@@ -200,7 +213,7 @@ export const ClozeTest2 = () => {
       <QuizBody>
         {!viewTestReview && (
           <Container>
-            <Gap height={0} />
+            {isMobile ? <></> : <Gap height={0} />}
             <WordPlayButton sentence={"Playback"} />
             <QuestionBox>
               <span>London</span>
@@ -340,7 +353,7 @@ export const ClozeTest1 = () => {
       <QuizBody>
         {!viewTrueSentence && (
           <Container>
-            <Gap height={0} />
+            {isMobile ? <></> : <Gap height={0} />}
             <WordPlayButton sentence={"Playback"} />
             <QuestionBox>
               <span>London</span>
@@ -356,7 +369,7 @@ export const ClozeTest1 = () => {
               <span>United</span>
               <span>Kingdom.</span>
             </QuestionBox>
-            <Gap height={30} />
+            {isMobile ? <Gap height={20} /> : <Gap height={30} />}
             <Answers>
               {/* 정답예시 */}
               <TextCard
@@ -384,8 +397,8 @@ export const ClozeTest1 = () => {
           />
         )}
       </QuizBody>
-      {viewCorrectAct && <CorrectPopup />}
-      {viewIncorrectAct && <IncorrectPopup />}
+      {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+      {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
     </QuizTemplate>
   );
 };

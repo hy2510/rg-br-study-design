@@ -1,10 +1,11 @@
 .testResult {
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  line-height: 1.2;
   .scoreBoard {
     width: 100%;
     display: grid;
@@ -38,16 +39,17 @@
     }
   }
   .wrongAnswers {
-    width: calc(100% - 30px);
+    width: calc(100% - 20px);
     background-color: rgba($color: #000, $alpha: 0.1);
-    padding: 15px;
+    padding: 10px;
     border-radius: 15px;
     display: grid;
-    gap: 15px;
+    gap: 10px;
     .title {
-      font-size: 1.2em;
+      font-size: 1.1em;
       text-align: center;
-      padding-top: 5px;
+      padding-top: 8px;
+      padding-bottom: 5px;
       color: rgba($color: #000, $alpha: 0.4);
       @media (prefers-color-scheme: dark) {
         color: #fff;
@@ -159,7 +161,7 @@
   }
   .quizType {
     font-family: "Rg-b", sans-serif;
-    font-size: 1.2em;
+    font-size: 1em;
     color: #fff;
     background-color: rgba($color: #000, $alpha: 0.8);
     padding: 5px 15px 3px;
@@ -178,17 +180,17 @@
     }
     .txtL {
       font-family: "Rg-b", sans-serif;
-      font-size: 1.6em;
+      font-size: 1.2em;
     }
     .totalScore {
       font-family: "Rg-b", sans-serif;
-      font-size: 6.5em;
+      font-size: 4em;
     }
   }
   .container {
-    width: 370px;
+    width: 300px;
     min-height: 200px;
-    max-height: 30vh;
+    max-height: 42.5vh;
     overflow-y: scroll;
     overflow-x: hidden;
     display: flex;
@@ -273,8 +275,8 @@
   .nextButton {
     // position: sticky;
     // bottom: 5px;
+    min-width: 270px;
     cursor: pointer;
-    min-width: 340px;
     text-align: center;
     border-radius: 15px;
     border-top: 1px solid #289ee4;
@@ -317,7 +319,7 @@
   align-items: center;
   justify-content: center;
   .container {
-    height: 400px;
+    // height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -325,7 +327,7 @@
     gap: 10px;
     .stepOrder {
       font-family: "Rg-b", sans-serif;
-      font-size: 1.2em;
+      font-size: 1em;
       color: #fff;
       background-color: rgba($color: #000, $alpha: 0.8);
       padding: 5px 15px 3px;
@@ -337,8 +339,7 @@
     }
     .title {
       font-family: "Rg-b", sans-serif;
-      font-size: 3em;
-      // font-weight: 600;
+      font-size: 2.2em;
       margin-top: 10px;
       @media (prefers-color-scheme: dark) {
         color: #fff;
@@ -354,7 +355,7 @@
       }
     }
     .revisionBoard {
-      width: 300px;
+      width: calc(100vw - 50px);
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       border-top: 2px solid rgba($color: #000, $alpha: 0.2);
@@ -385,12 +386,13 @@
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 15px;
+      width: calc(100vw - 40px);
       &.revisionDone {
         grid-template-columns: 1fr;
       }
       .noButton {
         cursor: pointer;
-        min-width: 150px;
+        min-width: calc(100% - 42px);
         text-align: center;
         border-radius: 15px;
         border-top: 1px solid #ccc;
@@ -417,7 +419,7 @@
       }
       .yesButton {
         cursor: pointer;
-        min-width: 150px;
+        min-width: calc(100% - 42px);
         text-align: center;
         border-radius: 15px;
         border-top: 1px solid #289ee4;

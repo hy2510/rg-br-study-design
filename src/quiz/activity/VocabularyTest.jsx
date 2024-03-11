@@ -1,11 +1,14 @@
 import stylesPc from "./VocabularyTest.module.scss";
+import stylesMobile from "./VocabularyTest_m.module.scss";
 import { useEffect, useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import Gap from "../util/Gap";
 import { IcoPlay, IcoReturn, IcoStop } from "../util/Icons";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
+import { useMobileDetect } from "../util/isMobile";
 
-const style = stylesPc;
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPc;
 const readingUnit = "baro";
 
 // 코멘트
@@ -120,6 +123,10 @@ const ReviewAnswer = ({ id, currentOrder, correctAnswer }) => {
                 type="text"
                 value={inputVal}
                 onChange={saveVal}
+                autoCapitalize="off"
+                autocomplete="off"
+                autocorrect="off"
+                inputmode="search"
               />
               {/* <span className={style.enterButton}>
                 <span>
@@ -220,7 +227,7 @@ export const VocabularyTest1 = () => {
       />
       <Comment text={"Vocabulary Test"} />
       <QuizBody>
-        <Gap height={15} />
+        {isMobile ? <></> : <Gap height={15} />}
         <Container>
           <QuestionBox
             imgSrc={
@@ -246,10 +253,10 @@ export const VocabularyTest1 = () => {
             <TextCard number={3} awnserText={"ax"} />
           </Answers>
         </Container>
-        <Gap height={15} />
+        {isMobile ? <Gap height={5} /> : <Gap height={15} />}
       </QuizBody>
-      {viewCorrectAct && <CorrectPopup />}
-      {viewIncorrectAct && <IncorrectPopup />}
+      {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+      {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
     </QuizTemplate>
   );
 };
@@ -329,7 +336,7 @@ export const VocabularyTest2 = () => {
       />
       <Comment text={"Vocabulary Test"} />
       <QuizBody>
-        <Gap height={15} />
+        {isMobile ? <></> : <Gap height={15} />}
         <Container>
           <QuestionBox
             imgSrc={
@@ -356,10 +363,10 @@ export const VocabularyTest2 = () => {
             <TextCard number={3} awnserText={"holds"} />
           </Answers>
         </Container>
-        <Gap height={15} />
+        {isMobile ? <Gap height={5} /> : <Gap height={15} />}
       </QuizBody>
-      {viewCorrectAct && <CorrectPopup />}
-      {viewIncorrectAct && <IncorrectPopup />}
+      {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+      {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
     </QuizTemplate>
   );
 };
@@ -386,7 +393,7 @@ export const VocabularyTest3 = () => {
     return (
       <div className={style.wordCard}>
         <div className={style.wordTyping}>
-          <div style={{ width: 70 }}></div>
+          <div style={{ width: isMobile ? 0 : 70 }}></div>
           <div
             className={`${style.textField} animate__animated ${incorrectAct} ${
               incorrectAct && style.incorrect
@@ -399,6 +406,10 @@ export const VocabularyTest3 = () => {
                   type="text"
                   value={inputVal}
                   onChange={saveVal}
+                  autoCapitalize="off"
+                  autocomplete="off"
+                  autocorrect="off"
+                  inputmode="search"
                 />
                 <div className={style.wordText}></div>
               </>
@@ -428,7 +439,7 @@ export const VocabularyTest3 = () => {
             {inputVal == correctAnswer && <></>}
           </div>
         </div>
-        <Gap height={20} />
+        <Gap height={isMobile ? 50 : 20} />
         <div className={style.meaning}>
           <div className={style.txtL}>{meaning}</div>
           <Gap height={10} />
@@ -544,7 +555,7 @@ export const VocabularyTest4 = () => {
       />
       <Comment text={"Vocabulary Test"} />
       <QuizBody>
-        <Gap height={15} />
+        {isMobile ? <></> : <Gap height={15} />}
         <Container>
           <QuestionBox
             meaning={"abj. 겁에 질린, 무서워하는"}
@@ -569,10 +580,10 @@ export const VocabularyTest4 = () => {
             <TextCard number={3} awnserText={"holds"} />
           </Answers>
         </Container>
-        <Gap height={15} />
+        {isMobile ? <Gap height={5} /> : <Gap height={15} />}
       </QuizBody>
-      {viewCorrectAct && <CorrectPopup />}
-      {viewIncorrectAct && <IncorrectPopup />}
+      {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+      {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
     </QuizTemplate>
   );
 };

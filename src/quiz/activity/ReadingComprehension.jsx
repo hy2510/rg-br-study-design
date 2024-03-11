@@ -1,4 +1,5 @@
 import stylesPc from "./ReadingComprehension.module.scss";
+import stylesMobile from "./ReadingComprehension_m.module.scss";
 import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoPlay, IcoReturn, IcoStop } from "../util/Icons";
@@ -6,8 +7,10 @@ import Gap from "../util/Gap";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
 import { TestResult } from "../extra/TestResult";
 import { StepIntro } from "../extra/StepBoard";
+import { useMobileDetect } from "../util/isMobile";
 
-const style = stylesPc;
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPc;
 
 const readingUnit = "baro";
 
@@ -109,7 +112,11 @@ export const ReadingComprehension1 = () => {
         `}
         onClick={onClick}
       >
-        <img src={imgSrc} width={"100%"} />
+        <img
+          src={imgSrc}
+          width={isMobile ? "auto" : "100%"}
+          height={isMobile ? "100%" : "auto"}
+        />
         <div className={style.cardNumberPosition}>
           <CardNumber number={number} />
         </div>
@@ -127,9 +134,9 @@ export const ReadingComprehension1 = () => {
       />
       <Comment text={"Reading Comprehension"} />
       <QuizBody>
-        <Gap height={15} />
+        {isMobile ? <Gap height={0} /> : <Gap height={15} />}
         <WordPlayButton question={"The alligator has an ax!"} />
-        <Gap height={15} />
+        {isMobile ? <Gap height={10} /> : <Gap height={15} />}
         <Container>
           {/* 정답액션예시 */}
           <ImageCard
@@ -150,10 +157,10 @@ export const ReadingComprehension1 = () => {
             onClick={runIncorrectAct}
           />
         </Container>
-        <Gap height={15} />
+        {isMobile ? <></> : <Gap height={15} />}
       </QuizBody>
-      {viewCorrectAct && <CorrectPopup />}
-      {viewIncorrectAct && <IncorrectPopup />}
+      {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+      {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
     </QuizTemplate>
   );
 };
@@ -189,7 +196,11 @@ export const ReadingComprehension2 = () => {
     return (
       <div className={style.questionBox}>
         <div className={style.wordImage}>
-          <img src={imgSrc} width={"100%"} />
+          <img
+            src={imgSrc}
+            width={isMobile ? "auto" : "100%"}
+            height={isMobile ? "100%" : "auto"}
+          />
         </div>
       </div>
     );
@@ -236,7 +247,7 @@ export const ReadingComprehension2 = () => {
       />
       <Comment text={"Reading Comprehension"} />
       <QuizBody>
-        <Gap height={15} />
+        {isMobile ? <Gap height={0} /> : <Gap height={15} />}
         <Container>
           <QuestionBox
             imgSrc={
@@ -264,10 +275,10 @@ export const ReadingComprehension2 = () => {
             />
           </Answers>
         </Container>
-        <Gap height={15} />
+        {isMobile ? <Gap height={5} /> : <Gap height={15} />}
       </QuizBody>
-      {viewCorrectAct && <CorrectPopup />}
-      {viewIncorrectAct && <IncorrectPopup />}
+      {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+      {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
     </QuizTemplate>
   );
 };
@@ -302,7 +313,11 @@ export const ReadingComprehension3 = () => {
   const QuestionImage = ({ imgSrc }) => {
     return (
       <div className={style.questionImage}>
-        <img src={imgSrc} width={"100%"} />
+        <img
+          src={imgSrc}
+          width={isMobile ? "auto" : "100%"}
+          height={isMobile ? "100%" : "auto"}
+        />
       </div>
     );
   };
@@ -352,7 +367,7 @@ export const ReadingComprehension3 = () => {
       />
       <Comment text={"Reading Comprehension"} />
       <QuizBody>
-        <Gap height={15} />
+        {isMobile ? <Gap height={0} /> : <Gap height={15} />}
         <Container>
           <QuestionImage
             // imgSrc={
@@ -363,10 +378,10 @@ export const ReadingComprehension3 = () => {
             }
           />
           <Answers>
-            <Gap height={10} />
+            {isMobile ? <></> : <Gap height={10} />}
             {/* 1A~1C의 경우 QuestionText가 사용됨 */}
             <QuestionText text={"What sport does Bobby play?"} />
-            <Gap height={10} />
+            {isMobile ? <></> : <Gap height={10} />}
             {/* 정답액션예시 */}
             <TextCard
               number={1}
@@ -389,10 +404,10 @@ export const ReadingComprehension3 = () => {
             />
           </Answers>
         </Container>
-        <Gap height={15} />
+        {isMobile ? <Gap height={5} /> : <Gap height={15} />}
       </QuizBody>
-      {viewCorrectAct && <CorrectPopup />}
-      {viewIncorrectAct && <IncorrectPopup />}
+      {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
+      {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
     </QuizTemplate>
   );
 };
@@ -510,15 +525,15 @@ export const ReadingComprehension4 = () => {
         />
         <Comment text={"Reading Comprehension"} />
         <QuizBody>
-          <Gap height={15} />
+          {isMobile ? <></> : <Gap height={15} />}
           <Container>
             <Answers>
-              <Gap height={10} />
+              {isMobile ? <Gap height={5} /> : <Gap height={10} />}
               {/* 기본 Question */}
               <QuestionText text={"Where is London located?"} />
               {/* 4레벨 이상 음원 재생기능이 설정되어 있는 경우 */}
               {/* <WordPlayButton question={"Why did Ray like having a dog?"} /> */}
-              <Gap height={10} />
+              {isMobile ? <Gap height={0} /> : <Gap height={10} />}
               {/* 정답액션예시 */}
               <TextCard
                 number={1}
@@ -543,7 +558,7 @@ export const ReadingComprehension4 = () => {
               />
             </Answers>
           </Container>
-          <Gap height={15} />
+          {isMobile ? <Gap height={5} /> : <Gap height={15} />}
         </QuizBody>
         {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
         {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}

@@ -1,4 +1,5 @@
 import stylesPc from "./WritingActivity.module.scss";
+import stylesMobile from "./WritingActivity_m.module.scss";
 import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoArrowUp, IcoPlay, IcoStop } from "../util/Icons";
@@ -9,8 +10,10 @@ import {
   RevisionIntro,
   StepIntro,
 } from "../extra/StepBoard";
+import { useMobileDetect } from "../util/isMobile";
 
-const style = stylesPc;
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPc;
 const readingUnit = "baro";
 
 // 코멘트
@@ -33,9 +36,9 @@ const WordPlayButton = () => {
   return (
     <div className={style.wordPlayButton} onClick={buttonToggle}>
       {isPlay ? (
-        <IcoPlay colorRed width={40} height={40} />
+        <IcoPlay colorRed width={34} height={34} />
       ) : (
-        <IcoStop colorGray width={40} height={40} />
+        <IcoStop colorGray width={34} height={34} />
       )}
       <span className={style.txtL}>Playback</span>
     </div>
@@ -125,7 +128,7 @@ export const WritingActivity1 = () => {
         <WordPlayButton />
         <Gap height={15} />
         <Container>
-          <EnterBox>
+          <EnterBox correct={false} incorrect={false}>
             <TextCard awnserText="Spring" />
             <TextCard awnserText="is" />
           </EnterBox>
@@ -141,7 +144,7 @@ export const WritingActivity1 = () => {
           {/* 다음 문제로 넘어가기 전 활성화 됨 */}
           <GoNextButton />
         </Container>
-        <Gap height={15} />
+        {isMobile ? <Gap height={5} /> : <Gap height={15} />}
       </QuizBody>
     </QuizTemplate>
   );
@@ -297,7 +300,7 @@ export const WritingActivity2 = () => {
         />
         <Comment text={"Writing Activity"} />
         <QuizBody>
-          <Gap height={15} />
+          {isMobile ? <></> : <Gap height={15} />}
           <Container>
             <Tabs>
               <TabButton number={1} isSelected={true} />
@@ -312,11 +315,13 @@ export const WritingActivity2 = () => {
             <WritingArea />
             <GoNextStepBox>
               <WordLimitIndicator limit={"30~300"} words={0} />
-              <SaveButton />
-              <SubmitButton />
+              <div className={style.groupButtons}>
+                <SaveButton />
+                <SubmitButton />
+              </div>
             </GoNextStepBox>
           </Container>
-          <Gap height={15} />
+          {isMobile ? <Gap height={5} /> : <Gap height={15} />}
         </QuizBody>
         {/* Test Result를 보기 위한 임시 버튼 */}
         <button
@@ -343,7 +348,7 @@ export const WritingActivity2 = () => {
           quizType={"Writing Activity"}
           title={"이달의 첨삭"}
           comment={"글쓰기 첨삭을 받으시겠어요?"}
-          revisionCountNum={0}
+          revisionCountNum={1}
           revisionGoalNum={4}
           revisionCompletedNum={0}
         />

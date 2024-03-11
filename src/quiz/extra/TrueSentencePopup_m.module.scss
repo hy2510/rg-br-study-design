@@ -15,33 +15,43 @@
   .txtL {
     font-family: "Rg-B", sans-serif;
     font-size: 1.2em;
+    font-weight: 500;
     color: rgba($color: #000, $alpha: 0.4);
+    @media (prefers-color-scheme: dark) {
+      color: rgba($color: #fff, $alpha: 0.4);
+    }
   }
 }
 
-.testReview3 {
-  background-color: rgba($color: #fff, $alpha: 0.8);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  padding: 20px;
+.trueSentencePopup {
+  // background-color: rgba($color: #fff, $alpha: 0.8);
+  // position: absolute;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
+  line-height: 1.2;
+  // @media (prefers-color-scheme: dark) {
+  //   background-color: rgba($color: #000, $alpha: 0.3);
+  // }
   .title {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-family: "Rg-b", sans-serif;
-    margin-bottom: 15px;
+    margin: 10px 0 15px 10px;
   }
   .container {
-    padding: 15px;
+    padding: 15px 0;
     display: flex;
     flex-direction: column;
     gap: 15px;
     background-color: rgba($color: #000, $alpha: 0.03);
     border-radius: 15px;
     margin-bottom: 15px;
+    @media (prefers-color-scheme: dark) {
+      background-color: rgba($color: #fff, $alpha: 0.03);
+    }
     .sentence {
-      font-size: 1.4em;
+      font-size: 1.2em;
       font-family: "Rg-b", sans-serif;
       margin-left: 15px;
       margin-bottom: 15px;
@@ -53,6 +63,7 @@
     cursor: pointer;
     margin: auto;
     min-width: 150px;
+    width: calc(100% - 50px);
     text-align: center;
     border-radius: 15px;
     border-top: 1px solid #289ee4;
@@ -68,8 +79,7 @@
     color: #fff;
     font-size: 1.2em;
     font-family: "Rg-B", sans-serif;
-    width: fit-content;
-    padding: 15px 20px;
+    padding: 12px 15px;
     transform: scale(1);
     transition: all 0.2s;
     &:active {

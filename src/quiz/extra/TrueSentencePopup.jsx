@@ -2,8 +2,11 @@ import { useState } from "react";
 import Gap from "../util/Gap";
 import { IcoPlay, IcoStop } from "../util/Icons";
 import stylesPC from "./TrueSentencePopup.module.scss";
+import stylesMobile from "./TrueSentencePopup_m.module.scss";
+import { useMobileDetect } from "../util/isMobile";
 
-const style = stylesPC;
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPC;
 
 // 듣기버튼 (문장 폰트 작게)
 const WordPlayButton = ({ sentence }) => {

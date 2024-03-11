@@ -29,6 +29,7 @@
   .txtL {
     font-family: "Rg-B", sans-serif;
     font-size: 1.4em;
+    font-weight: 600;
     color: rgba($color: #000, $alpha: 0.4);
     @media (prefers-color-scheme: dark) {
       color: rgba($color: #fff, $alpha: 0.4);
@@ -78,7 +79,7 @@
   right: 50%;
   z-index: 999;
   transform: translate(-50%);
-  min-width: 400px;
+  min-width: 300px;
   padding: 10px 20px;
   min-height: 100px;
   background-color: #fff;
@@ -119,14 +120,14 @@
   // left: 0;
   // right: 0;
   // bottom: 0;
-  padding: 10px;
+  // padding: 10px;
   .title {
-    font-size: 1.4em;
+    font-size: 1.2em;
     font-family: "Rg-b", sans-serif;
-    margin-bottom: 15px;
+    margin: 5px 5px 10px 5px;
   }
   .container {
-    padding: 15px;
+    padding: 15px 0;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -136,7 +137,7 @@
     .sentence {
       font-size: 1.4em;
       font-family: "Rg-b", sans-serif;
-      margin: 15px;
+      // margin: 15px;
       display: flex;
       flex-direction: column;
       flex-wrap: wrap;
@@ -147,6 +148,7 @@
   @mixin buttonStyle {
     margin: auto;
     min-width: 150px;
+    width: calc(100% - 50px);
     text-align: center;
     border-radius: 15px;
     border-top: 1px solid #289ee4;
@@ -162,8 +164,7 @@
     color: #fff;
     font-size: 1.2em;
     font-family: "Rg-B", sans-serif;
-    width: fit-content;
-    padding: 12px 20px;
+    padding: 12px 15px;
     transform: scale(1);
     transition: all 0.2s;
   }
@@ -182,7 +183,7 @@
 }
 
 .reviewAnswer {
-  width: 300px;
+  width: calc(100% - 50px);
   padding: 5px 10px;
   border: 2px dotted #ccc;
   border-radius: 10px;
@@ -272,7 +273,6 @@
   }
   .questionBox {
     width: calc(100% - 40px);
-    min-height: 280px;
     padding: 20px;
     background-color: rgba($color: #fff, $alpha: 0.6);
     border-radius: 15px;
@@ -280,7 +280,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     @media (prefers-color-scheme: dark) {
       background-color: rgba($color: #000, $alpha: 0.3);
     }
@@ -302,9 +301,8 @@
   }
   .textCard {
     cursor: pointer;
-    min-width: 200px;
     width: calc(100% - 20px);
-    min-height: 60px;
+    min-height: 50px;
     height: fit-content;
     display: flex;
     align-items: center;
@@ -325,10 +323,7 @@
       box-shadow: rgba($color: #000, $alpha: 0.3) 0 3px;
     }
     &:hover {
-      transform: scale(1.02);
-      @media (pointer: coarse) {
-        transform: none;
-      }
+      transform: none;
     }
     &.correct {
       background-color: rgba($color: #289ee4, $alpha: 0.2);
@@ -351,9 +346,9 @@
   }
   .answers {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     place-items: center;
-    gap: 20px;
+    gap: 15px;
   }
 }
 
@@ -365,7 +360,6 @@
   }
   .questionBox {
     width: calc(100% - 40px);
-    min-height: 280px;
     padding: 20px;
     background-color: rgba($color: #fff, $alpha: 0.6);
     border-radius: 15px;
@@ -391,8 +385,8 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      margin: 15px 0;
-      font-size: 1.6em;
+      margin-top: 5px;
+      font-size: 1.4em;
       font-family: "Rg-b", sans-serif;
       div,
       span {
@@ -430,7 +424,7 @@
     cursor: pointer;
     min-width: 200px;
     width: calc(100% - 20px);
-    min-height: 60px;
+    min-height: 50px;
     height: fit-content;
     display: flex;
     align-items: center;
@@ -451,10 +445,7 @@
       box-shadow: rgba($color: #000000, $alpha: 0.3) 0 3px;
     }
     &:hover {
-      transform: scale(1.02);
-      @media (pointer: coarse) {
-        transform: none;
-      }
+      transform: none;
     }
     &.correct {
       background-color: rgba($color: #289ee4, $alpha: 0.2);
@@ -472,14 +463,14 @@
     }
     .awnserText {
       font-family: "Rg-B", sans-serif;
-      font-size: 1.5em;
+      font-size: 1.4em;
     }
   }
   .answers {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     place-items: center;
-    gap: 20px;
+    gap: 15px;
   }
 }
 
@@ -496,11 +487,12 @@
     gap: 25px;
   }
   .wordCard {
+    width: 100%;
     .wordTyping {
       display: flex;
       align-items: center;
       .textField {
-        width: 440px;
+        width: 100%;
         height: 60px;
         position: relative;
         &.incorrect {
@@ -508,18 +500,21 @@
             background-color: rgba($color: #d95355, $alpha: 0.5);
           }
         }
+        $inputWidth: calc(100% - 28px);
+        $inputHeight: calc(100% - 14px);
+        $inputFontSize: 1.6em;
         .inputField {
           display: flex;
           align-items: center;
           justify-content: start;
-          width: 400px;
-          height: 40px;
+          width: $inputWidth;
+          height: $inputHeight;
+          font-size: $inputFontSize;
           background-color: transparent;
           border: 2px solid transparent;
           font-family: "Rg-B", sans-serif;
-          font-size: 2.1em;
           margin: 0 !important;
-          padding: 10px 20px !important;
+          padding: 5px 15px !important;
           position: absolute;
           top: 0;
           left: 0;
@@ -529,15 +524,15 @@
           display: flex;
           align-items: center;
           justify-content: start;
-          width: 400px;
-          height: 40px;
+          width: $inputWidth;
+          height: $inputHeight;
+          font-size: $inputFontSize;
           font-family: "Rg-B", sans-serif;
-          font-size: 2.1em;
           color: #ccc;
           background-color: #fff;
           border-radius: 15px;
           border: 2px solid #ccc;
-          padding: 10px 20px;
+          padding: 5px 15px;
           position: absolute;
           top: 0;
           left: 0;
@@ -547,15 +542,15 @@
           display: flex;
           align-items: center;
           justify-content: start;
-          width: 400px;
-          height: 40px;
+          width: calc($inputWidth + 45px);
+          height: $inputHeight;
+          font-size: $inputFontSize;
           font-family: "Rg-B", sans-serif;
-          font-size: 2.5em;
           color: #000;
           background-color: rgba($color: #3ab6ff, $alpha: 0.5);
           border-radius: 15px;
           border: 2px solid transparent;
-          padding: 10px 20px;
+          padding: 5px 15px;
           position: absolute;
           top: 0;
           left: 0;
@@ -574,11 +569,11 @@
         }
       }
       .enterButton {
-        width: 70px;
+        width: 60px;
         height: 60px;
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: end;
         cursor: pointer;
         transform: scale(1);
         transition: all 0.2s;
@@ -599,15 +594,16 @@
       }
     }
     .meaning {
-      padding-left: 90px;
+      padding-left: 10px;
+      line-height: 1.2;
       .txtL {
-        max-width: 480px;
-        font-size: 1.5em;
+        width: 100%;
+        font-size: 1.4em;
         font-weight: 600;
       }
       .txtP {
-        max-width: 400px;
-        font-size: 1.2em;
+        width: 100%;
+        font-size: 1em;
         color: #888;
       }
     }
@@ -622,7 +618,7 @@
   }
   .questionBox {
     width: calc(100% - 40px);
-    min-height: 280px;
+    min-height: 200px;
     padding: 20px;
     background-color: rgba($color: #fff, $alpha: 0.6);
     border-radius: 15px;
@@ -636,7 +632,7 @@
     }
     .meaning {
       max-width: 480px;
-      font-size: 1.8em;
+      font-size: 1.5em;
       font-weight: 600;
     }
     .sentence {
@@ -649,7 +645,7 @@
     cursor: pointer;
     min-width: 200px;
     width: calc(100% - 20px);
-    min-height: 60px;
+    min-height: 50px;
     height: fit-content;
     display: flex;
     align-items: center;
@@ -670,10 +666,7 @@
       box-shadow: rgba($color: #000000, $alpha: 0.3) 0 3px;
     }
     &:hover {
-      transform: scale(1.02);
-      @media (pointer: coarse) {
-        transform: none;
-      }
+      transform: none;
     }
     &.correct {
       background-color: rgba($color: #289ee4, $alpha: 0.2);
@@ -691,13 +684,13 @@
     }
     .awnserText {
       font-family: "Rg-B", sans-serif;
-      font-size: 1.5em;
+      font-size: 1.4em;
     }
   }
   .answers {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     place-items: center;
-    gap: 20px;
+    gap: 15px;
   }
 }

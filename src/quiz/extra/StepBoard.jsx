@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import Gap from "../util/Gap";
 import stylesPc from "./StepBoard.module.scss";
+import stylesMobile from "./StepBoard_m.module.scss";
+import { useMobileDetect } from "../util/isMobile";
 
-const style = stylesPc;
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPc;
 
 export const StepIntro = ({ stepOrder, quizType, comment, unit, onClick }) => {
   return (

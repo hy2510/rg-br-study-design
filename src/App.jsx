@@ -7,8 +7,8 @@ import Ebook from "./ebook/Ebook";
 function App() {
   return (
     <>
-      <Ebook />
-      {/* <Quiz /> */}
+      {/* <Ebook /> */}
+      <Quiz />
     </>
   );
 }

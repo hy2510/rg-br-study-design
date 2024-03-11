@@ -1,4 +1,5 @@
 import stylesPc from "./ListeningActivity.module.scss";
+import stylesMobile from "./ListeningActivity_m.module.scss";
 import { useState } from "react";
 import { QuizBody, QuizHeader, QuizTemplate } from "../util/QuizTemplate";
 import { IcoPlay, IcoReturn, IcoStop } from "../util/Icons";
@@ -6,8 +7,11 @@ import Gap from "../util/Gap";
 import { CorrectPopup, IncorrectPopup } from "../extra/CorrectSign";
 import { StepIntro } from "../extra/StepBoard";
 import { TestResult } from "../extra/TestResult";
+import { useMobileDetect } from "../util/isMobile";
 
-const style = stylesPc;
+const isMobile = useMobileDetect();
+const style = isMobile ? stylesMobile : stylesPc;
+
 const readingUnit = "goma"; // 리딩유닛이름
 
 // 코멘트
@@ -30,9 +34,9 @@ const WordPlayButton = () => {
   return (
     <div className={style.wordPlayButton} onClick={buttonToggle}>
       {isPlay ? (
-        <IcoPlay colorRed width={40} height={40} />
+        <IcoPlay colorRed width={34} height={34} />
       ) : (
-        <IcoStop colorGray width={40} height={40} />
+        <IcoStop colorGray width={34} height={34} />
       )}
       <span className={style.txtL}>Playback</span>
     </div>
@@ -176,7 +180,7 @@ export const ListeningActivity1 = () => {
         <Comment text={"Listening Activity"} />
         <QuizBody>
           <WordPlayButton />
-          <Gap height={15} />
+          {isMobile ? <Gap height={10} /> : <Gap height={15} />}
           <Container>
             {/* 정답액션예시 */}
             <WordCard
@@ -294,7 +298,7 @@ export const ListeningActivity2 = () => {
       <Comment text={"Listening Activity"} />
       <QuizBody>
         <WordPlayButton />
-        <Gap height={15} />
+        {isMobile ? <Gap height={10} /> : <Gap height={15} />}
         <Container>
           {/* 정답액션예시 */}
           <WordCard
@@ -313,7 +317,7 @@ export const ListeningActivity2 = () => {
           <WordCard word={"Apple"} />
           <WordCard word={"Pupple"} />
         </Container>
-        <Gap height={15} />
+        {isMobile ? <Gap height={10} /> : <Gap height={15} />}
       </QuizBody>
       {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
       {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
@@ -365,7 +369,11 @@ export const ListeningActivity3 = () => {
         `}
         onClick={onClick}
       >
-        <img src={imgSrc} width={"100%"} />
+        <img
+          src={imgSrc}
+          width={isMobile ? "auto" : "100%"}
+          height={isMobile ? "100%" : "auto"}
+        />
         <div className={style.cardNumberPosition}>
           <CardNumber number={number} />
         </div>
@@ -384,7 +392,8 @@ export const ListeningActivity3 = () => {
       <Comment text={"Listening Activity"} />
       <QuizBody>
         <WordPlayButton />
-        <Gap height={15} />
+        {isMobile ? <Gap height={10} /> : <Gap height={15} />}
+
         <Container>
           {/* 정답액션예시 */}
           <ImageCard
@@ -405,7 +414,7 @@ export const ListeningActivity3 = () => {
             onClick={runIncorrectAct}
           />
         </Container>
-        <Gap height={15} />
+        {isMobile ? <Gap height={0} /> : <Gap height={15} />}
       </QuizBody>
       {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
       {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
@@ -443,7 +452,11 @@ export const ListeningActivity4 = () => {
   const QuestionBox = ({ imgSrc }) => {
     return (
       <div className={style.questionBox}>
-        <img src={imgSrc} width={250} />
+        <img
+          src={imgSrc}
+          width={isMobile ? "auto" : "250px"}
+          height={isMobile ? "100%" : "auto"}
+        />
       </div>
     );
   };
@@ -487,7 +500,7 @@ export const ListeningActivity4 = () => {
       />
       <Comment text={"Listening Activity"} />
       <QuizBody>
-        <Gap height={15} />
+        {isMobile ? <Gap height={0} /> : <Gap height={15} />}
         <Container>
           <QuestionBox
             imgSrc={
@@ -511,7 +524,7 @@ export const ListeningActivity4 = () => {
             <SoundCard number={3} />
           </Answers>
         </Container>
-        <Gap height={15} />
+        {isMobile ? <Gap height={5} /> : <Gap height={15} />}
       </QuizBody>
       {viewCorrectAct && <CorrectPopup unit={readingUnit} />}
       {viewIncorrectAct && <IncorrectPopup unit={readingUnit} />}
