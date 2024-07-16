@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Sono:wght@200..800&display=swap");
+
 .comment {
   font-family: "Rg-B", sans-serif;
   font-size: 1.1em;
@@ -218,7 +220,7 @@
     }
   }
   .answerBox {
-    padding: 5px 5px 5px 10px;
+    padding: 5px 10px;
     border: 2px dotted #ccc;
     border-radius: 10px;
     // margin: 0 5px;
@@ -250,9 +252,12 @@
     input {
       background-color: transparent;
       border: none;
-      font-family: "Rg-B", sans-serif;
+      // font-family: "Rg-B", sans-serif;
+      font-family: "Sono", monospace !important;
+      font-weight: 500;
       font-size: 1em;
       padding: 0 !important;
+      margin-bottom: 5px;
     }
     .currentInput,
     .otherInput {

@@ -170,22 +170,22 @@ export const ClozeTest2 = () => {
             <span className={style.currentInput}>
               <input
                 id="textFild"
-                style={{ width: width + 50 + "px" }}
+                style={{ width: width * 15.6 + "px" }}
                 type="text"
                 autoCapitalize="off"
                 autocomplete="off"
                 autocorrect="off"
                 inputmode="search"
               />
-              <span className={style.enterButton}>
+              {/* <span className={style.enterButton}>
                 <span>
                   <IcoReturn width={15} height={15} />
                 </span>
-              </span>
+              </span> */}
             </span>
           ) : (
             <span className={style.otherInput}>
-              <input style={{ width: width + "px" }} disabled />
+              <input style={{ width: width * 15.6 + "px" }} disabled />
             </span>
           )
         ) : null}
@@ -200,6 +200,11 @@ export const ClozeTest2 = () => {
   };
 
   const [viewTestReview, _viewTestReview] = useState(false);
+
+  const answer = [
+    "londonlondonlondonlondonlondon",
+    "londonlondonlondonlondonlondon",
+  ];
 
   return (
     <QuizTemplate>
@@ -220,13 +225,13 @@ export const ClozeTest2 = () => {
               <span>is</span>
               <span>the</span>
               <AnswerBox
-                width={80}
+                width={answer[0].length}
                 currentOrder={true}
                 correctAnswer={""}
                 incorrectAnswer={""}
               />
               <AnswerBox
-                width={42}
+                width={answer[1].length}
                 currentOrder={false}
                 correctAnswer={""}
                 incorrectAnswer={""}
